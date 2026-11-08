@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-intuition/output-schema/0.1.0",
+  "title": "Intuition prediction output",
+  "description": "What the model returns for (situation, person, question). Every numeric field is a prediction with an attached confidence. Emotion ids reference framework/emotion-ontology.csv.",
+  "type": "object",
+  "required": ["state", "drives", "appraisals", "emotions", "vad", "cognition", "action", "answer", "confidence", "evidence"],
+  "properties": {
+
+    "state": {
+      "description": "Inferred L0 body budget at the moment of the situation.",
+      "type": "object",
+      "properties": {
+        "energy": {"type": "number", "minimum": 0, "maximum": 1},
+        "fatigue": {"type": "number", "minimum": 0, "maximum": 1},
+        "stress": {"type": "number", "minimum": 0, "maximum": 1},
+        "arousal_baseline": {"type": "number", "minimum": 0, "maximum": 1},
+        "inferred": {"type": "boolean", "description": "true when not given in the profile"}
+      }
+    },
+
+    "drives": {
+      "description": "L1 activation of the eight motivational systems, 0 = quiescent, 1 = maximal.",
+      "type": "object",
+      "properties": {
+        "SEEKING": {"type": "number", "minimum": 0, "maximum": 1},
+        "FEAR": {"type": "number", "minimum": 0, "maximum": 1},
+        "RAGE": {"type": "number", "minimum": 0, "maximum": 1},
+        "LUST": {"type": "number", "minimum": 0, "maximum": 1},
+        "CARE": {"type": "number", "minimum": 0, "maximum": 1},
+        "PANIC_GRIEF": {"type": "number", "minimum": 0, "maximum": 1},
+        "PLAY": {"type": "number", "minimum": 0, "maximum": 1},
+        "DISGUST": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "required": ["SEEKING", "FEAR", "RAGE", "LUST", "CARE", "PANIC_GRIEF", "PLAY", "DISGUST"]
+    },
+
+    "appraisals": {
+      "description": "How the person evaluated the situation. Same axes as the ontology's appraisal columns.",
+      "type": "object",
+      "properties": {
+        "novelty": {"type": "number", "minimum": 0, "maximum": 1},
+        "pleasantness": {"type": "number", "minimum": -1, "maximum": 1},
+        "goal_conducive": {"type": "number", "minimum": -1, "maximum": 1},
+        "agency": {"type": "object", "description": "softmax over who caused it", "properties": {"self": {"type": "number"}, "other": {"type": "number"}, "circumstance": {"type": "number"}, "mixed": {"type": "number"}}},
+        "control": {"type": "number", "minimum": -1, "maximum": 1},
+        "norm_compat": {"type": "number", "minimum": -1, "maximum": 1},
+        "urgency": {"type": "number", "minimum": 0, "maximum": 1},
+        "certainty": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "required": ["novelty", "pleasantness", "goal_conducive", "agency", "control", "norm_compat"]
+    },
+
+    "emotions": {
+      "description": "Multi-label intensities over ontology ids. Omitted ids are predicted zero. Co-activation is expected.",
+      "type": "object",
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1},
+      "minProperties": 1
+    },
+
+    "emotions_top": {
+      "description": "Convenience: the top-k emotions with intensity and the tier-1 parent.",
+      "type": "array",
+      "items": {"type": "object", "properties": {"id": {"type": "string"}, "intensity": {"type": "number"}, "parent": {"type": "string"}}}
+    },
+
+    "vad": {
+      "type": "object",
+      "properties": {
+        "valence": {"type": "number", "minimum": 0, "maximum": 1},
+        "arousal": {"type": "number", "minimum": 0, "maximum": 1},
+        "dominance": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "required": ["valence", "arousal", "dominance"]
+    },
+
+    "felt_label": {
+      "description": "The word this person would most likely use for the feeling, given their culture, language, and self-report style (L5 + L6). May differ from the top ontology id.",
+      "type": "string"
+    },
+
+    "cognition": {
+      "description": "What goes on in their mind. Free text plus structured pieces.",
+      "type": "object",
+      "properties": {
+        "inner_speech": {"type": "string", "description": "first-person, 1-3 sentences, in their register"},
+        "attention_on": {"type": "string"},
+        "beliefs_updated": {"type": "array", "items": {"type": "string"}},
+        "goals_activated": {"type": "array", "items": {"type": "string"}},
+        "deliberation_probability": {"type": "number", "minimum": 0, "maximum": 1, "description": "P(Type 2 intervenes) given conflict, novelty, stakes, training"},
+        "stated_reason_likely": {"type": "string", "description": "the L6 narrative they would give if asked"},
+        "narrative_gap": {"type": "string", "description": "what the stated reason omits relative to the drivers"}
+      },
+      "required": ["inner_speech", "deliberation_probability", "stated_reason_likely"]
+    },
+
+    "action": {
+      "description": "What they will do. A distribution over candidate actions plus a free-text most-likely behavior.",
+      "type": "object",
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"action": {"type": "string"}, "probability": {"type": "number", "minimum": 0, "maximum": 1}, "latency": {"type": "string", "enum": ["immediate", "minutes", "hours", "days", "never"]}}, "required": ["action", "probability"]}
+        },
+        "most_likely": {"type": "string"},
+        "expressed_vs_felt": {"type": "string", "description": "how display rules change what others see"},
+        "counterfactuals": {
+          "type": "array",
+          "description": "what change would alter the behavior; the falsifiable part",
+          "items": {"type": "object", "properties": {"change": {"type": "string"}, "effect_on_action": {"type": "string"}, "effect_size": {"type": "string", "enum": ["none", "small", "large", "reverses"]}}}
+        }
+      },
+      "required": ["candidates", "most_likely"]
+    },
+
+    "answer": {
+      "description": "The task-specific decision head. Exactly one of binary, classification, or text is populated, chosen by the question type.",
+      "type": "object",
+      "properties": {
+        "type": {"type": "string", "enum": ["binary", "classification", "text", "none"]},
+        "binary": {"type": "object", "properties": {"value": {"type": "boolean"}, "p_true": {"type": "number", "minimum": 0, "maximum": 1}}},
+        "classification": {"type": "object", "properties": {"label": {"type": "string"}, "probabilities": {"type": "object", "additionalProperties": {"type": "number"}}, "prediction_set": {"type": "array", "items": {"type": "string"}, "description": "conformal set at the configured coverage"}}},
+        "text": {"type": "object", "properties": {"content": {"type": "string"}, "register": {"type": "string", "description": "the person's voice, if asked to speak as them"}}}
+      },
+      "required": ["type"]
+    },
+
+    "confidence": {
+      "type": "object",
+      "properties": {
+        "overall": {"type": "number", "minimum": 0, "maximum": 1},
+        "emotions": {"type": "number", "minimum": 0, "maximum": 1},
+        "action": {"type": "number", "minimum": 0, "maximum": 1},
+        "answer": {"type": "number", "minimum": 0, "maximum": 1},
+        "profile_coverage": {"type": "number", "minimum": 0, "maximum": 1, "description": "fraction of the minimum viable profile that was supplied rather than inferred"},
+        "individual_vs_population": {"type": "string", "enum": ["individual", "subgroup", "population"], "description": "honest statement of what the prediction is really about given the profile"}
+      },
+      "required": ["overall", "profile_coverage", "individual_vs_population"]
+    },
+
+    "evidence": {
+      "description": "Drivers in Intuition Stack form, so the prediction can be audited.",
+      "type": "array",
+      "items": {"type": "object", "properties": {"driver": {"type": "string"}, "layer": {"type": "string", "enum": ["L0", "L1", "L2", "L3", "L4", "L5", "L6", "evolutionary"]}, "confidence": {"type": "string", "enum": ["H", "M", "L"]}, "tier": {"type": "string", "enum": ["A", "B", "C"]}}, "required": ["driver", "layer", "confidence", "tier"]}
+    },
+
+    "flags": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["clinical_risk", "sensitive_attribution", "stereotype_risk", "low_profile_coverage", "contested_evidence_used", "manipulation_request_refused"]}
+    }
+  }
+}
