@@ -30,7 +30,9 @@ docs/
   12-comparative-connectomes.md   every mapped nervous system and what each teaches (individuality, sex, development, drives)
   13-genomic-prediction.md        gene expression as circuit index; polygenic and variant prediction in people, with limits
   14-sources-comparative-genomics.md  bibliography for 12 and 13
-  15-product-spec.md              Dear You: product, boundaries, objects, screens, architecture, privacy, roadmap
+  15-product-spec.md              Dear You: product, design principles, objects, screens, architecture, privacy, roadmap
+  16-character-affect-engine.md   Track D: emotions for NPCs and interactive characters from the same model and schema
+  17-model-export-and-deployment.md  export tiers (70B teacher to 1 ms affect head), GGUF/ONNX/WASM, open vs closed weights, consent
 framework/
   intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
   explain-protocol.md             prompt template to run the protocol on any situation
@@ -73,6 +75,10 @@ situation + person profile + question
 
 Design is in `docs/10-ml-training-plan.md`; the emotion target in `docs/08-emotion-ontology.md`; the conditioning input in `docs/09-person-model.md`. The honest limits (individual-level prediction is hard; demographic personas caricature) are built into the output as `individual_vs_population` and `stereotype_risk` fields.
 
+## Characters and export (Track D)
+
+The same model that predicts a real person's feelings generates a fictional one's. A character sheet is a person-schema profile; game events are situations; the output schema gives drives with time constants, appraisals, emotions, inner speech, a stated reason that may not match, and an action distribution. A fast loop integrates drives every tick on device; a slow loop runs the distilled model on salient events. Export tiers run from the closed 70B teacher through open 1–4B GGUF/ONNX students to a 1 ms affect head and plain tables. See `docs/16` and `docs/17`.
+
 ## Using it
 
 1. Read `docs/03-framework.md` once.
@@ -83,4 +89,4 @@ Design is in `docs/10-ml-training-plan.md`; the emotion target in `docs/08-emoti
 
 ## Status
 
-Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. See `PLAN.md`.
+Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. Track D (characters and export): design complete 2026-11-08. See `PLAN.md`.

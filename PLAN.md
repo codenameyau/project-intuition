@@ -134,6 +134,24 @@ Goal: a hosted app where a user keeps notes about people they know, gets a livin
 - No third-party sharing, no ads, no training on user data without explicit opt-in.
 - Minors cannot be subjects beyond name, relationship, and dates.
 
+---
+
+# Track D — characters, NPCs, and model export (added 2026-11-08)
+
+Goal: generate believable, consistent emotional life for fictional characters from the same model and schema, runnable inside games and on devices, and define how Track B models are exported as open and closed weights. Design: `docs/16-character-affect-engine.md`, `docs/17-model-export-and-deployment.md`. Documents only until told to build.
+
+## D0 — Design (done, 2026-11-08): two-loop architecture, character sheet = person schema, expression mapping from ontology coordinates, authoring tools, evaluation; export tiers T0–T4 with formats, licensing, and consent rules; `drives_dynamics` added to the output schema.
+## D1 — Tables and fast loop (after B2): publish T4 tables; reference fast-loop integrator with per-drive time constants; expression mapping demo in one engine. Done when two characters with different sheets visibly diverge on the same event.
+## D2 — Distillation (after B4): T1 and T2 students from the teacher; GGUF and ONNX exports; T3 affect head. Done when each student keeps ≥ 90% of teacher scores per block and passes the stereotype audit.
+## D3 — Authoring and evaluation (after D2): sheet editor, scenario tester, consistency linter; SOTOPIA-style believability and long-session consistency studies with players.
+## D4 — Release: open weights for T2–T4 and dual-licensed T1 with the use policy; synthetic training corpus released alongside; model cards with per-tier latency on reference hardware.
+
+## Track D rules
+- Only Stage E records with the explicit release opt-in, and no Dear You user data, enter open-weight tiers; UK Biobank derivatives never leave the approved environment.
+- Characters portraying real living people are out of scope.
+- No character designed to pull the player's attachment system for engagement; the manipulation rule applies to players as to subjects.
+- A model must refuse to load with a mismatched ontology or schema version.
+
 ## Standing rules
 
 - **Evidence first.** Every driver has a tier. Tier C is never presented as settled. A failed replication demotes, immediately.
