@@ -1,0 +1,171 @@
+# Person profile schema: the conditioning input for predicting what someone feels, thinks, and does.
+# Every field has: type, range/values, the instrument it comes from, how strongly it predicts affect or behavior
+# (evidence: strong / moderate / weak / unknown), and what to do when it is missing.
+#
+# Design rule (from Park et al. 2024 and the persona-stereotyping literature): idiographic data about the
+# specific person (their own words, history, and current goals) beats demographic categories. Demographics
+# set weak priors; the knowledge, goals, and history blocks do most of the predictive work.
+
+version: 0.1.0
+
+blocks:
+
+  identity:
+    description: Demographic and social-position facts. Weak-to-moderate predictors on their own; strong when they change what the person knows or has experienced.
+    fields:
+      age:            {type: int, range: [0, 110], evidence: moderate, note: positivity effect with age (Reed, Chan & Mikels 2014, 100 studies); shorter time horizon raises weight on present affect; missing -> population prior}
+      sex:            {type: enum, values: [female, male, intersex, unknown], evidence: weak, note: meta-analytic d for emotion experience mostly < 0.3 (Else-Quest 2012; Chaplin & Aldao 2013); do not infer from name}
+      gender:         {type: string, evidence: weak, note: social role effects on display rules; self-described}
+      culture:        {type: string, evidence: moderate, note: nationality, ethnicity, region; shapes ideal affect (Tsai), appraisal norms (Mesquita), status signals, food norms, emotion vocabulary (Jackson 2019)}
+      languages:      {type: "list[string]", evidence: moderate, note: gates culture_specific emotion ids in the ontology}
+      religion:       {type: string, evidence: moderate}
+      religiosity:    {type: float, range: [0, 1], evidence: moderate, note: attendance and salience; affects ideal affect (calm vs excited), purity/sanctity moral weight, disgust and guilt sensitivity; OpinionQA shows high-attendance groups are poorly modeled by default LLMs}
+      socioeconomic:  {type: object, fields: {income_percentile: float, education: "enum[none, primary, secondary, some_college, bachelor, graduate]", occupation: string, wealth_security: float}, evidence: moderate, note: scarcity shortens time horizon and raises stress baseline}
+      relationship_status: {type: enum, values: [single, partnered, married, separated, widowed], evidence: weak}
+      parental_status:     {type: object, fields: {has_children: bool, ages: "list[int]"}, evidence: moderate, note: activates CARE drive strongly; overspending on dependents}
+      residence:      {type: enum, values: [urban, suburban, rural], evidence: weak}
+      political_orientation: {type: float, range: [-1, 1], evidence: moderate, note: correlates with moral foundation weights and disgust sensitivity}
+
+  personality:
+    description: Stable trait dispositions. Neuroticism and extraversion are the best-replicated predictors of affect.
+    fields:
+      big_five:
+        type: object
+        fields: {openness: float, conscientiousness: float, extraversion: float, agreeableness: float, neuroticism: float}
+        range: [0, 1]
+        instrument: BFI-2 or IPIP-NEO
+        evidence: strong
+        note: neuroticism ~ .4 with negative affect; extraversion with positive affect and PLAY; agreeableness with CARE and reactivity to others' harm (Marengo 2021; Hengartner 2017; Anglim & Horwood 2020)
+      big_five_facets:  {type: object, range: [0, 1], instrument: BFI-2 facets (15), evidence: moderate, note: optional refinement}
+      hexaco_honesty_humility: {type: float, range: [0, 1], evidence: moderate, note: predicts greed, status display, fairness reactions}
+      attachment_style: {type: object, fields: {anxiety: float, avoidance: float}, range: [0, 1], instrument: ECR-R, evidence: moderate, note: governs PANIC/GRIEF sensitivity, jealousy, reassurance seeking}
+      emotion_regulation: {type: object, fields: {reappraisal: float, suppression: float, rumination: float, situation_selection: float}, range: [0, 1], instrument: ERQ, evidence: moderate, note: changes what is felt versus expressed}
+      ideal_affect: {type: object, fields: {high_arousal_positive: float, low_arousal_positive: float}, range: [0, 1], instrument: AVI (Tsai), evidence: moderate, note: culture-shaped target state; drives activity and consumption choices}
+      disgust_sensitivity: {type: object, fields: {pathogen: float, sexual: float, moral: float}, range: [0, 1], instrument: TDDS (Tybur), evidence: strong, note: predicts food neophobia, moral purity judgments, out-group attitudes}
+      reward_sensitivity: {type: object, fields: {bas_drive: float, bas_reward_responsiveness: float, bas_fun_seeking: float, bis: float}, range: [0, 1], instrument: BIS/BAS, evidence: moderate, note: SEEKING gain and FEAR gain}
+      interoceptive_awareness: {type: float, range: [0, 1], instrument: MAIA-2, evidence: weak, note: objective interoception measures disagree with each other; self-report only}
+      risk_tolerance:  {type: float, range: [0, 1], instrument: DOSPERT, evidence: moderate}
+      time_preference: {type: float, range: [0, 1], evidence: moderate, note: discount rate; interacts with scarcity and age}
+      trust_propensity: {type: float, range: [0, 1], evidence: moderate}
+      need_for_cognition: {type: float, range: [0, 1], evidence: moderate, note: probability that Type 2 intervenes}
+      alexithymia:     {type: float, range: [0, 1], instrument: TAS-20, evidence: moderate, note: degrades the quality of self-reported feeling labels; raises weight on behavioral prediction over stated feeling}
+
+  aptitudes:
+    description: Abilities and skills. Shown as bands in the product, never as a single number. Text-based estimates have weak validity (order of r 0.3 to 0.4 at best); predictions are suppressed below about 30 percent profile coverage.
+    fields:
+      general_cognitive_band: {type: enum, values: [below_average, average, above_average, well_above, unknown], evidence: weak, note: optional numeric range behind a disclosure; never predicted for minors}
+      verbal:        {type: float, range: [0, 1], evidence: weak, note: vocabulary and argument structure in the person's own messages are the main signal}
+      quantitative:  {type: float, range: [0, 1], evidence: weak}
+      spatial:       {type: float, range: [0, 1], evidence: weak}
+      social_emotional: {type: float, range: [0, 1], evidence: moderate, note: observable in notes about how they handle people}
+      creative:      {type: float, range: [0, 1], evidence: weak}
+      practical_mechanical: {type: float, range: [0, 1], evidence: weak}
+      notable_skills: {type: "list[string]", evidence: strong when observed, note: languages, instruments, sports, crafts, tools}
+      career_stage:  {type: enum, values: [student, early, mid, senior, leadership, retired, unknown], evidence: moderate}
+      field:         {type: string, evidence: moderate}
+      working_toward: {type: string, evidence: moderate, note: mirrors goals.active_goals for the summary card}
+
+  values_and_morals:
+    description: What the person treats as good. Predicts moral emotions, condemnation, pride, guilt, and which norm violations register.
+    fields:
+      schwartz_values: {type: object, fields: {self_direction_thought: float, self_direction_action: float, stimulation: float, hedonism: float, achievement: float, power_dominance: float, power_resources: float, face: float, security_personal: float, security_societal: float, tradition: float, conformity_rules: float, conformity_interpersonal: float, humility: float, benevolence_dependability: float, benevolence_caring: float, universalism_concern: float, universalism_nature: float, universalism_tolerance: float}, range: [0, 1], instrument: PVQ-RR (19 refined values), evidence: strong for value-relevant choices}
+      moral_foundations: {type: object, fields: {care: float, equality: float, proportionality: float, loyalty: float, authority: float, purity: float}, range: [0, 1], instrument: MFQ-2 (Atari 2023; omega .79-.92), evidence: moderate, note: six-factor structure replicates; second-order structure does not}
+      explicit_principles: {type: "list[string]", evidence: moderate, note: stated rules in the person's own words ("never waste food")}
+      taboos: {type: "list[string]", evidence: strong when present}
+
+  history:
+    description: Where the person's priors came from. The strongest block after knowledge and goals.
+    fields:
+      upbringing: {type: object, fields: {parenting_style: "enum[authoritative, authoritarian, permissive, neglectful, unknown]", household_stability: float, siblings: int, birth_order: int, childhood_ses: float, adverse_childhood_experiences: int}, evidence: moderate for ACEs and stability; weak for birth order}
+      formative_events: {type: "list[object]", item: {description: string, age: int, valence: float, domain: string}, evidence: strong, note: free text; the single most useful field per Park et al. 2024 interview-based agents}
+      expertise_domains: {type: "list[object]", item: {domain: string, years: float, feedback_quality: "enum[kind, wicked]"}, evidence: strong, note: Kahneman & Klein; intuition reliability is domain-specific}
+      habits: {type: "list[object]", item: {context_cue: string, action: string, frequency_per_week: float}, evidence: strong for the matching context}
+      cue_history: {type: "list[object]", item: {cue: string, paired_outcome: string, valence: float, count: int}, evidence: strong for the matching cue, note: wanting attaches to cues}
+      relationship_history: {type: "list[object]", item: {role: string, quality: float, ended: bool}, evidence: moderate}
+      trauma: {type: "list[string]", evidence: strong for matching triggers}
+      mental_health: {type: "list[string]", evidence: strong, note: diagnoses or self-described; shifts baseline affect and appraisal biases}
+
+  state:
+    description: The Intuition Stack's L0 at the moment of the situation. Changes predictions more than most trait fields and is usually missing; always predict it when absent.
+    fields:
+      hours_since_meal: {type: float, evidence: strong for irritability, impulsivity, food choice}
+      sleep_hours_last_night: {type: float, evidence: strong}
+      caffeine_alcohol_other: {type: "list[string]", evidence: strong}
+      illness_pain: {type: float, range: [0, 1], evidence: strong}
+      stress_load: {type: float, range: [0, 1], evidence: strong}
+      recent_arousal_source: {type: string, evidence: moderate, note: misattribution}
+      baseline_mood: {type: object, fields: {valence: float, arousal: float}, range: [0, 1], evidence: strong}
+      time_of_day: {type: string, evidence: weak}
+      recent_drive_deprivation: {type: "list[enum[SEEKING, FEAR, RAGE, LUST, CARE, PANIC_GRIEF, PLAY, DISGUST]]", evidence: moderate}
+
+  knowledge:
+    description: What the person knows and believes about the situation. The theory-of-mind block. Without it, no model can predict a reaction to information.
+    fields:
+      beliefs_about_situation: {type: "list[string]", evidence: strong, note: including false beliefs; FANToM and OpenToM failures are mostly here}
+      knows_facts: {type: "list[string]", evidence: strong}
+      does_not_know: {type: "list[string]", evidence: strong}
+      expectations: {type: "list[object]", item: {about: string, expected: string, confidence: float}, evidence: strong, note: prediction error source}
+      attention_focus: {type: string, evidence: moderate}
+
+  goals:
+    description: Active goals and concerns. Appraisal of goal conduciveness requires them.
+    fields:
+      active_goals: {type: "list[object]", item: {goal: string, importance: float, progress: float}, evidence: strong}
+      concerns: {type: "list[string]", evidence: strong}
+      identity_commitments: {type: "list[string]", evidence: moderate, note: what they would be ashamed to violate}
+
+  relations:
+    description: The person's relationship to every other actor in the situation.
+    fields:
+      actors: {type: "list[object]", item: {name: string, role: string, closeness: float, trust: float, status_relative: float, similarity_perceived: float, exposure_count: int, reciprocity_signals: float, history_valence: float}, evidence: strong, note: the L3 drivers}
+      audience: {type: "list[string]", evidence: strong, note: who can observe the behavior; changes status and shame computations}
+
+  self_report_style:
+    description: How this person narrates. Lets the model predict stated reasons separately from mechanisms.
+    fields:
+      verbal_fluency_about_feelings: {type: float, range: [0, 1], evidence: moderate}
+      preferred_cover_stories: {type: "list[string]", evidence: moderate, note: e.g. "quality", "principle", "practicality"}
+      self_enhancement_bias: {type: float, range: [0, 1], evidence: moderate}
+
+  biology:
+    description: Genomic and physiological measurements. Enter only when measured; never inferred from ancestry, appearance, or name. See docs/13-genomic-prediction.md. Expected gain over a rich idiographic profile is small (a few percent of variance) except for the sensory and metabolic preference variants.
+    fields:
+      ancestry_matches_gwas: {type: bool, evidence: strong, note: polygenic scores are masked when false; portability decays with genetic distance from the discovery sample (Martin 2019)}
+      pgs_neuroticism:       {type: float, range: [-3, 3], unit: z, instrument: Nagel 2018 weights, evidence: moderate, note: up to 4.2 percent of variance in-ancestry; deflates within family}
+      pgs_wellbeing:         {type: float, range: [-3, 3], unit: z, instrument: Baselmans 2019 weights, evidence: moderate}
+      pgs_risk_tolerance:    {type: float, range: [-3, 3], unit: z, instrument: Karlsson Linner 2019 weights, evidence: weak, note: order of 1 to 2 percent}
+      pgs_depression:        {type: float, range: [-3, 3], unit: z, evidence: moderate}
+      pgs_educational_attainment: {type: float, range: [-3, 3], unit: z, instrument: Okbay 2022 weights, evidence: moderate, note: 12 to 16 percent population; roughly 40 percent smaller within sibships (Howe 2022)}
+      taste_bitter_tas2r38:  {type: enum, values: [PAV/PAV, PAV/AVI, AVI/AVI, unknown], evidence: strong, note: bitter sensitivity; vegetable and sweet intake}
+      alcohol_aldh2_rs671:   {type: enum, values: [GG, GA, AA, unknown], evidence: strong, note: explains about 29 percent of flushing variance in East Asian samples; shapes drinking}
+      caffeine_cyp1a2_rs762551: {type: enum, values: [AA, AC, CC, unknown], evidence: weak, note: coffee intake in European-ancestry samples only}
+      lactase_persistence:   {type: enum, values: [persistent, non_persistent, unknown], evidence: strong}
+      fto_rs9939609:         {type: enum, values: [TT, TA, AA, unknown], evidence: weak, note: satiety responsiveness; small and mixed in adults}
+      cilantro_or6a2:        {type: enum, values: [aversive, neutral, unknown], evidence: weak}
+      mc4r_loss_of_function: {type: bool, evidence: strong, note: rare; hyperphagia}
+      ctra_index:            {type: float, range: [-3, 3], unit: z, evidence: weak, note: leukocyte pro-inflammatory versus antiviral expression; tracks loneliness and chronic threat (Cole 2014); state not trait}
+      cortisol_awakening_response: {type: float, evidence: weak}
+      inflammatory_markers:  {type: object, fields: {crp: float, il6: float}, evidence: weak}
+      family_history:        {type: "list[string]", evidence: moderate, note: psychiatric and metabolic conditions in first-degree relatives; self-reported}
+    excluded_by_policy:
+      - single-SNP personality or empathy claims (5-HTTLPR, OXTR rs53576, MAOA, DRD4, COMT); failed replication (Border 2019)
+      - methylation of NR3C1 or FKBP5 as an individual predictor; inconsistent direction and confounded by cell composition
+      - epigenetic clocks for affect or behavior
+      - any genomic inference from ancestry, surname, or appearance
+
+missing_value_policy:
+  rule: Never impute a single value. Carry a distribution.
+  identity: population marginals for the stated culture and age band
+  personality: N(0.5, 0.15) per trait unless text evidence shifts it
+  values_and_morals: culture-conditioned priors from World Values Survey and MFQ-2 norms
+  history: empty list; model must widen uncertainty, not assume
+  state: predict from time of day and situation; report as inferred
+  knowledge: assume the person knows what is common knowledge in the situation and nothing else
+  goals: infer from situation; flag as inferred
+  relations: infer closeness from described interaction; flag as inferred
+  biology: absent; population prior unchanged; never inferred
+  aptitudes: predicted only above 30 percent coverage; bands with wide uncertainty; numeric range hidden by default
+
+minimum_viable_profile:
+  description: The smallest profile that still beats a demographic-only baseline, per Park et al. 2024 and Twin-2K-500.
+  required: [identity.age, identity.culture, personality.big_five, history.formative_events, goals.active_goals, knowledge.beliefs_about_situation, relations.actors]

@@ -1,0 +1,78 @@
+{
+  "_input": {
+    "situation": "Maya, 34, is told by her manager in a team meeting that the project she led for eight months is being cancelled. Six colleagues are present. Her manager says 'it's nobody's fault, priorities shifted.' It is 4:40pm; she skipped lunch.",
+    "person": {
+      "identity": {"age": 34, "sex": "female", "culture": "US, second-generation Filipino-American", "religiosity": 0.4, "socioeconomic": {"education": "bachelor", "income_percentile": 0.65}},
+      "personality": {"big_five": {"openness": 0.6, "conscientiousness": 0.85, "extraversion": 0.45, "agreeableness": 0.7, "neuroticism": 0.6}, "emotion_regulation": {"suppression": 0.7, "reappraisal": 0.5}, "ideal_affect": {"low_arousal_positive": 0.7, "high_arousal_positive": 0.4}},
+      "values_and_morals": {"schwartz_values": {"achievement": 0.8, "benevolence_caring": 0.75, "face": 0.7}, "moral_foundations": {"care": 0.8, "proportionality": 0.75, "loyalty": 0.6}},
+      "history": {"formative_events": [{"description": "parents emphasized not causing shame to the family in public", "age": 10, "valence": -0.3, "domain": "family"}], "expertise_domains": [{"domain": "product management", "years": 7, "feedback_quality": "wicked"}]},
+      "state": {"hours_since_meal": 8, "sleep_hours_last_night": 6},
+      "knowledge": {"beliefs_about_situation": ["believes the project was on track", "did not know cancellation was being considered"], "expectations": [{"about": "meeting", "expected": "routine status update", "confidence": 0.9}]},
+      "goals": {"active_goals": [{"goal": "promotion this cycle", "importance": 0.9, "progress": 0.6}], "identity_commitments": ["competent", "composed"]},
+      "relations": {"actors": [{"name": "manager", "role": "boss", "closeness": 0.4, "trust": 0.5, "status_relative": 1.0}], "audience": ["six peers"]}
+    },
+    "question": {"type": "binary", "text": "Will Maya object or push back during the meeting?"}
+  },
+
+  "state": {"energy": 0.3, "fatigue": 0.6, "stress": 0.7, "arousal_baseline": 0.55, "inferred": false},
+
+  "drives": {"SEEKING": 0.2, "FEAR": 0.55, "RAGE": 0.6, "LUST": 0.0, "CARE": 0.1, "PANIC_GRIEF": 0.5, "PLAY": 0.0, "DISGUST": 0.1},
+
+  "appraisals": {"novelty": 0.9, "pleasantness": -0.8, "goal_conducive": -0.9, "agency": {"self": 0.15, "other": 0.55, "circumstance": 0.3, "mixed": 0.0}, "control": -0.7, "norm_compat": -0.5, "urgency": 0.4, "certainty": 0.8},
+
+  "emotions": {"shock": 0.8, "disappointment": 0.85, "anger": 0.55, "indignation": 0.5, "humiliation": 0.45, "embarrassment": 0.5, "grief": 0.35, "hurt": 0.5, "anxiety": 0.5, "resentment": 0.3, "irritation": 0.5, "frustration": 0.7, "helplessness": 0.4, "suspicion": 0.35},
+
+  "emotions_top": [
+    {"id": "disappointment", "intensity": 0.85, "parent": "sadness"},
+    {"id": "shock", "intensity": 0.8, "parent": "surprise"},
+    {"id": "frustration", "intensity": 0.7, "parent": "anger"},
+    {"id": "anger", "intensity": 0.55, "parent": "anger"},
+    {"id": "embarrassment", "intensity": 0.5, "parent": "self_conscious"}
+  ],
+
+  "vad": {"valence": 0.15, "arousal": 0.78, "dominance": 0.25},
+
+  "felt_label": "blindsided",
+
+  "cognition": {
+    "inner_speech": "Eight months. In front of everyone. Don't react, don't react. Why didn't he tell me first?",
+    "attention_on": "the faces of the six peers; whether her own face is composed",
+    "beliefs_updated": ["manager does not protect me", "promotion this cycle is unlikely", "decisions are made without me"],
+    "goals_activated": ["preserve composure in front of peers", "find out what was really decided and by whom"],
+    "deliberation_probability": 0.75,
+    "stated_reason_likely": "I'm fine, these things happen; I just wish I'd had more notice so the team could plan.",
+    "narrative_gap": "omits the public humiliation (face value, family shame history) and the RAGE at the manager; frames as a process complaint"
+  },
+
+  "action": {
+    "candidates": [
+      {"action": "stays silent or says 'understood', asks one logistical question", "probability": 0.62, "latency": "immediate"},
+      {"action": "asks pointed but polite questions about who decided and when", "probability": 0.25, "latency": "immediate"},
+      {"action": "openly objects or shows visible anger", "probability": 0.08, "latency": "immediate"},
+      {"action": "leaves the room", "probability": 0.05, "latency": "immediate"}
+    ],
+    "most_likely": "Composed, minimal verbal response in the meeting; requests a one-on-one with the manager afterwards; eats something or vents to a trusted colleague within the hour; updates job search within days.",
+    "expressed_vs_felt": "High suppression plus a peer audience plus a face-oriented upbringing means the expressed state is neutral-professional while the felt state is anger and humiliation.",
+    "counterfactuals": [
+      {"change": "told privately, one-on-one", "effect_on_action": "pushback probability rises sharply; humiliation drops", "effect_size": "large"},
+      {"change": "had eaten lunch", "effect_on_action": "irritation and suspicion lower; composure easier", "effect_size": "small"},
+      {"change": "low suppression, high extraversion profile", "effect_on_action": "visible objection becomes the modal response", "effect_size": "reverses"},
+      {"change": "manager had warned her a week earlier", "effect_on_action": "novelty and shock near zero; disappointment remains", "effect_size": "large"}
+    ]
+  },
+
+  "answer": {"type": "binary", "binary": {"value": false, "p_true": 0.33}},
+
+  "confidence": {"overall": 0.6, "emotions": 0.7, "action": 0.55, "answer": 0.6, "profile_coverage": 0.85, "individual_vs_population": "individual"},
+
+  "evidence": [
+    {"driver": "public audience + face value + shame-avoidant upbringing -> suppression of objection", "layer": "L3", "confidence": "H", "tier": "B"},
+    {"driver": "goal blocked by an agent -> anger; agency partly circumstance -> frustration", "layer": "L2", "confidence": "H", "tier": "A"},
+    {"driver": "violated expectation (routine meeting) -> high novelty, shock", "layer": "L4", "confidence": "H", "tier": "A"},
+    {"driver": "8 hours without food, 6 hours sleep -> raised irritability and threat sensitivity", "layer": "L0", "confidence": "M", "tier": "A"},
+    {"driver": "high conscientiousness + achievement value -> loss weighted heavily", "layer": "L4", "confidence": "M", "tier": "B"},
+    {"driver": "status asymmetry with manager -> low control appraisal, resentment rather than confrontation", "layer": "L3", "confidence": "M", "tier": "B"}
+  ],
+
+  "flags": ["sensitive_attribution"]
+}

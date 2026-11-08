@@ -1,0 +1,86 @@
+# Dear You (Project Intuition)
+
+**Dear You** is the product: a journal about the people in your life that learns who they are from what you write, lets them see and correct what it holds, and answers your questions about them as grounded, confidence-rated hypotheses. Underneath it are two research tracks described below.
+
+A framework for explaining what people do, buy, eat, like, and feel by modeling the fast, body-anchored systems that actually produce those behaviors, rather than the reasons people give afterwards.
+
+Built from a sweep of connectomics (FlyWire, MICrONS, H01, C. elegans, the Allen cell atlas), single-neuron and circuit neuroscience (dopamine prediction error, wanting vs. liking, orbitofrontal value, hypothalamic hunger, insular interoception), affective and social neuroscience, evolutionary psychology, and judgment and decision research. Every claim carries an evidence tier.
+
+## The idea in three sentences
+
+The brain's first job is regulating the body; its ancient drive systems bias what looks good; dopamine attaches wanting to cues; social evaluators judge faces in 100 ms; a predictive model turns experience into priors. All of that arrives in awareness as a *feeling*, which the person then labels with a culturally supplied word. A separate narrating system explains the feeling afterwards, fluently and often wrongly.
+
+## Layout
+
+```
+README.md                         this file
+PLAN.md                           phased roadmap and standing rules
+docs/
+  01-thesis.md                    the claim in one page
+  02-biological-substrate.md      what is mapped vs. inferred: connectomes, neurons, circuits
+  03-framework.md                 the seven-layer Intuition Stack and the seven-question protocol
+  04-domain-playbooks.md          buying, eating, liking someone, describing feelings, "why did they"
+  05-worked-examples.md           five full runs of the protocol
+  06-evidence-and-sources.md      annotated bibliography with A/B/C evidence tiers and known gaps
+  07-caveats.md                   scientific, ethical, and open-question caveats
+  08-emotion-ontology.md          the 211-state quantitative emotion map and how to train on it
+  09-person-model.md              how age, culture, personality, values, history change predictions
+  10-ml-training-plan.md          model architecture, datasets, curriculum, evaluation, ethics
+  11-ml-sources.md                bibliography for the ontology and the predictive model
+  12-comparative-connectomes.md   every mapped nervous system and what each teaches (individuality, sex, development, drives)
+  13-genomic-prediction.md        gene expression as circuit index; polygenic and variant prediction in people, with limits
+  14-sources-comparative-genomics.md  bibliography for 12 and 13
+  15-product-spec.md              Dear You: product, boundaries, objects, screens, architecture, privacy, roadmap
+framework/
+  intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
+  explain-protocol.md             prompt template to run the protocol on any situation
+  emotion-ontology.csv            211 emotional states × VAD × appraisals × drives × taxonomies
+  person-schema.yaml              the conditioning input: 10 blocks, 77 fields, evidence-tagged (incl. biology)
+  output-schema.json              the prediction target: emotions, VAD, drives, appraisals, cognition, action, answer
+examples/
+  template.md                     blank case file for the explanation protocol
+  prediction-example.json         one full (situation, person, question) → prediction record
+product/
+  schema.sql                      Postgres data model sketch for Dear You
+  api.md                          REST surface for Dear You
+```
+
+## The product (Track C): Dear You
+
+Accounts, your own profile, People you know, dated notes, extracted attributes with provenance and accept/reject, experiences and media as memories, questions answered with the Intuition Stack and the Track B output schema, and an invite that lets the person see, correct, and delete what is held about them. Full spec in `docs/15-product-spec.md`.
+
+## The stack
+
+```
+L6  NARRATOR        the story told afterwards                 slow, verbal, post hoc
+L5  FEELING         body state + concept + context            the readable signal
+L4  PREDICTOR       priors, expertise, familiarity            expectation edits experience
+L3  SOCIAL          face read, similarity, status, mentalizing
+L2  VALUATION       wanting vs liking, cues, habits, prediction error
+L1  DRIVES          SEEKING FEAR RAGE LUST CARE PANIC PLAY DISGUST
+L0  BODY BUDGET     hunger, fatigue, arousal, hormones, pain
+```
+
+## The predictive model (Track B)
+
+Track B turns the framework into a trainable target. A single fine-tuned language model takes a situation, a person profile, and a question and returns the full `output-schema.json`: inferred body state, drive activations, appraisals, intensities over 211 emotions, valence-arousal-dominance, inner speech and likely stated reason, a distribution over actions with counterfactuals, and a task answer that is binary with a probability, a classification with a conformal set, or free text.
+
+```
+situation + person profile + question
+        → [LM fine-tuned on five data stages, Intuition Stack reasoning trace]
+        → emotions[211] · VAD · drives[8] · appraisals · cognition · action distribution · answer
+```
+
+Design is in `docs/10-ml-training-plan.md`; the emotion target in `docs/08-emotion-ontology.md`; the conditioning input in `docs/09-person-model.md`. The honest limits (individual-level prediction is hard; demographic personas caricature) are built into the output as `individual_vs_population` and `stereotype_risk` fields.
+
+## Using it
+
+1. Read `docs/03-framework.md` once.
+2. For a situation, open `framework/explain-protocol.md`, paste the situation at the bottom, and run it through a model or answer the seven questions by hand.
+3. Check the domain playbook in `docs/04-domain-playbooks.md` for the drivers that usually dominate.
+4. Tag every driver with an evidence tier from `docs/06-evidence-and-sources.md`. Never present tier C as settled.
+5. End with a prediction: what change would alter the behavior. If you cannot name one, the explanation is a story, not a mechanism.
+
+## Status
+
+Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. See `PLAN.md`.

@@ -1,0 +1,212 @@
+id,label,family,tier,valence,arousal,dominance,approach,drive1,drive2,novelty,pleasantness,goal_conducive,agency,control,norm_compat,time_focus,social,self_conscious,taxonomies,notes
+neutral,neutral,core_affect,0,0.50,0.30,0.55,0.0,,,0.1,0.0,0.0,na,0.0,0.0,present,0,0,GoEmotions;Ekman+,baseline state
+calm,calm,core_affect,0,0.70,0.10,0.65,0.1,,,0.0,0.3,0.2,na,0.5,0.0,present,0,0,CK27(calmness);GRID,low arousal positive
+contentment,contentment,joy,1,0.80,0.20,0.70,0.1,SEEKING,CARE,0.0,0.6,0.5,circumstance,0.5,0.2,present,0,0,GRID;Parrott,needs met; satiety-adjacent
+serenity,serenity,joy,2,0.82,0.10,0.72,0.0,,,0.0,0.6,0.4,na,0.6,0.1,present,0,0,Plutchik,calm + content
+relaxation,relaxation,core_affect,0,0.75,0.08,0.65,0.0,,,0.0,0.5,0.3,na,0.5,0.0,present,0,0,GRID,body-budget recovery
+boredom,boredom,cognitive,1,0.35,0.20,0.45,-0.2,SEEKING,,0.0,-0.3,-0.3,circumstance,0.3,0.0,present,0,0,CK27;Parrott,SEEKING deprived
+fatigue,weariness,body_state,0,0.35,0.10,0.35,-0.3,,,0.0,-0.3,-0.2,na,0.2,0.0,present,0,0,,L0 state often reported as emotion
+restlessness,restlessness,core_affect,0,0.40,0.65,0.45,0.2,SEEKING,,0.1,-0.2,-0.2,na,0.3,0.0,present,0,0,,arousal without target
+tension,tension/stress,core_affect,0,0.30,0.70,0.40,-0.1,FEAR,,0.2,-0.4,-0.4,circumstance,0.2,0.0,present,0,0,GRID(stress),sustained allostatic load
+alertness,alertness/vigilance,core_affect,0,0.52,0.70,0.60,0.2,SEEKING,FEAR,0.4,0.0,0.0,na,0.5,0.0,present,0,0,Plutchik(vigilance),attention primed
+joy,joy,joy,1,0.92,0.65,0.75,0.6,SEEKING,PLAY,0.3,0.8,0.8,mixed,0.6,0.3,present,0,0,Ekman;Plutchik;CK27;GoEmotions;OCC;GRID;Parrott,basic positive
+happiness,happiness,joy,1,0.90,0.50,0.75,0.5,SEEKING,,0.1,0.8,0.8,mixed,0.6,0.3,present,0,0,GRID;Parrott,broad positive
+cheerfulness,cheerfulness,joy,2,0.85,0.55,0.70,0.5,PLAY,,0.1,0.7,0.5,na,0.6,0.2,present,1,0,Parrott,social positive mood
+delight,delight,joy,2,0.90,0.70,0.70,0.6,SEEKING,,0.5,0.8,0.7,circumstance,0.5,0.2,present,0,0,Parrott,surprise-tinged joy
+glee,glee,joy,2,0.88,0.75,0.72,0.6,PLAY,,0.4,0.8,0.7,mixed,0.6,0.1,present,0,0,Parrott,energetic joy
+elation,elation,joy,2,0.92,0.80,0.78,0.7,SEEKING,,0.4,0.9,0.9,mixed,0.6,0.3,present,0,0,Parrott,high arousal joy
+euphoria,euphoria,joy,2,0.95,0.88,0.80,0.7,SEEKING,,0.4,0.9,0.9,mixed,0.5,0.0,present,0,0,Parrott,extreme; can be pharmacological
+ecstasy,ecstasy,joy,2,0.96,0.92,0.75,0.7,LUST,SEEKING,0.5,1.0,0.9,mixed,0.4,0.0,present,0,0,Plutchik;Parrott,peak hedonic
+bliss,bliss,joy,2,0.95,0.35,0.75,0.3,CARE,,0.1,0.9,0.8,na,0.5,0.2,present,0,0,Parrott,low arousal peak
+amusement,amusement,joy,1,0.85,0.55,0.70,0.4,PLAY,,0.6,0.7,0.3,other,0.6,0.1,present,1,0,CK27;GoEmotions;GRID,incongruity + safety
+hilarity,hilarity,joy,2,0.88,0.80,0.68,0.4,PLAY,,0.7,0.8,0.3,other,0.5,0.0,present,1,0,Parrott,amusement extreme
+playfulness,playfulness,joy,2,0.82,0.65,0.72,0.6,PLAY,,0.4,0.6,0.3,self,0.7,0.1,present,1,0,,PLAY drive active
+mischievousness,mischievousness,joy,2,0.72,0.65,0.75,0.6,PLAY,RAGE,0.4,0.5,0.4,self,0.8,-0.3,present,1,0,,play + mild norm violation
+excitement,excitement,joy,1,0.85,0.85,0.70,0.8,SEEKING,,0.6,0.7,0.7,mixed,0.5,0.1,future,0,0,CK27;GoEmotions;GRID;Parrott,anticipatory high arousal
+enthusiasm,enthusiasm,joy,2,0.85,0.78,0.75,0.8,SEEKING,,0.4,0.7,0.7,self,0.7,0.2,future,0,0,Parrott,excitement with commitment
+zest,zest/vigor,joy,2,0.82,0.75,0.78,0.7,SEEKING,PLAY,0.2,0.6,0.6,self,0.7,0.1,present,0,0,Parrott,energetic engagement
+exhilaration,exhilaration,joy,2,0.88,0.90,0.75,0.6,SEEKING,FEAR,0.7,0.8,0.6,circumstance,0.4,0.0,present,0,0,Parrott,thrill; fear converted
+triumph,triumph,joy,2,0.90,0.80,0.90,0.5,RAGE,SEEKING,0.3,0.8,1.0,self,0.9,0.3,past,1,1,Parrott,victory over opposition
+satisfaction,satisfaction,joy,1,0.82,0.35,0.78,0.1,SEEKING,,0.1,0.7,0.9,self,0.7,0.3,past,0,0,CK27;OCC;GRID;Parrott,goal attained
+pleasure_sensory,sensory pleasure,joy,1,0.88,0.45,0.65,0.4,SEEKING,LUST,0.1,1.0,0.5,circumstance,0.4,0.0,present,0,0,GRID;Parrott,liking system
+relief,relief,joy,1,0.78,0.30,0.65,0.0,FEAR,,0.4,0.6,0.7,circumstance,0.5,0.1,past,0,0,CK27;GoEmotions;OCC;Parrott,threat removed
+hope,hope,joy,1,0.75,0.50,0.60,0.5,SEEKING,,0.2,0.5,0.5,circumstance,0.4,0.2,future,0,0,OCC;Parrott,uncertain positive prospect
+optimism,optimism,joy,2,0.80,0.45,0.72,0.5,SEEKING,,0.1,0.5,0.6,mixed,0.6,0.2,future,0,0,GoEmotions;Plutchik;Parrott,stable positive expectation
+anticipation,anticipation,cognitive,1,0.65,0.70,0.60,0.6,SEEKING,,0.4,0.4,0.5,circumstance,0.4,0.0,future,0,0,Plutchik;GRID,prospect-based
+eagerness,eagerness,joy,2,0.78,0.75,0.68,0.8,SEEKING,,0.3,0.5,0.6,self,0.6,0.1,future,0,0,Parrott,approach-ready
+flow,flow/absorption,cognitive,2,0.80,0.60,0.80,0.5,SEEKING,,0.3,0.6,0.7,self,0.9,0.2,present,0,0,,challenge-skill match
+pride_authentic,pride (authentic),self_conscious,1,0.88,0.60,0.90,0.4,SEEKING,,0.2,0.7,0.9,self,0.8,0.5,past,1,1,CK27(pride);GoEmotions;OCC;GRID;Parrott,achievement attributed to effort
+pride_hubristic,pride (hubristic),self_conscious,2,0.80,0.60,0.95,0.3,RAGE,SEEKING,0.1,0.6,0.7,self,0.9,0.0,present,1,1,,status-based; antisocial correlates
+confidence,confidence,self_conscious,1,0.80,0.50,0.92,0.5,SEEKING,,0.0,0.5,0.6,self,0.9,0.2,future,0,1,Parrott,high control appraisal
+determination,determination/resolve,cognitive,1,0.65,0.70,0.90,0.8,RAGE,SEEKING,0.1,0.2,0.3,self,0.8,0.3,future,0,0,GoEmotions(desire),obstacle present; RAGE channeled
+courage,courage,self_conscious,2,0.65,0.75,0.85,0.7,FEAR,RAGE,0.3,0.1,0.3,self,0.6,0.5,present,1,1,,fear + approach
+inspiration,inspiration,cognitive,2,0.88,0.72,0.75,0.7,SEEKING,,0.6,0.7,0.6,other,0.6,0.4,future,1,0,,elevated SEEKING
+gratitude,gratitude,social,1,0.88,0.40,0.60,0.5,CARE,,0.3,0.8,0.8,other,0.4,0.6,past,1,0,GoEmotions;OCC;Parrott,benefit from other agent
+elevation,moral elevation,social,2,0.90,0.50,0.60,0.5,CARE,,0.4,0.8,0.5,other,0.4,1.0,present,1,0,,witnessing virtue
+admiration,admiration,social,1,0.85,0.50,0.50,0.5,SEEKING,CARE,0.3,0.7,0.4,other,0.4,0.7,present,1,0,CK27;GoEmotions;OCC;Plutchik,other's excellence
+adoration,adoration,social,2,0.90,0.55,0.40,0.7,CARE,LUST,0.2,0.9,0.6,other,0.3,0.5,present,1,0,CK27,admiration + attachment
+awe,awe,aesthetic,1,0.80,0.70,0.25,0.3,SEEKING,FEAR,0.9,0.6,0.2,circumstance,0.1,0.3,present,0,0,CK27;Plutchik(dyad);GRID,vastness + accommodation
+wonder,wonder,aesthetic,2,0.82,0.60,0.40,0.5,SEEKING,,0.9,0.6,0.3,circumstance,0.2,0.2,present,0,0,Parrott,awe without threat
+aesthetic_appreciation,aesthetic appreciation,aesthetic,1,0.85,0.45,0.60,0.3,SEEKING,,0.4,0.9,0.3,circumstance,0.4,0.2,present,0,0,CK27,beauty response
+entrancement,entrancement,aesthetic,2,0.80,0.50,0.35,0.3,SEEKING,,0.6,0.7,0.2,circumstance,0.1,0.0,present,0,0,CK27,captured attention
+reverence,reverence,aesthetic,2,0.78,0.40,0.25,0.2,CARE,FEAR,0.3,0.6,0.3,other,0.1,0.9,present,1,0,,sacred; religion-modulated
+interest,interest/curiosity,cognitive,1,0.72,0.60,0.65,0.7,SEEKING,,0.8,0.4,0.4,circumstance,0.5,0.0,present,0,0,CK27(interest);GoEmotions(curiosity);GRID;OCC,SEEKING core signal
+fascination,fascination,cognitive,2,0.80,0.70,0.60,0.8,SEEKING,,0.9,0.6,0.4,circumstance,0.4,0.0,present,0,0,,intense interest
+surprise_positive,surprise (positive),surprise,1,0.75,0.85,0.45,0.3,SEEKING,,1.0,0.5,0.6,circumstance,0.2,0.0,present,0,0,Ekman;Plutchik;CK27;GoEmotions;GRID,novelty high; valence set by outcome
+surprise_negative,surprise (negative),surprise,1,0.30,0.85,0.35,-0.3,FEAR,,1.0,-0.5,-0.6,circumstance,0.2,0.0,present,0,0,Ekman;Plutchik;GoEmotions;GRID,novelty high negative
+astonishment,astonishment,surprise,2,0.55,0.90,0.35,0.0,SEEKING,,1.0,0.1,0.0,circumstance,0.1,0.0,present,0,0,Parrott,extreme surprise
+amazement,amazement,surprise,2,0.80,0.85,0.40,0.3,SEEKING,,1.0,0.6,0.4,circumstance,0.2,0.0,present,0,0,Plutchik;Parrott,positive astonishment
+nostalgia,nostalgia,mixed,1,0.65,0.30,0.50,0.1,PANIC_GRIEF,CARE,0.2,0.4,0.0,circumstance,0.2,0.2,past,1,0,CK27,bittersweet; identity-continuity
+kama_muta,being moved / kama muta,social,1,0.85,0.60,0.40,0.5,CARE,,0.5,0.7,0.5,other,0.2,0.7,present,1,0,,sudden communal-sharing intensification; tears/goosebumps
+tenderness,tenderness,social,2,0.88,0.35,0.60,0.6,CARE,,0.1,0.8,0.5,other,0.5,0.5,present,1,0,,CARE drive
+affection,affection/warmth,social,1,0.88,0.40,0.62,0.6,CARE,,0.1,0.8,0.5,other,0.5,0.5,present,1,0,Parrott,attachment positive
+love_romantic,romantic love,social,1,0.92,0.70,0.55,0.9,LUST,CARE,0.3,0.9,0.8,other,0.3,0.4,present,1,0,CK27;Parrott;Plutchik(dyad),dopamine+oxytocin; early stage obsessive
+love_companionate,companionate love,social,2,0.90,0.35,0.65,0.6,CARE,,0.0,0.8,0.7,other,0.6,0.6,present,1,0,,long-term attachment
+love_parental,parental love,social,2,0.92,0.45,0.70,0.8,CARE,,0.0,0.9,0.8,other,0.6,0.8,present,1,0,,CARE peak; protective
+infatuation,infatuation/limerence,social,2,0.85,0.85,0.35,0.9,LUST,PANIC_GRIEF,0.6,0.8,0.5,other,0.1,0.1,present,1,0,Parrott,intrusive; uncertainty-fueled
+lust,sexual desire,drive_state,1,0.82,0.85,0.60,0.9,LUST,,0.3,0.8,0.6,other,0.4,0.0,present,1,0,CK27;Parrott,LUST drive
+sexual_arousal,sexual arousal,body_state,0,0.80,0.90,0.55,0.8,LUST,,0.3,0.8,0.6,na,0.3,0.0,present,1,0,,L0/L1 state
+trust,trust,social,1,0.80,0.30,0.65,0.5,CARE,,0.0,0.6,0.5,other,0.6,0.5,future,1,0,Plutchik;GRID,fast face read + history
+security,security/safety,social,2,0.82,0.15,0.70,0.2,FEAR,CARE,0.0,0.6,0.5,circumstance,0.7,0.2,present,1,0,,FEAR quiescent
+comfort,comfort/coziness,core_affect,1,0.85,0.15,0.68,0.2,CARE,,0.0,0.7,0.4,circumstance,0.6,0.1,present,0,0,,hygge-adjacent
+belonging,belonging,social,1,0.88,0.35,0.65,0.5,PANIC_GRIEF,CARE,0.0,0.8,0.7,other,0.5,0.5,present,1,0,,PANIC system satisfied
+compassion,compassion/sympathy,social,1,0.55,0.50,0.60,0.6,CARE,,0.3,-0.2,-0.2,other,0.5,0.7,present,1,0,CK27(sympathy);GoEmotions(caring);OCC(pity);GRID,other's suffering + approach
+empathic_distress,empathic distress,social,2,0.25,0.70,0.30,-0.3,PANIC_GRIEF,CARE,0.3,-0.6,-0.5,other,0.2,0.3,present,1,0,,other's suffering + self-focus
+empathic_joy,empathic joy,social,2,0.88,0.55,0.60,0.5,CARE,PLAY,0.3,0.7,0.5,other,0.4,0.6,present,1,0,OCC(happy-for),vicarious positive
+forgiveness,forgiveness,social,2,0.72,0.30,0.75,0.3,CARE,,0.1,0.3,0.3,self,0.8,0.8,past,1,1,,RAGE released
+humility,humility,self_conscious,2,0.65,0.25,0.45,0.0,CARE,,0.2,0.2,0.0,self,0.4,0.7,present,1,1,,low dominance positive
+transcendence,transcendence/peace,aesthetic,2,0.88,0.30,0.50,0.1,CARE,SEEKING,0.5,0.8,0.5,na,0.3,0.6,present,0,0,,self-boundary loss; spiritual
+acceptance,acceptance,cognitive,2,0.65,0.20,0.65,0.0,,,0.0,0.1,-0.1,circumstance,0.5,0.3,present,0,0,Plutchik,appraisal shift; coping
+sadness,sadness,sadness,1,0.15,0.30,0.25,-0.5,PANIC_GRIEF,,0.2,-0.7,-0.8,circumstance,0.2,0.0,past,0,0,Ekman;Plutchik;CK27;GoEmotions;OCC;GRID;Parrott,basic negative; loss
+sorrow,sorrow,sadness,2,0.12,0.30,0.22,-0.5,PANIC_GRIEF,,0.1,-0.8,-0.8,circumstance,0.1,0.0,past,0,0,Parrott,deep sadness
+grief,grief,sadness,1,0.08,0.45,0.15,-0.4,PANIC_GRIEF,CARE,0.3,-1.0,-1.0,circumstance,0.0,0.0,past,1,0,GoEmotions;Plutchik;Parrott,attachment loss; PANIC/GRIEF core
+mourning,mourning,sadness,2,0.12,0.35,0.20,-0.3,PANIC_GRIEF,CARE,0.0,-0.9,-0.9,circumstance,0.1,0.3,past,1,0,,ritualized grief; culture-shaped
+anguish,anguish,sadness,2,0.05,0.75,0.12,-0.6,PANIC_GRIEF,FEAR,0.3,-1.0,-1.0,circumstance,0.0,0.0,present,0,0,Parrott,high arousal grief
+despair,despair,sadness,2,0.05,0.40,0.08,-0.7,PANIC_GRIEF,,0.1,-1.0,-1.0,circumstance,0.0,0.0,future,0,0,GRID;Parrott,hope extinguished
+hopelessness,hopelessness,sadness,2,0.08,0.25,0.08,-0.6,PANIC_GRIEF,,0.0,-0.9,-1.0,circumstance,0.0,0.0,future,0,0,Parrott,control appraisal zero
+helplessness,helplessness,sadness,2,0.12,0.45,0.05,-0.6,FEAR,PANIC_GRIEF,0.2,-0.8,-0.9,other,0.0,0.0,present,0,0,,learned; low power
+melancholy,melancholy,sadness,2,0.28,0.20,0.35,-0.3,PANIC_GRIEF,,0.0,-0.5,-0.4,circumstance,0.2,0.1,past,0,0,Parrott,low arousal reflective sadness
+wistfulness,wistfulness,sadness,2,0.45,0.25,0.40,-0.1,PANIC_GRIEF,SEEKING,0.1,-0.2,-0.3,circumstance,0.2,0.1,past,0,0,,gentle longing
+longing,longing/yearning,sadness,1,0.40,0.50,0.30,0.6,PANIC_GRIEF,SEEKING,0.1,-0.2,-0.5,circumstance,0.1,0.0,future,1,0,Parrott,desire for absent object
+saudade,saudade,culture_specific,2,0.42,0.30,0.35,0.2,PANIC_GRIEF,CARE,0.0,-0.1,-0.4,circumstance,0.1,0.2,past,1,0,,Portuguese; longing with sweetness
+homesickness,homesickness,sadness,2,0.25,0.40,0.30,0.3,PANIC_GRIEF,,0.1,-0.6,-0.6,circumstance,0.2,0.1,present,1,0,,separation distress for place
+loneliness,loneliness,sadness,1,0.15,0.35,0.25,0.2,PANIC_GRIEF,,0.0,-0.8,-0.8,circumstance,0.2,0.0,present,1,0,Parrott,PANIC/GRIEF signal; drives reconnection and comfort consumption
+disappointment,disappointment,sadness,1,0.25,0.40,0.35,-0.4,SEEKING,,0.6,-0.6,-0.8,circumstance,0.3,0.0,past,0,0,GoEmotions;OCC;GRID;Parrott,negative prediction error
+dejection,dejection,sadness,2,0.18,0.25,0.25,-0.5,PANIC_GRIEF,,0.2,-0.7,-0.8,circumstance,0.2,0.0,past,0,0,Parrott,deflated
+discouragement,discouragement,sadness,2,0.25,0.30,0.30,-0.5,SEEKING,,0.2,-0.5,-0.7,circumstance,0.2,0.0,future,0,0,,SEEKING suppressed
+dismay,dismay,sadness,2,0.20,0.65,0.25,-0.4,FEAR,PANIC_GRIEF,0.8,-0.7,-0.8,circumstance,0.1,0.0,present,0,0,Parrott,surprise + loss
+misery,misery,sadness,2,0.05,0.35,0.15,-0.5,PANIC_GRIEF,,0.0,-1.0,-0.9,circumstance,0.1,0.0,present,0,0,Parrott,sustained suffering
+self_pity,self-pity,sadness,2,0.22,0.35,0.20,-0.3,PANIC_GRIEF,,0.0,-0.6,-0.7,other,0.1,-0.1,past,1,1,,victimhood framing
+hurt,hurt (emotional pain),sadness,1,0.12,0.60,0.20,-0.5,PANIC_GRIEF,RAGE,0.5,-0.8,-0.8,other,0.1,-0.5,past,1,0,Parrott,social injury; other agent
+rejection,feeling rejected,social,1,0.10,0.60,0.15,-0.5,PANIC_GRIEF,,0.5,-0.9,-0.9,other,0.1,-0.3,past,1,1,,ostracism detector
+regret,regret,self_conscious,1,0.22,0.45,0.35,-0.3,SEEKING,,0.2,-0.6,-0.7,self,0.3,-0.2,past,0,1,GoEmotions(remorse);OCC;Parrott,counterfactual own choice
+remorse,remorse,self_conscious,1,0.15,0.50,0.30,0.2,CARE,PANIC_GRIEF,0.2,-0.7,-0.6,self,0.3,-0.7,past,1,1,GoEmotions;OCC;Plutchik;Parrott,regret + harm to other
+guilt,guilt,self_conscious,1,0.15,0.55,0.30,0.3,CARE,FEAR,0.2,-0.7,-0.5,self,0.4,-0.8,past,1,1,OCC;GRID;Parrott,act-focused; repair motive
+shame,shame,self_conscious,1,0.08,0.60,0.08,-0.8,PANIC_GRIEF,FEAR,0.3,-0.9,-0.8,self,0.1,-0.8,present,1,1,CK27(shame);GRID;Parrott,self-focused; hide motive
+humiliation,humiliation,self_conscious,2,0.05,0.80,0.05,-0.6,RAGE,PANIC_GRIEF,0.6,-1.0,-0.9,other,0.0,-0.5,present,1,1,Parrott,shame imposed by other; revenge risk
+embarrassment,embarrassment,self_conscious,1,0.25,0.70,0.20,-0.6,FEAR,PLAY,0.7,-0.5,-0.4,self,0.2,-0.4,present,1,1,CK27;GoEmotions;Parrott,mild norm slip with audience
+mortification,mortification,self_conscious,2,0.08,0.85,0.08,-0.8,FEAR,PANIC_GRIEF,0.8,-0.9,-0.8,self,0.0,-0.6,present,1,1,,extreme embarrassment
+awkwardness,awkwardness,self_conscious,1,0.30,0.60,0.25,-0.4,FEAR,,0.5,-0.4,-0.3,mixed,0.2,-0.2,present,1,1,CK27,social script uncertainty
+shyness,shyness,self_conscious,2,0.35,0.55,0.20,-0.5,FEAR,,0.3,-0.3,-0.2,self,0.2,0.0,present,1,1,,anticipatory social FEAR
+social_anxiety,social anxiety,fear,2,0.18,0.75,0.15,-0.6,FEAR,PANIC_GRIEF,0.3,-0.7,-0.6,other,0.1,-0.1,future,1,1,,evaluation threat
+inadequacy,inadequacy/insecurity,self_conscious,1,0.18,0.50,0.12,-0.5,FEAR,PANIC_GRIEF,0.1,-0.7,-0.6,self,0.1,-0.2,present,1,1,Parrott(insecurity),self-efficacy low
+worthlessness,worthlessness,self_conscious,2,0.05,0.30,0.05,-0.7,PANIC_GRIEF,,0.0,-1.0,-0.9,self,0.0,-0.4,present,1,1,,depressive; clinical flag
+self_loathing,self-loathing,self_conscious,2,0.05,0.55,0.08,-0.8,RAGE,PANIC_GRIEF,0.0,-1.0,-0.9,self,0.0,-0.8,present,1,1,,RAGE turned inward
+pity,pity,social,2,0.35,0.35,0.70,0.1,CARE,,0.2,-0.3,-0.2,other,0.6,0.1,present,1,0,OCC;Parrott,compassion with distance/superiority
+apathy,apathy/numbness,sadness,1,0.35,0.10,0.35,-0.4,,,0.0,-0.2,-0.3,na,0.2,0.0,present,0,0,,SEEKING offline; dissociation possible
+emptiness,emptiness,sadness,2,0.20,0.12,0.25,-0.4,PANIC_GRIEF,,0.0,-0.6,-0.6,na,0.1,0.0,present,0,1,,anhedonic
+ennui,ennui,culture_specific,2,0.35,0.15,0.40,-0.3,SEEKING,,0.0,-0.3,-0.3,circumstance,0.3,0.0,present,0,0,,French; existential boredom
+fear,fear,fear,1,0.10,0.85,0.15,-0.9,FEAR,,0.6,-0.8,-0.9,circumstance,0.1,0.0,future,0,0,Ekman;Plutchik;CK27;GoEmotions;OCC;GRID;Parrott,basic; threat imminent
+terror,terror,fear,2,0.03,0.98,0.05,-1.0,FEAR,,0.8,-1.0,-1.0,circumstance,0.0,0.0,present,0,0,Plutchik;Parrott,extreme fear
+horror,horror,fear,1,0.05,0.90,0.10,-0.9,FEAR,DISGUST,0.9,-1.0,-0.9,circumstance,0.0,-0.3,present,0,0,CK27;Parrott,fear + disgust + violation
+panic,panic,fear,2,0.05,0.98,0.05,-0.9,FEAR,,0.7,-0.9,-1.0,circumstance,0.0,0.0,present,0,0,Parrott,control lost; disorganized
+dread,dread,fear,2,0.10,0.60,0.12,-0.8,FEAR,,0.1,-0.8,-0.9,circumstance,0.1,0.0,future,0,0,Parrott,certain future bad
+foreboding,foreboding,fear,2,0.20,0.55,0.20,-0.6,FEAR,,0.3,-0.6,-0.7,circumstance,0.1,0.0,future,0,0,,vague anticipatory threat
+apprehension,apprehension,fear,2,0.28,0.60,0.30,-0.5,FEAR,,0.4,-0.5,-0.5,circumstance,0.2,0.0,future,0,0,Plutchik;Parrott,mild dread
+anxiety,anxiety,fear,1,0.20,0.75,0.20,-0.6,FEAR,,0.3,-0.7,-0.7,circumstance,0.1,0.0,future,0,0,CK27;GRID;Parrott,uncertain future threat; same body as excitement
+worry,worry,fear,2,0.25,0.60,0.30,-0.4,FEAR,CARE,0.2,-0.6,-0.6,circumstance,0.2,0.0,future,1,0,Parrott,rumination on possible loss
+nervousness,nervousness,fear,2,0.30,0.75,0.30,-0.4,FEAR,,0.4,-0.5,-0.4,circumstance,0.2,0.0,future,0,0,GoEmotions;Parrott,performance-adjacent
+unease,unease/discomfort,fear,2,0.30,0.55,0.35,-0.4,FEAR,DISGUST,0.3,-0.5,-0.4,circumstance,0.2,0.0,present,0,0,Parrott,low-level threat or wrongness
+suspicion,suspicion,fear,1,0.30,0.55,0.50,-0.4,FEAR,RAGE,0.4,-0.4,-0.4,other,0.4,-0.3,present,1,0,,trust withheld
+paranoia,paranoia,fear,2,0.10,0.75,0.25,-0.7,FEAR,RAGE,0.3,-0.8,-0.8,other,0.1,-0.5,present,1,0,,hostile intent over-attributed
+vulnerability,vulnerability,fear,2,0.25,0.55,0.10,-0.5,FEAR,PANIC_GRIEF,0.2,-0.5,-0.5,circumstance,0.0,0.0,present,1,1,,exposure to harm
+overwhelm,overwhelm,fear,2,0.15,0.85,0.08,-0.6,FEAR,,0.5,-0.7,-0.8,circumstance,0.0,0.0,present,0,0,,demand exceeds capacity
+shock,shock,surprise,2,0.15,0.90,0.15,-0.5,FEAR,,1.0,-0.7,-0.8,circumstance,0.0,0.0,present,0,0,Parrott,surprise + threat
+startle,startle,surprise,2,0.30,0.95,0.30,-0.6,FEAR,,1.0,-0.4,-0.3,circumstance,0.1,0.0,present,0,0,,reflex; not strictly emotion
+alarm,alarm,fear,2,0.20,0.90,0.30,-0.7,FEAR,,0.9,-0.7,-0.8,circumstance,0.2,0.0,present,0,0,Parrott,threat detected; mobilize
+anger,anger,anger,1,0.15,0.85,0.70,0.7,RAGE,,0.5,-0.8,-0.8,other,0.6,-0.6,present,1,0,Ekman;Plutchik;CK27;GoEmotions;OCC;GRID;Parrott,basic; goal blocked by agent
+rage,rage,anger,2,0.05,0.98,0.80,0.9,RAGE,,0.6,-1.0,-1.0,other,0.5,-0.8,present,1,0,Plutchik;Parrott,extreme anger; control lost
+fury,fury/wrath,anger,2,0.05,0.95,0.85,0.9,RAGE,,0.5,-1.0,-1.0,other,0.6,-0.9,present,1,0,Parrott,sustained rage
+indignation,indignation,anger,1,0.20,0.75,0.75,0.6,RAGE,,0.5,-0.7,-0.6,other,0.6,-1.0,present,1,0,,norm-violation anger; righteous
+moral_outrage,moral outrage,anger,2,0.15,0.85,0.75,0.7,RAGE,DISGUST,0.5,-0.8,-0.5,other,0.5,-1.0,present,1,0,,third-party norm violation; public
+frustration,frustration,anger,1,0.20,0.70,0.45,0.3,RAGE,SEEKING,0.3,-0.7,-0.9,circumstance,0.3,-0.1,present,0,0,GRID;Parrott,goal blocked; agent unclear
+exasperation,exasperation,anger,2,0.22,0.72,0.55,0.3,RAGE,,0.2,-0.6,-0.7,other,0.4,-0.3,present,1,0,Parrott,repeated frustration
+irritation,irritation,anger,1,0.28,0.60,0.60,0.3,RAGE,,0.3,-0.5,-0.4,circumstance,0.5,-0.2,present,0,0,GoEmotions(annoyance);Parrott,low-grade anger; L0-sensitive (hangry)
+annoyance,annoyance,anger,2,0.30,0.55,0.60,0.2,RAGE,,0.3,-0.4,-0.4,other,0.5,-0.3,present,1,0,GoEmotions;Plutchik;Parrott,mild
+impatience,impatience,anger,2,0.32,0.65,0.60,0.5,SEEKING,RAGE,0.1,-0.4,-0.5,circumstance,0.4,-0.1,future,0,0,,delay cost
+agitation,agitation,anger,2,0.25,0.80,0.45,0.3,RAGE,FEAR,0.3,-0.6,-0.6,circumstance,0.2,0.0,present,0,0,Parrott,unresolved arousal
+resentment,resentment,anger,1,0.15,0.50,0.40,0.2,RAGE,PANIC_GRIEF,0.0,-0.7,-0.7,other,0.2,-0.7,past,1,0,Parrott,chronic; unfairness; low power
+bitterness,bitterness,anger,2,0.12,0.40,0.35,0.0,RAGE,PANIC_GRIEF,0.0,-0.8,-0.8,other,0.1,-0.6,past,1,0,Parrott,resentment aged
+grudge,grudge,anger,2,0.18,0.40,0.45,0.2,RAGE,,0.0,-0.6,-0.6,other,0.3,-0.7,past,1,0,,stored injury; revenge readiness
+hostility,hostility,anger,2,0.15,0.70,0.70,0.7,RAGE,,0.2,-0.7,-0.6,other,0.6,-0.6,present,1,0,Parrott,readiness to harm
+hatred,hatred,anger,1,0.05,0.70,0.60,0.6,RAGE,DISGUST,0.0,-1.0,-0.8,other,0.4,-0.8,present,1,0,Parrott,stable; dehumanizing
+loathing,loathing,anger,2,0.05,0.65,0.55,-0.5,DISGUST,RAGE,0.0,-1.0,-0.7,other,0.4,-0.8,present,1,0,Plutchik;Parrott,hatred with disgust; avoid
+spite,spite,anger,2,0.20,0.65,0.70,0.6,RAGE,,0.1,-0.5,-0.3,self,0.7,-0.9,present,1,0,Parrott,harm at own cost
+vengefulness,vengefulness,anger,2,0.25,0.75,0.80,0.9,RAGE,,0.1,-0.4,-0.2,self,0.7,-0.7,future,1,0,Parrott,retaliation planned
+contempt,contempt,anger,1,0.25,0.40,0.90,-0.3,DISGUST,RAGE,0.1,-0.6,-0.3,other,0.8,-0.8,present,1,0,CK27;Ekman+;OCC(reproach);GRID,looking down; moral/social disgust
+scorn,scorn/disdain,anger,2,0.25,0.45,0.90,-0.2,DISGUST,RAGE,0.1,-0.6,-0.3,other,0.8,-0.7,present,1,0,Parrott,expressed contempt
+jealousy,jealousy,anger,1,0.12,0.75,0.35,0.5,RAGE,PANIC_GRIEF,0.4,-0.8,-0.9,other,0.2,-0.4,present,1,1,Parrott;OCC(resentment),threat to valued relationship; three-party
+envy_malicious,envy (malicious),anger,1,0.15,0.60,0.30,0.2,RAGE,SEEKING,0.2,-0.7,-0.7,other,0.2,-0.6,present,1,1,OCC(resentment);Parrott,other has what I lack; wish them loss
+envy_benign,envy (benign),mixed,2,0.40,0.60,0.45,0.6,SEEKING,,0.2,-0.3,-0.4,other,0.5,0.2,future,1,1,,admiration + self-improvement motive
+schadenfreude,schadenfreude,culture_specific,1,0.70,0.55,0.75,0.1,PLAY,RAGE,0.5,0.6,0.5,other,0.5,-0.5,present,1,0,OCC(gloating),German; pleasure at deserved misfortune
+gloating,gloating,social,2,0.72,0.60,0.85,0.2,RAGE,PLAY,0.3,0.6,0.7,self,0.8,-0.5,past,1,1,OCC,triumph displayed over other
+smugness,smugness,social,2,0.70,0.35,0.88,0.0,RAGE,,0.0,0.5,0.6,self,0.8,-0.3,present,1,1,,hubristic pride mild
+superiority,superiority,social,2,0.68,0.40,0.95,0.1,RAGE,,0.0,0.4,0.5,self,0.9,-0.3,present,1,1,,status comparison upward
+inferiority,inferiority,social,2,0.15,0.45,0.08,-0.5,PANIC_GRIEF,FEAR,0.1,-0.7,-0.6,self,0.1,0.0,present,1,1,,status comparison downward
+defiance,defiance,anger,2,0.45,0.80,0.85,0.8,RAGE,,0.3,-0.3,-0.3,other,0.7,-0.5,present,1,0,,resistance to control
+disgust,disgust (pathogen),disgust,1,0.10,0.60,0.45,-0.9,DISGUST,,0.6,-1.0,-0.6,circumstance,0.5,-0.2,present,0,0,Ekman;Plutchik;CK27;GoEmotions;GRID;Parrott,contamination; behavioral immune system
+revulsion,revulsion,disgust,2,0.05,0.75,0.40,-1.0,DISGUST,FEAR,0.7,-1.0,-0.7,circumstance,0.4,-0.3,present,0,0,Parrott,intense disgust
+moral_disgust,moral disgust,disgust,1,0.12,0.60,0.60,-0.7,DISGUST,RAGE,0.4,-0.8,-0.5,other,0.5,-1.0,present,1,0,,Tybur moral domain; purity foundation
+sexual_disgust,sexual disgust,disgust,2,0.10,0.65,0.50,-0.9,DISGUST,,0.5,-0.9,-0.6,other,0.4,-0.6,present,1,0,,Tybur sexual domain; mate-value avoidance
+distaste,distaste/aversion,disgust,2,0.30,0.40,0.55,-0.6,DISGUST,,0.3,-0.6,-0.3,circumstance,0.6,-0.1,present,0,0,,mild rejection
+squeamishness,squeamishness,disgust,2,0.28,0.55,0.35,-0.7,DISGUST,FEAR,0.4,-0.6,-0.3,circumstance,0.3,0.0,present,0,0,,disgust sensitivity trait expression
+confusion,confusion,cognitive,1,0.35,0.55,0.30,-0.1,SEEKING,FEAR,0.8,-0.3,-0.4,circumstance,0.1,0.0,present,0,0,CK27;GoEmotions,prediction error unresolved
+bewilderment,bewilderment,cognitive,2,0.30,0.65,0.20,-0.2,SEEKING,FEAR,0.9,-0.4,-0.5,circumstance,0.0,0.0,present,0,0,,confusion extreme
+doubt,doubt/uncertainty,cognitive,1,0.35,0.45,0.35,-0.2,FEAR,,0.4,-0.3,-0.3,circumstance,0.2,0.0,future,0,0,,low confidence state
+skepticism,skepticism,cognitive,2,0.45,0.40,0.65,-0.2,SEEKING,FEAR,0.3,-0.1,0.0,other,0.6,0.0,present,1,0,,trust withheld toward claim
+realization,realization/insight,cognitive,1,0.75,0.70,0.70,0.4,SEEKING,,0.9,0.5,0.5,self,0.6,0.0,present,0,0,GoEmotions,aha; prediction error resolved
+suspense,suspense,cognitive,2,0.50,0.80,0.30,0.3,SEEKING,FEAR,0.6,0.0,0.0,circumstance,0.1,0.0,future,0,0,,uncertain outcome imminent
+ambivalence,ambivalence,mixed,1,0.48,0.50,0.35,0.0,,,0.3,0.0,0.0,mixed,0.2,0.0,present,0,0,,co-active opposing evaluations
+dissonance,cognitive dissonance,cognitive,2,0.30,0.60,0.40,0.0,FEAR,RAGE,0.4,-0.4,-0.3,self,0.3,-0.3,present,0,1,,belief-action conflict; drives rationalization
+craving,craving,drive_state,1,0.45,0.80,0.30,0.9,SEEKING,,0.3,0.2,-0.3,circumstance,0.1,0.0,future,0,0,,cue-triggered wanting; may lack liking
+hangry,hunger-irritability (hangry),body_state,0,0.25,0.65,0.50,0.3,RAGE,SEEKING,0.1,-0.5,-0.5,circumstance,0.3,-0.1,present,0,0,,L0 misattributed as RAGE
+satiety,satiety,body_state,0,0.70,0.15,0.65,-0.3,,,0.0,0.5,0.6,na,0.5,0.0,present,0,0,,sensory-specific; devalues eaten item
+pain_distress,pain distress,body_state,0,0.08,0.80,0.15,-0.8,FEAR,PANIC_GRIEF,0.5,-1.0,-0.9,circumstance,0.1,0.0,present,0,0,,L0; nociception affective component
+greed,greed/avarice,drive_state,2,0.45,0.65,0.70,0.9,SEEKING,,0.1,0.2,0.3,self,0.6,-0.5,future,1,0,,acquisition beyond need
+possessiveness,possessiveness,social,2,0.35,0.60,0.60,0.6,RAGE,CARE,0.2,-0.2,-0.3,other,0.4,-0.3,present,1,0,,mate/resource guarding; vasopressin-linked
+protectiveness,protectiveness,social,2,0.55,0.70,0.80,0.8,CARE,RAGE,0.4,0.0,0.0,other,0.6,0.7,present,1,0,,CARE + RAGE toward threat
+loyalty,loyalty,social,2,0.75,0.40,0.65,0.5,CARE,,0.0,0.5,0.4,other,0.5,0.9,present,1,0,,MFT loyalty foundation
+devotion,devotion,social,2,0.82,0.50,0.45,0.7,CARE,,0.0,0.7,0.5,other,0.3,0.9,present,1,0,,religion/attachment
+betrayal,feeling betrayed,social,1,0.05,0.80,0.20,-0.3,RAGE,PANIC_GRIEF,0.8,-1.0,-1.0,other,0.1,-1.0,past,1,0,,trust violation; hurt + anger
+distrust,distrust,social,2,0.28,0.50,0.50,-0.5,FEAR,,0.2,-0.4,-0.3,other,0.4,-0.4,future,1,0,,trust absent
+exclusion,feeling excluded/ostracized,social,2,0.10,0.55,0.12,-0.3,PANIC_GRIEF,,0.5,-0.9,-0.9,other,0.1,-0.3,present,1,1,,Cyberball; social pain
+vindication,vindication,social,2,0.85,0.65,0.88,0.3,RAGE,SEEKING,0.4,0.7,0.9,circumstance,0.7,0.6,past,1,1,,proven right after doubt
+indebtedness,indebtedness,social,2,0.45,0.45,0.30,0.3,CARE,FEAR,0.2,0.0,0.2,other,0.3,0.5,past,1,1,,gratitude with obligation pressure
+amae,amae,culture_specific,2,0.78,0.30,0.30,0.7,CARE,PANIC_GRIEF,0.0,0.6,0.5,other,0.2,0.4,present,1,0,,Japanese; pleasant dependence on indulgence
+fago,fago,culture_specific,2,0.55,0.40,0.55,0.6,CARE,PANIC_GRIEF,0.1,0.0,0.0,other,0.4,0.8,present,1,0,,Ifaluk; compassion-love-sadness
+hygge,hygge,culture_specific,2,0.88,0.15,0.65,0.3,CARE,,0.0,0.8,0.5,circumstance,0.6,0.3,present,1,0,,Danish; cozy togetherness
+gigil,gigil,culture_specific,2,0.80,0.75,0.55,0.9,CARE,PLAY,0.5,0.7,0.3,other,0.3,0.0,present,1,0,,Tagalog; cute-aggression urge
+hiraeth,hiraeth,culture_specific,2,0.40,0.30,0.35,0.2,PANIC_GRIEF,,0.0,-0.2,-0.4,circumstance,0.1,0.2,past,1,0,,Welsh; longing for lost home
+fremdschaemen,vicarious embarrassment,culture_specific,2,0.25,0.65,0.30,-0.6,FEAR,PLAY,0.6,-0.5,-0.2,other,0.2,-0.3,present,1,0,,German; cringe
+sehnsucht,sehnsucht,culture_specific,2,0.45,0.45,0.35,0.5,SEEKING,PANIC_GRIEF,0.1,0.0,-0.3,circumstance,0.1,0.1,future,0,0,,German; longing for unattainable ideal
+mono_no_aware,mono no aware,culture_specific,2,0.60,0.25,0.45,0.0,PANIC_GRIEF,SEEKING,0.2,0.3,0.0,circumstance,0.2,0.3,present,0,0,,Japanese; bittersweet transience
+litost,litost,culture_specific,2,0.12,0.65,0.20,0.2,PANIC_GRIEF,RAGE,0.6,-0.8,-0.8,self,0.1,-0.2,present,1,1,,Czech; torment at sudden sight of own misery
+toska,toska,culture_specific,2,0.20,0.30,0.25,0.1,PANIC_GRIEF,SEEKING,0.0,-0.6,-0.6,circumstance,0.1,0.0,present,0,0,,Russian; objectless spiritual anguish
+awumbuk,awumbuk,culture_specific,2,0.35,0.15,0.35,-0.3,PANIC_GRIEF,,0.2,-0.3,-0.3,circumstance,0.2,0.0,past,1,0,,Baining; heaviness after guests leave
+duende,duende,culture_specific,2,0.70,0.80,0.40,0.4,SEEKING,PANIC_GRIEF,0.7,0.5,0.3,circumstance,0.1,0.2,present,0,0,,Spanish; dark artistic transport
+curiosity_morbid,morbid curiosity,cognitive,2,0.50,0.65,0.55,0.5,SEEKING,FEAR,0.7,0.0,0.0,circumstance,0.5,-0.2,present,0,0,,threat information gathering
+desire,desire/wanting,drive_state,1,0.70,0.70,0.55,0.9,SEEKING,,0.2,0.5,0.3,circumstance,0.4,0.0,future,0,0,GoEmotions;Parrott,incentive salience generic
+caring,caring/concern,social,1,0.60,0.45,0.60,0.6,CARE,,0.1,0.2,0.1,other,0.5,0.6,present,1,0,GoEmotions,CARE active; mild worry possible
+approval,approval,social,1,0.78,0.35,0.75,0.3,CARE,,0.1,0.5,0.5,other,0.6,0.6,present,1,0,GoEmotions,positive evaluation of other
+disapproval,disapproval,social,1,0.25,0.45,0.75,-0.3,DISGUST,RAGE,0.2,-0.5,-0.3,other,0.6,-0.7,present,1,0,GoEmotions,negative evaluation of other
+fear_of_missing_out,fear of missing out,fear,2,0.30,0.65,0.30,0.5,SEEKING,PANIC_GRIEF,0.3,-0.4,-0.5,other,0.2,0.0,future,1,1,,social comparison + SEEKING

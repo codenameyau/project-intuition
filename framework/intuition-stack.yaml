@@ -1,0 +1,152 @@
+# Machine-readable specification of the Intuition Stack.
+# Mirrors docs/03-framework.md. Intended to drive prompts, checklists, and later tooling.
+
+version: 0.1.0
+
+evidence_tiers:
+  A: replicated and mechanistic, or large meta-analysis
+  B: well supported but single-lab, correlational, or small-N imaging
+  C: contested, failed replication, or theory ahead of data
+
+layers:
+  - id: L0
+    name: body_budget
+    speed: continuous
+    reportable: low
+    anchor: [hypothalamus, brainstem, vagus, insula_posterior, insula_anterior]
+    readout: {valence: [-1, 1], arousal: [-1, 1]}
+    drivers:
+      - hours_since_meal
+      - sleep_debt
+      - caffeine_alcohol_glucose
+      - illness_inflammation
+      - pain
+      - temperature
+      - hormonal_phase
+      - recent_exertion
+      - arousal_source_in_context
+    effects:
+      low_budget: [irritability, risk_aversion, short_horizon, calorie_dense_preference, harsher_social_judgment]
+      high_arousal: [amplifies_context_labeled_emotion, misattribution]
+    evidence: {barrett_2016: B, craig_2009: B, misattribution_of_arousal: C}
+
+  - id: L1
+    name: drives
+    speed: fast
+    reportable: low
+    anchor: [subcortex]
+    systems:
+      SEEKING:  {toward: [novelty, resources, exploration], words: [curious, eager, excited, hopeful], behaviors: [browsing, researching, scrolling]}
+      FEAR:     {toward: [safety], words: [anxious, nervous, uneasy, bad_vibe], behaviors: [avoidance, freezing, checking, over_preparation]}
+      RAGE:     {toward: [obstacle_removal], words: [frustrated, angry, indignant], behaviors: [confrontation, sabotage, principled_refusal]}
+      LUST:     {toward: [mating], words: [attracted, aroused, chemistry], behaviors: [display, grooming, risk_taking, generosity]}
+      CARE:     {toward: [protecting_dependents], words: [tender, protective, worried_for], behaviors: [nurturing, overspending_on_dependents, rescuing]}
+      PANIC_GRIEF: {toward: [reconnection], words: [lonely, abandoned, homesick, heartbroken], behaviors: [reaching_out, clinging, comfort_consumption]}
+      PLAY:     {toward: [social_practice, joy], words: [silly, fun, playful], behaviors: [teasing, games, banter]}
+      DISGUST:  {toward: [contamination_avoidance], domains: [pathogen, sexual, moral], words: [grossed_out, repulsed, thats_wrong], behaviors: [rejection, condemnation, neophobia]}
+    evidence: {panksepp: B, tybur_disgust: A, griskevicius_2007: B}
+
+  - id: L2
+    name: valuation
+    speed: fast
+    reportable: low
+    anchor: [vta, nucleus_accumbens, ventral_pallidum, orbitofrontal, dorsolateral_striatum, dorsomedial_striatum, insula]
+    subsystems:
+      liking:   {substrate: opioid_hotspots, note: hedonic impact}
+      wanting:  {substrate: mesolimbic_dopamine, note: incentive salience, cue-attached, can be subliminal}
+      learning: {substrate: dopamine_rpe, note: surprise teaches, disappointment extinguishes}
+      habit:    {substrate: dorsolateral_striatum, note: cached stimulus->response, outcome-insensitive; human induction contested}
+      goal:     {substrate: prefrontal_dorsomedial_striatum, note: simulates outcomes; wins when more certain}
+    drivers:
+      - cues_present_and_their_history
+      - recent_prediction_error
+      - habit_strength_in_this_context
+      - expectation_from_price_brand_description
+      - sensory_specific_satiety
+      - effort_cost
+      - delay
+    evidence: {schultz_1997: A, berridge: A, pessiglione_2007: B, knutson_2007: B, plassmann_2008: B, rolls_satiety: A, daw_2005: B, tricomi_2009: C}
+
+  - id: L3
+    name: social
+    speed: 100ms_to_seconds
+    reportable: low
+    anchor: [amygdala, fusiform, rTPJ, mPFC, precuneus, STS, insula_anterior, vta, nucleus_accumbens, caudate]
+    drivers:
+      - face_voice_first_read: {traits: [trust, competence, attractiveness, aggression], latency_ms: 100, evidence: A}
+      - perceived_similarity:  {r_actual: 0.47, r_perceived: 0.39, note: only perceived survives in real relationships, evidence: A}
+      - familiarity_exposure:  {r: 0.26, n_experiments: 208, evidence: A}
+      - proximity:             {evidence: B}
+      - reciprocity:           {evidence: B, note: effect sizes not yet verified from primary}
+      - status_signal:         {evidence: B}
+      - shared_affect:         {substrate: insula_anterior, evidence: A}
+      - mentalizing:           {substrate: rTPJ_mPFC, bias: correspondence_bias, evidence: A}
+      - bonding_chemistry:     {substrate: oxytocin_vasopressin_dopamine, evidence: B}
+
+  - id: L4
+    name: predictor
+    speed: fast
+    reportable: medium
+    anchor: [cortical_hierarchy, basal_ganglia, hippocampus]
+    drivers:
+      - training_environment: {values: [kind, wicked], rule: trust intuition only when kind}
+      - recognition_fluency
+      - anchors_frames
+      - implicit_statistical_learning
+      - offline_replay_incubation
+    evidence: {kahneman_klein_2009: A, hogarth_2001: B, gigerenzer_recognition: A, lieberman_2000: B, momennejad_2018: B, dijksterhuis_uta: C}
+
+  - id: L5
+    name: feeling
+    speed: seconds
+    reportable: high
+    construction: core_affect + active_drive + valuation + context -> emotion_concept
+    universal_dimensions: [valence, arousal]
+    culture_specific: [concept_boundaries, labels, display_rules]
+    heuristics: [feelings_as_information, affect_heuristic]
+    biases: [impact_bias, focalism]
+    evidence: {jackson_2019: A, barrett_constructed: B, schwarz_clore: A, slovic: A, wilson_gilbert_2005: A}
+
+  - id: L6
+    name: narrator
+    speed: slow
+    reportable: high
+    anchor: [left_hemisphere_language_network]
+    access: [L5, partial_L4]
+    signatures_of_narration:
+      - socially_acceptable_agentic_motive
+      - same_reason_would_fit_opposite_choice
+      - judgment_unmoved_when_principle_fails
+      - reason_arrives_after_behavior
+      - mood_colors_attribution
+    evidence: {nisbett_wilson_1977: A, choice_blindness: A, gazzaniga: B, haidt_2001: B}
+
+control:
+  model: default_interventionist
+  type2_triggers: [conflict_between_fast_systems, novelty, flagged_stakes, trained_circuit_breaker]
+  arbitration: uncertainty_based_competition
+  evidence: {evans_stanovich_2013: A, daw_2005: B}
+
+protocol:
+  questions:
+    - {id: 1, name: STATE,     layer: L0}
+    - {id: 2, name: DRIVE,     layer: L1}
+    - {id: 3, name: CUES,      layer: L2}
+    - {id: 4, name: PRIORS,    layer: L4}
+    - {id: 5, name: SOCIAL,    layer: L3}
+    - {id: 6, name: ASYMMETRY, layer: evolutionary, rule: bias follows the cheaper error}
+    - {id: 7, name: NARRATIVE, layer: L6}
+  output_fields:
+    - situation
+    - stated_reason
+    - reconstruction: [{driver, layer, confidence: [H, M, L], evidence: [A, B, C]}]
+    - feeling_signature: {valence, arousal, approach_avoid, urge}
+    - narrative_gap
+    - prediction
+
+domains:
+  purchase:   {dominant: [L2, L3, L4, L1], see: docs/04-domain-playbooks.md#a}
+  food:       {dominant: [L0, L2, L1, L3], see: docs/04-domain-playbooks.md#b}
+  liking:     {dominant: [L3, L0, L5, L2, L1], see: docs/04-domain-playbooks.md#c}
+  feeling:    {dominant: [L5, L0, L1, L6], see: docs/04-domain-playbooks.md#d}
+  why_did_they: {dominant: all, rules: [correct_for_correspondence_bias, run_their_stack_not_yours], see: docs/04-domain-playbooks.md#e}
