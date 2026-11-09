@@ -133,7 +133,7 @@ blocks:
       general_strain:        {type: object, fields: {blocked_goals: float, loss_of_valued: float, negative_stimuli: float}, range: [0, 1], evidence: moderate, note: Agnew; strain plus negative affect raises deviance}
       peer_norms:            {type: "list[string]", evidence: strong, note: differential association; what the reference group treats as acceptable}
       labeling_history:      {type: "list[string]", evidence: moderate, note: labels applied by institutions or others that the person may have internalized}
-      neutralization_scripts: {type: "list[string]", evidence: moderate, note: Sykes and Matza; "everyone does it", "no one was hurt"; predict rationalized violations}
+      neutralization_scripts: {type: "list[string]", evidence: moderate, note: 'Sykes and Matza; everyone does it, no one was hurt; predict rationalized violations'}
       turning_points:        {type: "list[object]", item: {event: string, age: int, direction: "enum[toward_conformity, away]"}, evidence: moderate, note: Sampson and Laub life-course}
 
   self_report_style:
