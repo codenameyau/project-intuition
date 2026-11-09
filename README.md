@@ -6,6 +6,10 @@ A framework for explaining what people do, buy, eat, like, and feel by modeling 
 
 Built from a sweep of connectomics (FlyWire, MICrONS, H01, C. elegans, the Allen cell atlas), single-neuron and circuit neuroscience (dopamine prediction error, wanting vs. liking, orbitofrontal value, hypothalamic hunger, insular interoception), affective and social neuroscience, evolutionary psychology, and judgment and decision research. Every claim carries an evidence tier.
 
+## What this is, after review
+
+A **behavioral prediction engine**: `P(feeling, cognition, action | person, situation, state, history)` with calibrated uncertainty and a stated baseline it had to beat. The Intuition Stack is the mechanism model inside it; the 211-state emotion ontology is one of its outputs; Dear You and the character engine are two front ends. Every prediction starts with Question 0, the base rate: what this person did in this context before, what people like them do, how strong the situation is. See `docs/18-critique-and-redesign.md` for the predictability spectrum that says what the engine may promise, from mobility (very high) to unique romantic desire (near zero from profiles).
+
 ## The idea in three sentences
 
 The brain's first job is regulating the body; its ancient drive systems bias what looks good; dopamine attaches wanting to cues; social evaluators judge faces in 100 ms; a predictive model turns experience into priors. All of that arrives in awareness as a *feeling*, which the person then labels with a culturally supplied word. A separate narrating system explains the feeling afterwards, fluently and often wrongly.
@@ -33,11 +37,14 @@ docs/
   15-product-spec.md              Dear You: product, design principles, objects, screens, architecture, privacy, roadmap
   16-character-affect-engine.md   Track D: emotions for NPCs and interactive characters from the same model and schema
   17-model-export-and-deployment.md  export tiers (70B teacher to 1 ms affect head), GGUF/ONNX/WASM, open vs closed weights, consent
+  18-critique-and-redesign.md     five rounds of critique; the behavioral-prediction-engine reframing; predictability spectrum; new ideas
+  19-prediction-literature.md     findings with effect sizes that improve prediction, and the datasets they point to
 framework/
   intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
   explain-protocol.md             prompt template to run the protocol on any situation
   emotion-ontology.csv            211 emotional states × VAD × appraisals × drives × taxonomies
-  person-schema.yaml              the conditioning input: 10 blocks, 77 fields, evidence-tagged (incl. biology)
+  person-schema.yaml              the conditioning input: 11 blocks, 88 fields, evidence-tagged (incl. aptitudes, biology)
+  situation-schema.yaml           the other half of every record: DIAMONDS, situation strength, cues, audience, stakes, constraints, base rate
   output-schema.json              the prediction target: emotions, VAD, drives, appraisals, cognition, action, answer
 examples/
   template.md                     blank case file for the explanation protocol
@@ -89,4 +96,4 @@ The same model that predicts a real person's feelings generates a fictional one'
 
 ## Status
 
-Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. Track D (characters and export): design complete 2026-11-08. See `PLAN.md`.
+Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. Track D (characters and export): design complete 2026-11-08. Redesign pass (v0.2) complete 2026-11-08: Question 0, situation schema, baseline and duration fields, cohort engine and biography benchmark planned. See `PLAN.md`.

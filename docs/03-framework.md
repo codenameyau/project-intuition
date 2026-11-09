@@ -123,10 +123,11 @@ Default-interventionist dual-process theory (Evans & Stanovich 2013): Type 1 (L0
 
 ---
 
-## The explanation protocol (seven questions)
+## The explanation protocol (question 0 plus seven)
 
 Run these in order for any input. Record an answer, a confidence (high / medium / low), and the evidence tier for each.
 
+0. **BASE RATE AND CONSTRAINTS.** What has this person done in this exact context before? What does the population do here (time-use, panel, and cohort data)? Can they and may they do the likely action? How strong is the situation (constraints, consequences, clarity, consistency)? Past behavior in a matching context is the strongest single predictor of behavior, and trait effects shrink as situation strength rises. The prediction must state the baseline it beats. Encode the situation with `framework/situation-schema.yaml`.
 1. **STATE (L0).** What was the body budget? Hunger, sleep, arousal, substances, illness, time of day, recent exertion or stress.
 2. **DRIVE (L1).** Which of the eight systems was activated or deprived? What primed it?
 3. **CUES (L2).** What cues were present? What have they been paired with historically? Is there a habit in this exact context? What did the person expect, and what did the price/brand/description predict?
@@ -139,6 +140,7 @@ Run these in order for any input. Record an answer, a confidence (high / medium 
 
 ```
 Situation:        <one sentence>
+Base rate:        <what they did before here; what people like them do; situation strength>
 Stated reason:    <what they said, if anything>
 Reconstruction:
   1. <driver>  [layer]  confidence: H/M/L  evidence: A/B/C

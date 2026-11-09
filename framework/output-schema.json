@@ -538,6 +538,73 @@
           "time_constant_s"
         ]
       }
+    },
+    "baseline": {
+      "description": "Question 0. What the prediction had to beat, so skill can be scored.",
+      "type": "object",
+      "properties": {
+        "person_history": {
+          "type": "object",
+          "properties": {
+            "prior_occurrences": {
+              "type": "integer"
+            },
+            "action_frequencies": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "population": {
+          "type": "object",
+          "properties": {
+            "action_frequencies": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number"
+              }
+            },
+            "source": {
+              "type": "string"
+            }
+          }
+        },
+        "situation_strength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trait_weight_multiplier": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "predictability_row": {
+          "type": "string",
+          "description": "which row of the predictability spectrum this question belongs to (docs/18)"
+        }
+      }
+    },
+    "emotions_duration": {
+      "description": "Optional. Expected duration of the top emotions in hours, with the rumination adjustment (Verduyn & Lavrijsen 2015).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "expected_hours": {
+            "type": "number",
+            "minimum": 0
+          },
+          "low": {
+            "type": "number"
+          },
+          "high": {
+            "type": "number"
+          }
+        }
+      }
     }
   }
 }
