@@ -1,0 +1,90 @@
+# Situation schema: the other half of every prediction record.
+# Behavior is person x situation. Every training example and every product question carries one of these.
+# Sources: DIAMONDS (Rauthmann et al. 2014), situation strength (Meyer, Dalal & Hermida 2010),
+# habit and base-rate literature (Ouellette & Wood 1998), COM-B constraints, time-of-day rhythms (Golder & Macy 2011).
+
+version: 0.1.0
+
+fields:
+  description: {type: string, note: free text, the event as it happened or will happen}
+
+  diamonds:
+    description: Eight dimensions people reliably use to describe situations, each 0 to 1.
+    duty:        {type: float, note: work to be done, tasks, obligations}
+    intellect:   {type: float, note: intellectual or cognitive demand}
+    adversity:   {type: float, note: threat, criticism, blame, conflict}
+    mating:      {type: float, note: romantic or sexual potential}
+    positivity:  {type: float, note: pleasant, enjoyable, easy}
+    negativity:  {type: float, note: frustration, anxiety, unpleasantness}
+    deception:   {type: float, note: someone may be lying or hiding something}
+    sociality:   {type: float, note: social interaction, relationship building}
+
+  strength:
+    description: How much the situation restricts the expression of individual differences. Trait weights scale down as overall strength rises.
+    constraints:  {type: float, range: [0, 1], note: how limited the options are}
+    consequences: {type: float, range: [0, 1], note: how much the outcome matters}
+    clarity:      {type: float, range: [0, 1], note: how obvious the expected behavior is}
+    consistency:  {type: float, range: [0, 1], note: how uniform the cues are}
+    overall:      {type: float, range: [0, 1], note: derived; mean of the four unless specified}
+
+  cues:
+    description: Stimuli present that may carry learned value for this person (brands, smells, places, faces, sounds, phrases).
+    type: "list[object]"
+    item: {cue: string, salience: float, paired_history_known: bool}
+
+  audience:
+    present:        {type: bool}
+    size:           {type: int}
+    composition:    {type: "list[string]", note: roles or names; cross-reference person.relations.actors}
+    relative_status: {type: float, range: [-1, 1], note: audience status relative to the person}
+    observing_outcome: {type: bool, note: will they learn how it turned out}
+
+  stakes:
+    magnitude:     {type: float, range: [0, 1]}
+    reversibility: {type: float, range: [0, 1], note: 1 = fully reversible}
+    time_pressure: {type: float, range: [0, 1]}
+    public:        {type: bool}
+
+  novelty:   {type: float, range: [0, 1], note: how unexpected the event is for this person; drives surprise and attention}
+  valence_prior: {type: float, range: [-1, 1], note: how good or bad the event is on its face, before personal appraisal}
+
+  choice_set:
+    description: The actions actually available. The engine predicts over this set, never outside the game's or life's real options.
+    type: "list[string]"
+
+  constraints:
+    description: Can they, may they. Behavior = motivation x capability x opportunity.
+    capability:   {type: float, range: [0, 1], note: skills and physical ability to perform the likely action}
+    opportunity:  {type: float, range: [0, 1], note: resources, access, permission}
+    money_slack:  {type: float, range: [0, 1]}
+    time_slack:   {type: float, range: [0, 1]}
+    social_permission: {type: float, range: [0, 1], note: would their group accept it}
+
+  history_in_context:
+    description: Question 0. The base rate the prediction must beat.
+    prior_occurrences:  {type: int, note: how many times this person has been in this context}
+    last_action:        {type: string}
+    action_frequencies: {type: object, note: action -> proportion over prior occurrences}
+    population_base_rate: {type: object, note: action -> proportion from cohort engine or time-use data, with source}
+    last_outcome_valence: {type: float, range: [-1, 1]}
+
+  time:
+    of_day:    {type: string, note: HH:MM local}
+    day_type:  {type: enum, values: [workday, weekend, holiday]}
+    season_trend: {type: enum, values: [days_lengthening, days_shortening, stable]}
+    relative_to_schedule: {type: string, note: before or after meals, sleep, work, exercise}
+
+  physical:
+    temperature_c: {type: float}
+    noise:         {type: float, range: [0, 1]}
+    crowding:      {type: float, range: [0, 1]}
+    private_space: {type: bool}
+
+  ongoing_events:
+    description: Concurrent life events that set adaptation trajectories (Luhmann et al. 2012).
+    type: "list[object]"
+    item: {event: "enum[marriage, divorce, bereavement, childbirth, unemployment, reemployment, retirement, relocation, illness, other]", weeks_since: float}
+
+derived:
+  trait_weight_multiplier: {formula: "1 - 0.7 * strength.overall", note: how much person traits are allowed to move the prediction}
+  baseline_required: {note: a prediction without history_in_context.population_base_rate or prior_occurrences is flagged low confidence}

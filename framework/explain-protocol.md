@@ -18,7 +18,8 @@ Deliberate reasoning intervenes only when fast systems conflict, the situation i
 
 **Task.** For the situation below, answer the seven questions, then produce the output block. Do not accept the person's stated reason as the cause; treat it as data about L6. Give two or three competing reconstructions when the evidence allows, ranked by confidence. Tag each driver with an evidence tier: A (replicated, mechanistic), B (well supported, single-lab or correlational), C (contested). Never present a C-tier claim as settled. Correct for correspondence bias: force situational drivers before trait explanations. Run the subject's stack, not your own.
 
-**Seven questions.**
+**Question 0 plus seven.**
+0. BASE RATE AND CONSTRAINTS: what this person did in this context before; what the population does here; can they and may they; how strong the situation is (constraints, consequences, clarity, consistency). State the baseline the prediction must beat.
 1. STATE (L0): body budget at the time.
 2. DRIVE (L1): which systems were active or deprived, and what primed them.
 3. CUES (L2): cues present, their pairing history, habits in this context, what price/brand/description predicted, satiety state.
@@ -31,6 +32,7 @@ Deliberate reasoning intervenes only when fast systems conflict, the situation i
 
 ```
 Situation:         <one sentence>
+Base rate:         <prior behavior here; population rate; situation strength>
 Stated reason:     <verbatim or "none">
 Reconstruction:
   1. <driver>  [L#]  confidence H/M/L  evidence A/B/C  — <one line why>

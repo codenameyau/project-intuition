@@ -87,3 +87,13 @@ The Fragile Families Challenge (Salganik et al. 2020, PNAS): 160 teams, thousand
 - Calibrate against test-retest ceilings (Park's normalized accuracy; Twin-2K-500's repeat wave), not against 100%.
 - Prefer predicting *distributions over actions* to predicting *the* action.
 - Treat emotion prediction (minutes) as a different problem from life-outcome prediction (years); the former has far better evidence of feasibility.
+
+## Identity, sensitive fields, rhythms, and the body (schema v0.2, 2026-11-08)
+
+**Identity** now holds full name, preferred name, pronouns, and date of birth (age is derived from it), plus sexual orientation, race, and ethnicity. The name is for display and for matching the user's own records; it is never a predictor and never used to infer ancestry, gender, or anything else. Orientation is free text with no enum, so it cannot become a classification target.
+
+**Sensitive fields** are listed in one place at the top of the schema: orientation, race, ethnicity, religion, religiosity, politics, trauma, mental health, chronic illness, medications, hormonal context, weight, disability, sensory impairments, visible differences, and the biology block. They are entered by the user or the subject, never inferred, stored encrypted, kept out of model inputs unless the user enables them for that person, and never produced as outputs.
+
+**Constraints and rhythms** adds chronotype (mood and performance peak at the preferred time), personal sleep need, usual schedule (the base rate for what someone is doing at a given hour), medications, hormonal context, chronic pain, mental accounts (people judge a purchase against its labeled budget, not total wealth), typical time slack, decision style (maximizing, intuitive, rational, dependent, avoidant, spontaneous), conflict style (Thomas-Kilmann), and RIASEC vocational interests.
+
+**Physical** holds the body attributes that predict feeling or behavior: height (status judgments), weight band (through weight stigma and health, subject-entered only), body image (appearance satisfaction and anxiety, which predict shame and avoidance better than any measurement), disability and mobility, sensory impairments, visible differences the person is self-conscious about, and physical fitness. All are entered, none inferred from media. Excluded: inference of any body, face, or skin attribute from photos or video; skin color as a person attribute (a race proxy); breast, chest, waist, hip, and other measurements including cup size; attractiveness ratings; and body-shape categories. How a character *looks* in the simulation is a separate, user-chosen avatar that never enters the model (`docs/21` section 6a).

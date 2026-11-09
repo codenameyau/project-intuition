@@ -1,0 +1,57 @@
+# Relationship state between two people, updated by the simulation and usable by Dear You's relational questions.
+# Drivers carry evidence tiers; predictions over romantic outcomes are capped by the literature (see docs/21 section 4).
+
+version: 0.1.0
+
+pair_state:
+  closeness:      {type: float, range: [0, 1], note: Dunbar layer proxy; 0.8+ intimate, 0.6 close, 0.4 regular, 0.2 acquaintance}
+  trust:          {type: float, range: [0, 1]}
+  liking:         {type: float, range: [0, 1]}
+  conflict:       {type: float, range: [0, 1], note: recent unresolved conflict load}
+  status_gap:     {type: float, range: [-1, 1], note: A relative to B}
+  interdependence: {type: float, range: [0, 1], note: shared tasks, resources, obligations}
+  attraction:     {type: float, range: [0, 1], consent_gated: true, note: shown only in Open tier; interval always wide per Joel 2017}
+  attachment_pattern: {type: enum, values: [secure, anxious, avoidant, mixed, unknown]}
+  layer:          {type: enum, values: [intimate_5, close_15, regular_50, acquaintance_150, beyond]}
+  history:
+    exposure_count:        {type: int}
+    positive_interactions: {type: int}
+    negative_interactions: {type: int}
+    disclosure_depth:      {type: float, range: [0, 1], note: deepest reciprocal self-disclosure so far}
+    last_interaction_at:   {type: string}
+    reciprocity_balance:   {type: float, range: [-1, 1], note: who initiates and gives more}
+
+drivers:
+  friendship_formation:
+    proximity_shared_places: {weight: high, evidence: A, source: Festinger 1950; mere exposure r 0.26 (Bornstein 1989)}
+    perceived_similarity:    {weight: high, evidence: A, source: Montoya 2008 r 0.39}
+    reciprocity_of_liking:   {weight: high, evidence: B}
+    reciprocal_self_disclosure: {weight: high, evidence: A, source: Aron et al. 1997 fast-friends}
+    shared_positive_affect:  {weight: medium, evidence: A, source: Wicker 2003; emotional contagion}
+    homophily_demographic:   {weight: medium, evidence: A, source: McPherson 2001; dissimilar ties dissolve faster}
+  friendship_maintenance:
+    contact_frequency:       {weight: high, evidence: A, note: closeness decays without contact; layer capacity limits}
+    support_exchange:        {weight: medium, evidence: B}
+    conflict_resolution:     {weight: medium, evidence: B}
+    network_capacity:        {weight: medium, evidence: B, source: Dunbar layers 5/15/50/150; middle layers vary}
+  work_dynamics:
+    status_gap_and_fairness: {weight: medium, evidence: B}
+    duty_situation_strength: {weight: medium, evidence: A, source: situation strength}
+    interdependence:         {weight: medium, evidence: B}
+  romantic:
+    note: Profiles do not predict unique desire (Joel, Eastwick & Finkel 2017); matching claims unsubstantiated (Finkel 2012); preference matching beta about 0.04 (Eastwick 2025). Drivers below set the base rate only.
+    proximity_and_exposure:  {weight: low, evidence: A}
+    perceived_similarity:    {weight: low, evidence: A}
+    reciprocity_signals:     {weight: medium, evidence: B, note: the only dyadic signal with real information}
+    arousal_context:         {weight: low, evidence: C}
+    ceiling: {p_interval_min_width: 0.5, note: any romantic prediction must carry an interval at least this wide}
+
+update_rules:
+  on_interaction: {closeness: "+k1 * outcome_valence * disclosure_increment", trust: "+k2 * kept_commitment - k3 * violation", conflict: "+k4 * negative - decay"}
+  on_no_contact:  {closeness: "decay toward layer floor with time constant by layer (intimate slow, acquaintance fast)"}
+  on_disclosure:  {disclosure_depth: "max(current, new) if reciprocated else unchanged"}
+
+consent:
+  attraction_visible_only_if: both_parties_open_tier
+  sketch_tier_forbidden: [romantic, sexual, humiliation]
+  minors: presence only

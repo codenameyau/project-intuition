@@ -129,6 +129,7 @@ control:
 
 protocol:
   questions:
+    - {id: 0, name: BASE_RATE_AND_CONSTRAINTS, layer: situation, rule: past behavior in matching context first; trait weight scales with 1 - 0.7 * situation strength; see framework/situation-schema.yaml}
     - {id: 1, name: STATE,     layer: L0}
     - {id: 2, name: DRIVE,     layer: L1}
     - {id: 3, name: CUES,      layer: L2}
@@ -138,6 +139,7 @@ protocol:
     - {id: 7, name: NARRATIVE, layer: L6}
   output_fields:
     - situation
+    - base_rate
     - stated_reason
     - reconstruction: [{driver, layer, confidence: [H, M, L], evidence: [A, B, C]}]
     - feeling_signature: {valence, arousal, approach_avoid, urge}

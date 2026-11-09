@@ -1,5 +1,7 @@
 # Plan
 
+Read `docs/00-vision.md` first: one sentence, what it does, the critical path with gates, kill criteria, and open decisions. This file holds the detailed phases per track.
+
 Product name: **Dear You**. Three tracks. Track A is the explanation framework, Track B the predictive model, Track C the product that uses both.
 
 Track A goal: a framework that takes any situation (a purchase, a snack, a crush, a grudge, a "gut feeling", an unexplained action) and returns a mechanistic, confidence-ranked, evidence-tagged, falsifiable explanation grounded in what is actually known about brains.
@@ -102,6 +104,14 @@ Done when: every numeric column has a provenance field and no tier-C prototype i
 - 70B fine-tune on all stages; calibration; conformal sets; DPO on the text head only with numeric heads frozen.
 - Model card: normalized accuracies, individual vs population numbers, stereotype audit, ToM scores, refusal policy, known limits.
 
+## B-V — Veracity model (added 2026-11-08; design in `docs/20-veracity-model.md`)
+- **B-V0** Design (done): evidence-ledger architecture, six channels with capped weak ones, interviewer, `veracity` output block, limits and refusals.
+- **B-V1** Claim extraction and record-contradiction channel trained on synthetic contradictions built from person records; evaluation on constructed sets. Done when contradiction detection precision ≥ 0.95 at the default threshold.
+- **B-V2** Verifiability counter and motive prior; conversational model on the Diplomacy corpus with UNIDECOR cross-corpus evaluation and DeFaBel-style artifact probes. Done when cross-domain AUC is reported and the linguistic channel's cap is set from it.
+- **B-V3** Calibration and interviewer; false-accusation rate at every operating point; channel ablations published. Done when the model's stated expected-performance table in docs/20 is confirmed or corrected.
+- **B-V4** Dear You integration as "consistency check" (C2 or later): ledger view, questions to resolve, reflection prompt on repeated queries, subject-visible counts. Owner go-ahead required.
+- Rules: text and records only; never a verdict; refused for employment, education, legal, immigration, insurance, security, and minors; the false-accusation rate is the first number reported.
+
 ## Track B standing rules
 - Genomics: masked outside the discovery ancestry; never inferred from ancestry, appearance, or name; no single-SNP personality claims.
 
@@ -133,6 +143,81 @@ Goal: a hosted app where a user keeps notes about people they know, gets a livin
 - Media are memories with scene descriptions.
 - No third-party sharing, no ads, no training on user data without explicit opt-in.
 - Minors cannot be subjects beyond name, relationship, and dates.
+
+---
+
+# Track D — characters, NPCs, and model export (added 2026-11-08)
+
+Goal: generate believable, consistent emotional life for fictional characters from the same model and schema, runnable inside games and on devices, and define how Track B models are exported as open and closed weights. Design: `docs/16-character-affect-engine.md`, `docs/17-model-export-and-deployment.md`. Documents only until told to build.
+
+## D0 — Design (done, 2026-11-08): two-loop architecture, character sheet = person schema, expression mapping from ontology coordinates, authoring tools, evaluation; export tiers T0–T4 with formats, licensing, and consent rules; `drives_dynamics` added to the output schema.
+## D1 — Tables and fast loop (after B2): publish T4 tables; reference fast-loop integrator with per-drive time constants; expression mapping demo in one engine. Done when two characters with different sheets visibly diverge on the same event.
+## D2 — Distillation (after B4): T1 and T2 students from the teacher; GGUF and ONNX exports; T3 affect head. Done when each student keeps ≥ 90% of teacher scores per block and passes the stereotype audit.
+## D3 — Authoring and evaluation (after D2): sheet editor, scenario tester, consistency linter; SOTOPIA-style believability and long-session consistency studies with players.
+## D4 — Release: open weights for T2–T4 and dual-licensed T1 with the use policy; synthetic training corpus released alongside; model cards with per-tier latency on reference hardware.
+
+## Track D rules
+- Only Stage E records with the explicit release opt-in, and no Dear You user data, enter open-weight tiers; UK Biobank derivatives never leave the approved environment.
+- Characters portraying real living people are out of scope.
+- No character designed to pull the player's attachment system for engagement; the manipulation rule applies to players as to subjects.
+- A model must refuse to load with a mismatched ontology or schema version.
+
+---
+
+# v0.2 redesign (2026-11-08, from `docs/18-critique-and-redesign.md`)
+
+Applied in this revision:
+- Question 0 (base rate and constraints) added to the protocol, prompt, YAML spec, and output format.
+- `framework/situation-schema.yaml`: DIAMONDS, situation strength, cues, audience, stakes, novelty, choice set, constraints, history in context, time, physical, ongoing life events.
+- Output schema: `baseline` (person history, population rate, situation strength, trait weight multiplier, predictability row) and `emotions_duration`.
+- Nudges, ego depletion, weather, and childhood self-control demoted per the evidence; face-based inference confirmed excluded on scientific grounds.
+
+Scheduled (owner's go-ahead required for anything beyond documents):
+- **A6** Falsifiable commitments: register the five predictions in docs/18 as the framework's test suite; each gets a dataset and a pass/fail criterion in `docs/08-validation.md`.
+- **B1 additions**: ontology `typical_duration_hours`, `rumination_prone`, `action_tendency`, canonical/variant flags; person schema traits as `{mean, sd}`; adaptation curves per life event. Done 2026-11-08 in person schema v0.2: `constraints_and_rhythms` block (chronotype, sleep need, schedule, medications, hormonal context, chronic pain, mental accounts, time slack, decision style, conflict style, RIASEC interests), identity name and birth fields, sexual orientation, race, ethnicity, a `physical` block of entered-only body attributes, and a single `sensitive_fields` list.
+- **B2 additions**: the layered engine (LM feature extraction and narration; calibrated probabilistic layer for numeric heads; cohort engine over SOEP, UKHLS, HILDA, GSS, Global Preferences Survey, ATUS); skill scores against population, cohort, and own-history baselines.
+- **B3 additions**: K-EmoCon three-perspective labels; LiveJournal mood corpus; Dear Abby corpus; Reddit UPDATE threads (terms check); Joel speed-dating data; the biography benchmark from public-domain diaries and letters (first half of a life predicts documented later choices).
+- **C1/C2 additions**: user calibration profile and forecast-outcome loop as the core retention mechanic; message rehearsal; Dear Me self-mode; two-sided mode as default with the invite surfaced from the first note; information-gain "what would help most to know".
+- **D1 additions**: director constraints and beat locks; situation schema for NPC scenes; training simulations (de-escalation, clinical empathy, difficult conversations) as the first market; historical characters from the biography benchmark.
+
+---
+
+# Critical path and gates (2026-11-08, from `docs/00-vision.md`)
+
+1. Engine v0 (prompted frontier model + cohort engine + calibration layer), evaluated on Twin-2K-500 against its retest ceiling. Gate: positive skill over cohort baseline, binary calibration error < 0.05.
+2. Dear You C1 on engine v0, 20 users. Gate: ≥ 50% weekly logging at week 8. Legal review for third-party data and consent flow starts here.
+3. B1 and B2 in parallel (cheap).
+4. Fine-tuned engine once C1 produces outcomes. Gate: beats engine v0 on the same holdouts.
+5. Stage E sized to fill gaps in what Dear You has collected.
+6. Track D after a distillable engine exists and a training-simulation partner is lined up.
+7. Veracity last, as "consistency check" without a probability in v1; cross-domain evaluation and false-accusation rate published first.
+8. Track E single-player world after D1 (it needs the distilled engine and the expression mapping); multiplayer only after the claimed-identity and consent-tier flows have passed legal review.
+
+Kill criteria: no skill over cohort after two schema revisions → redesign inputs; within-group variance collapse → no release; users do not log outcomes → become an engine-licensing business; veracity false-accusation rate above the strong channel alone → cap or drop weak channels.
+
+---
+
+# Track E — the world and the consent-first network (added 2026-11-08; design in `docs/21-simulation-world.md`)
+
+Goal: a 2D world where consented people from users' profiles live and interact under the engine, growing into a social network whose content is simulation rather than posts. Documents only until told to build.
+
+## E0 — Design (done): architecture on the generative-agents pattern with the project's engine inside; relationship engine (`framework/relationship-schema.yaml`); what the science allows (friendship predictable with intervals, romance exploration-only); consent tiers; claimed-identity unification instead of shadow profiles.
+## E1 — Single-player world (after D1): your self-profile plus sketch-tier characters; routines from habits and time-use base rates; conversation via T2; friendship dynamics; inspect panels. Done when two different profiles behave distinguishably and users can tell inner speech from stated speech.
+## E2 — Relationship engine and scenarios: pair state, drivers, scenario runner with intervals; calibration against logged outcomes begins.
+## E3 — Consented multiplayer: invites, claimed identity hub, consent tiers, perspective-separated profiles, visibility counts for subjects; legal review of the network model before launch.
+## E4 — Network growth: shared worlds between consenting users; director tools; T2 on device for single-player.
+
+## Track E rules
+- Avatars are chosen by the user (sketches) or the subject (claimed profiles), never derived from photos, never model inputs, with generic builds only.
+- No probabilistic matching of third parties across accounts. Identity unifies only when the person accepts invitations; sketches never cross accounts.
+- Sketch-tier characters: no romantic, sexual, or humiliation scenarios; visible only to the writer; not playable.
+- Romantic outcomes are explorations with the predictability ceiling shown; friendship and work dynamics are predictions with intervals.
+- No photo likenesses as sprites. Minors: presence by name only.
+- Subjects can see who simulated them and how often, at a category level.
+
+## Posture (owner statement, 2026-11-08)
+
+**Non-commercial.** Research, education, and fun. Every model, table, and document is released under CC BY-NC-SA-compatible research terms with the attribution file OCW requires. No pricing, no closed commercial tiers, no B2B licensing. Consequences: OpenStax and MIT OCW are usable for the project's own fine-tunes (`docs/23`, `docs/24`); Harvard free courses remain syllabus-only under edX terms; copyrighted textbooks remain design sources. Earlier mentions of pricing, commercial wedges, dual licensing, and closed API tiers in this file and the docs are superseded by this section.
 
 ## Standing rules
 
