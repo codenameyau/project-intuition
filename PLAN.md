@@ -174,7 +174,7 @@ Applied in this revision:
 
 Scheduled (owner's go-ahead required for anything beyond documents):
 - **A6** Falsifiable commitments: register the five predictions in docs/18 as the framework's test suite; each gets a dataset and a pass/fail criterion in `docs/08-validation.md`.
-- **B1 additions**: ontology `typical_duration_hours`, `rumination_prone`, `action_tendency`, canonical/variant flags; person schema traits as `{mean, sd}`, new `constraints_and_rhythms` block (chronotype, medications, pain, money and time slack, decision and conflict style, RIASEC interests, routine, network size); adaptation curves per life event.
+- **B1 additions**: ontology `typical_duration_hours`, `rumination_prone`, `action_tendency`, canonical/variant flags; person schema traits as `{mean, sd}`; adaptation curves per life event. Done 2026-11-08 in person schema v0.2: `constraints_and_rhythms` block (chronotype, sleep need, schedule, medications, hormonal context, chronic pain, mental accounts, time slack, decision style, conflict style, RIASEC interests), identity name and birth fields, sexual orientation, race, ethnicity, a `physical` block of entered-only body attributes, and a single `sensitive_fields` list.
 - **B2 additions**: the layered engine (LM feature extraction and narration; calibrated probabilistic layer for numeric heads; cohort engine over SOEP, UKHLS, HILDA, GSS, Global Preferences Survey, ATUS); skill scores against population, cohort, and own-history baselines.
 - **B3 additions**: K-EmoCon three-perspective labels; LiveJournal mood corpus; Dear Abby corpus; Reddit UPDATE threads (terms check); Joel speed-dating data; the biography benchmark from public-domain diaries and letters (first half of a life predicts documented later choices).
 - **C1/C2 additions**: user calibration profile and forecast-outcome loop as the core retention mechanic; message rehearsal; Dear Me self-mode; two-sided mode as default with the invite surfaced from the first note; information-gain "what would help most to know".
@@ -208,6 +208,7 @@ Goal: a 2D world where consented people from users' profiles live and interact u
 ## E4 — Network growth: shared worlds between consenting users; director tools; T2 on device for single-player.
 
 ## Track E rules
+- Avatars are chosen by the user (sketches) or the subject (claimed profiles), never derived from photos, never model inputs, with generic builds only.
 - No probabilistic matching of third parties across accounts. Identity unifies only when the person accepts invitations; sketches never cross accounts.
 - Sketch-tier characters: no romantic, sexual, or humiliation scenarios; visible only to the writer; not playable.
 - Romantic outcomes are explorations with the predictability ceiling shown; friendship and work dynamics are predictions with intervals.

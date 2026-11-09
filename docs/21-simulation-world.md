@@ -75,6 +75,16 @@ The consent-first way gives the same unification with the subject in control:
 | **Open** | accepted invite, opted in | all scenario types with the people they chose |
 | **Minor** | under 16 | not simulated beyond presence by name |
 
+## 6a. Avatars: chosen, not measured
+
+Every character has an avatar, the sprite the world draws. Avatars are art direction, not data about a body.
+
+- **Fields**: build (slim, average, broad, tall, short), skin tone from a palette, hair style and color, eye color, facial hair, glasses, clothing style and palette, accessories, and a signature item.
+- **Who chooses**: the user picks avatars for sketch-tier characters they wrote; an invited person picks their own, and their choice replaces the sketch avatar everywhere.
+- **Never derived from photos.** No upload becomes a sprite, and no model reads a photo to set a field. The style stays abstract pixel art, so an avatar reads as a representation rather than a likeness.
+- **Not a model input.** Avatar fields never enter the engine. Appearance-related predictions use only the person schema's entered fields, such as height and body image, and the engine never sees the sprite.
+- **No body-measurement options.** Avatar builds are a handful of generic silhouettes; there are no chest, waist, or hip controls.
+
 ## 7. Evaluation
 
 - Believability and consistency over long sessions, as in SOTOPIA and its lifelong extension.
@@ -85,7 +95,7 @@ The consent-first way gives the same unification with the subject in control:
 
 ## 8. Open questions
 
-- Art and tone: a warm, slightly abstract pixel style keeps characters clearly representations rather than likenesses; no uploaded photos as sprites.
+- Art and tone: a warm, slightly abstract pixel style keeps characters clearly representations rather than likenesses; no uploaded photos as sprites (section 6a).
 - Whether sketch-tier characters should speak at all, or only act; speaking in a real person's voice without their consent is the hardest case. Current answer: they speak, in the engine's rendering of their register, with an "unverified sketch" marker, and only to the user who wrote the notes.
 - Economics: slow-loop calls per event with fifty agents; T2 on device for single-player worlds.
 - Whether the world is a mode inside Dear You or a separate app sharing the engine and accounts. Current answer: separate client, shared backend.

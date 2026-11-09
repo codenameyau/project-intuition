@@ -6,13 +6,49 @@
 # specific person (their own words, history, and current goals) beats demographic categories. Demographics
 # set weak priors; the knowledge, goals, and history blocks do most of the predictive work.
 
-version: 0.1.0
+version: 0.2.0
+
+sensitive_fields:
+  description: Special-category and intimate attributes. Entered by the user or by the subject, never inferred by any model from text, photos, video, names, or other fields. Stored encrypted. Excluded from model inputs unless the user turns inference-input on for that person; even then they are inputs only, never outputs. Shown under a collapsed, locked section in the product.
+  paths:
+    - identity.sexual_orientation
+    - identity.race
+    - identity.ethnicity
+    - identity.religion
+    - identity.religiosity
+    - identity.political_orientation
+    - history.trauma
+    - history.mental_health
+    - social_context.chronic_illness_burden
+    - constraints_and_rhythms.medications
+    - constraints_and_rhythms.hormonal_context
+    - physical.weight_band
+    - physical.disability_and_mobility
+    - physical.sensory_impairments
+    - physical.visible_differences
+    - biology
+  rule: any extraction or prediction job must drop these paths from its proposal set
 
 blocks:
 
   identity:
     description: Demographic and social-position facts. Weak-to-moderate predictors on their own; strong when they change what the person knows or has experienced.
     fields:
+      full_name:
+        type: string
+        evidence: none
+        note: display and matching to the user's own records only; never used as a predictor and never used to infer ancestry, gender, or any other field
+      preferred_name:
+        type: string
+        evidence: none
+      pronouns:
+        type: string
+        evidence: none
+        note: self-described or as the person uses them; never inferred from the name
+      date_of_birth:
+        type: date
+        evidence: moderate
+        note: age is derived from this when present; birthdays feed reminders in the product
       age:            {type: int, range: [0, 110], evidence: moderate, note: positivity effect with age (Reed, Chan & Mikels 2014, 100 studies); shorter time horizon raises weight on present affect; missing -> population prior}
       sex:            {type: enum, values: [female, male, intersex, unknown], evidence: weak, note: meta-analytic d for emotion experience mostly < 0.3 (Else-Quest 2012; Chaplin & Aldao 2013); do not infer from name}
       gender:         {type: string, evidence: weak, note: social role effects on display rules; self-described}
@@ -25,6 +61,25 @@ blocks:
       parental_status:     {type: object, fields: {has_children: bool, ages: "list[int]"}, evidence: moderate, note: activates CARE drive strongly; overspending on dependents}
       residence:      {type: enum, values: [urban, suburban, rural], evidence: weak}
       political_orientation: {type: float, range: [-1, 1], evidence: moderate, note: correlates with moral foundation weights and disgust sensitivity}
+
+      sexual_orientation:
+        type: string
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: weak
+        note: self-described text; no enum, so the field cannot become a classification target; never inferred
+      race:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: weak
+        note: self-identified, multiple allowed; relevant to experiences of discrimination (social_context.chronic_strains) and homophily, not as a direct predictor of feeling; never inferred
+      ethnicity:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: moderate
+        note: self-identified heritage and community; overlaps culture, which carries most of the predictive weight; never inferred
 
   personality:
     description: Stable trait dispositions. Neuroticism and extraversion are the best-replicated predictors of affect.
@@ -136,6 +191,125 @@ blocks:
       neutralization_scripts: {type: "list[string]", evidence: moderate, note: 'Sykes and Matza; everyone does it, no one was hurt; predict rationalized violations'}
       turning_points:        {type: "list[object]", item: {event: string, age: int, direction: "enum[toward_conformity, away]"}, evidence: moderate, note: Sampson and Laub life-course}
 
+  constraints_and_rhythms:
+    description: Daily rhythm, physiology the person manages, money and time, and how they decide and handle conflict. Social network size lives in social_context.social_support; acute pain lives in state.illness_pain.
+    fields:
+      chronotype:
+        type: enum
+        values: [morning, intermediate, evening, unknown]
+        instrument: MEQ or MCTQ
+        evidence: moderate
+        note: mood and performance peak at the person's preferred time (synchrony effect); interacts with situation.time
+      sleep_need_hours:
+        type: float
+        evidence: moderate
+        note: personal baseline that state.sleep_hours_last_night is compared against
+      usual_schedule:
+        type: "list[object]"
+        item: {block: string, start: string, end: string, activity: string}
+        evidence: strong
+        note: routine; the base rate for what they are doing at a given hour (Question 0)
+      medications:
+        type: "list[object]"
+        item: {name_or_class: string, pattern: string, affect_relevant: bool}
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: strong
+        note: SSRIs, stimulants, beta blockers, corticosteroids, hormonal contraception and others shift affect, arousal, appetite, or sleep; never inferred
+      hormonal_context:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [subject]
+        evidence: moderate
+        note: optional, subject-entered only (cycle tracking, pregnancy, menopause, hormone therapy); feeds L0 when present
+      chronic_pain:
+        type: float
+        range: [0, 1]
+        evidence: strong
+        note: standing level; distinct from acute state.illness_pain
+      mental_accounts:
+        type: "list[object]"
+        item: {category: string, monthly_budget: float, spent_fraction: float}
+        evidence: strong
+        note: people budget by labeled category (Thaler mental accounting); a purchase is judged against its category, not total wealth; feeds situation.constraints.money_slack per category
+      time_slack_typical:
+        type: float
+        range: [0, 1]
+        evidence: moderate
+      decision_style:
+        type: object
+        fields: {maximizing: float, intuitive: float, rational: float, dependent: float, avoidant: float, spontaneous: float}
+        range: [0, 1]
+        instrument: General Decision-Making Style (Scott and Bruce) plus a maximization scale
+        evidence: moderate
+        note: maximizers search longer and regret more; avoidant and dependent styles predict delay and deference
+      conflict_style:
+        type: enum
+        values: [competing, collaborating, compromising, avoiding, accommodating, unknown]
+        instrument: Thomas-Kilmann
+        evidence: moderate
+        note: default move under disagreement; feeds relationship-schema conflict updates and Track E dynamics
+      vocational_interests:
+        type: object
+        fields: {realistic: float, investigative: float, artistic: float, social: float, enterprising: float, conventional: float}
+        range: [0, 1]
+        instrument: RIASEC (Holland)
+        evidence: strong
+        note: interest congruence correlates about 0.32 with performance and predicts persistence (Nye et al. 2017); predicts which activities energize versus drain
+
+  physical:
+    description: Body attributes with evidence for feeling or behavior, entered by the user or the subject. Never inferred from photos, video, names, or other fields; the product does no face or body analysis of media. Fields that are only about how a body looks, with no predictive role, are excluded (see excluded_by_policy). For how a character looks in the 2D world, see the avatar spec in docs/21, which is chosen, not measured, and is not a model input.
+    fields:
+      height_cm:
+        type: float
+        entered_by: [user, subject]
+        evidence: moderate
+        note: taller people are on average judged more competent and leader-like and earn somewhat more (verify effect sizes before use); matters for status computations in L3
+      weight_band:
+        type: enum
+        values: [underweight, typical, higher, much_higher, unknown]
+        sensitive: true
+        entered_by: [subject]
+        evidence: moderate
+        note: subject-entered only; relevant through weight stigma (stress, avoidance of situations) and health, not appearance
+      body_image:
+        type: object
+        fields: {appearance_satisfaction: float, appearance_anxiety: float}
+        range: [0, 1]
+        entered_by: [subject]
+        evidence: strong
+        note: self-reported; predicts shame, social anxiety, and avoidance of being seen (pool, photos, dating) better than any measurement of the body itself
+      disability_and_mobility:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: strong
+        note: shapes capability and opportunity in situation.constraints and which places and routines are accessible
+      sensory_impairments:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [user, subject]
+        evidence: strong
+        note: hearing and vision differences change social interaction (noisy settings, faces at distance) and fatigue
+      visible_differences:
+        type: "list[string]"
+        sensitive: true
+        entered_by: [subject]
+        evidence: moderate
+        note: things the person is self-conscious about, in their own words (a stutter, a scar, a skin condition); predicts self-conscious emotion in exposed situations
+      physical_fitness:
+        type: float
+        range: [0, 1]
+        entered_by: [user, subject]
+        evidence: moderate
+        note: capability for physical activities; exercise frequency lives in social_context.health_lifestyle
+    excluded_by_policy:
+      - any inference of body, face, or skin attributes from photos or video
+      - skin color or complexion as a person attribute (a race proxy; race and ethnicity are self-identified fields)
+      - breast, chest, waist, hip, or other body measurements, including cup size
+      - attractiveness ratings of the person
+      - body shape categories
+
   self_report_style:
     description: How this person narrates. Lets the model predict stated reasons separately from mechanisms.
     fields:
@@ -180,6 +354,9 @@ missing_value_policy:
   goals: infer from situation; flag as inferred
   relations: infer closeness from described interaction; flag as inferred
   biology: absent; population prior unchanged; never inferred
+  sensitive_fields: absent unless entered; never imputed, never predicted
+  physical: absent unless entered; never inferred from media; height absent means no status adjustment
+  constraints_and_rhythms: chronotype intermediate; schedule from time-use base rates for age, occupation, and day type; medications and hormonal context absent unless entered; decision and conflict styles at population means with wide uncertainty
   aptitudes: predicted only above 30 percent coverage; bands with wide uncertainty; numeric range hidden by default
   social_context: population priors by socioeconomic position; strains and norms inferred from notes are proposed, never assumed
 

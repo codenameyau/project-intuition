@@ -46,7 +46,7 @@ framework/
   intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
   explain-protocol.md             prompt template to run the protocol on any situation
   emotion-ontology.csv            211 emotional states × VAD × appraisals × drives × taxonomies
-  person-schema.yaml              the conditioning input: 11 blocks, 88 fields, evidence-tagged (incl. aptitudes, biology)
+  person-schema.yaml              the conditioning input: 14 blocks, 125 fields, evidence-tagged; sensitive fields listed and never inferred
   situation-schema.yaml           the other half of every record: DIAMONDS, situation strength, cues, audience, stakes, constraints, base rate
   relationship-schema.yaml        pair state and evidence-tiered drivers for friendship, work, and (capped) romance
   output-schema.json              the prediction target: emotions, VAD, drives, appraisals, cognition, action, answer
