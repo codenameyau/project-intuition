@@ -39,6 +39,7 @@ docs/
   17-model-export-and-deployment.md  export tiers (70B teacher to 1 ms affect head), GGUF/ONNX/WASM, open vs closed weights, consent
   18-critique-and-redesign.md     five rounds of critique; the behavioral-prediction-engine reframing; predictability spectrum; new ideas
   19-prediction-literature.md     findings with effect sizes that improve prediction, and the datasets they point to
+  20-veracity-model.md            truth-versus-lie estimation as a Bayesian evidence ledger plus interviewer; what the science allows
 framework/
   intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
   explain-protocol.md             prompt template to run the protocol on any situation
@@ -81,6 +82,10 @@ situation + person profile + question
 ```
 
 Design is in `docs/10-ml-training-plan.md`; the emotion target in `docs/08-emotion-ontology.md`; the conditioning input in `docs/09-person-model.md`. The honest limits (individual-level prediction is hard; demographic personas caricature) are built into the output as `individual_vs_population` and `stereotype_risk` fields.
+
+## Veracity (Track B-V)
+
+Given a person's record and a statement, estimate the probability it is deceptive. The design follows the evidence: cues to lying are weak or absent, humans reach 54%, and text classifiers fall to chance across domains, so the model is a Bayesian ledger over contradiction with the record (strong), verifiable-detail density (medium), motive and stakes, and the person's base rate, plus an interviewer that proposes the questions most likely to resolve the uncertainty. Never a verdict; text and records only; refused for employment, education, legal, immigration, insurance, and security uses. See `docs/20`.
 
 ## Characters and export (Track D)
 

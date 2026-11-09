@@ -102,6 +102,14 @@ Done when: every numeric column has a provenance field and no tier-C prototype i
 - 70B fine-tune on all stages; calibration; conformal sets; DPO on the text head only with numeric heads frozen.
 - Model card: normalized accuracies, individual vs population numbers, stereotype audit, ToM scores, refusal policy, known limits.
 
+## B-V — Veracity model (added 2026-11-08; design in `docs/20-veracity-model.md`)
+- **B-V0** Design (done): evidence-ledger architecture, six channels with capped weak ones, interviewer, `veracity` output block, limits and refusals.
+- **B-V1** Claim extraction and record-contradiction channel trained on synthetic contradictions built from person records; evaluation on constructed sets. Done when contradiction detection precision ≥ 0.95 at the default threshold.
+- **B-V2** Verifiability counter and motive prior; conversational model on the Diplomacy corpus with UNIDECOR cross-corpus evaluation and DeFaBel-style artifact probes. Done when cross-domain AUC is reported and the linguistic channel's cap is set from it.
+- **B-V3** Calibration and interviewer; false-accusation rate at every operating point; channel ablations published. Done when the model's stated expected-performance table in docs/20 is confirmed or corrected.
+- **B-V4** Dear You integration as "consistency check" (C2 or later): ledger view, questions to resolve, reflection prompt on repeated queries, subject-visible counts. Owner go-ahead required.
+- Rules: text and records only; never a verdict; refused for employment, education, legal, immigration, insurance, security, and minors; the false-accusation rate is the first number reported.
+
 ## Track B standing rules
 - Genomics: masked outside the discovery ancestry; never inferred from ancestry, appearance, or name; no single-SNP personality claims.
 

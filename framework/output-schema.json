@@ -508,7 +508,8 @@
           "stereotype_risk",
           "low_profile_coverage",
           "contested_evidence_used",
-          "manipulation_request_refused"
+          "manipulation_request_refused",
+          "veracity_query_pattern"
         ]
       }
     },
@@ -605,6 +606,158 @@
           }
         }
       }
+    },
+    "veracity": {
+      "description": "Optional. Populated when the question is about truthfulness of a statement. See docs/20-veracity-model.md. Never a verdict; always a ledger with a baseline.",
+      "type": "object",
+      "properties": {
+        "p_deceptive": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "interval": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "prior_used": {
+          "type": "object",
+          "properties": {
+            "population": {
+              "type": "number"
+            },
+            "person_adjusted": {
+              "type": "number"
+            },
+            "basis": {
+              "type": "string"
+            }
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "claim": {
+                "type": "string"
+              },
+              "checkability": {
+                "type": "string",
+                "enum": [
+                  "checkable_against_record",
+                  "checkable_by_user",
+                  "uncheckable"
+                ]
+              },
+              "contradiction": {
+                "type": "object",
+                "properties": {
+                  "found": {
+                    "type": "boolean"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "source_reliability": {
+                    "type": "number"
+                  },
+                  "honest_error_plausible": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "channel": {
+                "type": "string",
+                "enum": [
+                  "record_contradiction",
+                  "verifiability",
+                  "motive_stakes",
+                  "person_base_rate",
+                  "dyadic_deviation",
+                  "linguistic"
+                ]
+              },
+              "log_likelihood_ratio": {
+                "type": "number"
+              },
+              "uncertainty": {
+                "type": "number"
+              },
+              "capped": {
+                "type": "boolean"
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "channel",
+              "log_likelihood_ratio"
+            ]
+          }
+        },
+        "questions_to_resolve": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "technique": {
+                "type": "string",
+                "enum": [
+                  "unanticipated_detail",
+                  "verifiable_specific",
+                  "strategic_use_of_evidence",
+                  "details_may_be_checked"
+                ]
+              },
+              "expected_information_gain": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "skill_over_baseline": {
+          "type": "object",
+          "properties": {
+            "human_54pct": {
+              "type": "number"
+            },
+            "base_rate_only": {
+              "type": "number"
+            }
+          }
+        },
+        "confidence_statement": {
+          "type": "string"
+        },
+        "refused_reason": {
+          "type": "string",
+          "description": "set when the context is employment, education, legal, immigration, insurance, security, or the subject is a minor"
+        }
+      },
+      "required": [
+        "p_deceptive",
+        "interval",
+        "prior_used",
+        "ledger",
+        "confidence_statement"
+      ]
     }
   }
 }
