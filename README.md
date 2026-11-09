@@ -56,6 +56,8 @@ examples/
 product/
   schema.sql                      Postgres data model sketch for Dear You
   api.md                          REST surface for Dear You
+data/
+  openstax-manifest.yaml          OpenStax books: repositories, collection files, module counts, licenses, chapter-to-schema mappings
 ```
 
 ## The product (Track C): Dear You

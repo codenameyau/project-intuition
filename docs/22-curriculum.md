@@ -8,7 +8,7 @@ The owner's starting list of eight textbooks, extended to a full curriculum, wit
 
 1. **Design source.** Textbooks tell us which constructs exist, how they are measured, and what effect sizes to expect. That knowledge is already in this repo as schema fields, drivers, and evidence tiers, and in the heads of the frontier models used to generate synthetic data. No text is copied; concepts are not copyrightable.
 2. **Evaluation ground truth.** A "textbook exam" test set: constructs, mechanisms, and classic findings turned into questions and vignettes the engine must answer correctly before it is trusted to appraise a real situation. Questions are written fresh from the concept inventory, not copied.
-3. **Open-licensed text for retrieval or fine-tuning.** OpenStax Psychology 2e and Introduction to Sociology 3e are CC BY 4.0 and may be used commercially with attribution. Noba Project and Stangor's Principles of Social Psychology are CC BY-NC-SA, so they are usable for research and evaluation but not inside a commercial model. Open-access primary papers (PMC, arXiv, PsyArXiv) are the deepest free source.
+3. **Open-licensed text for retrieval or fine-tuning.** OpenStax textbooks are **CC BY-NC-SA 4.0** (verified 2026-11-08 against the prefaces and OpenStax's licensing page; see `docs/23-openstax-corpus.md`), as are Noba Project and Stangor's Principles of Social Psychology. All are usable for research, evaluation, and non-commercial research models, but not inside a commercial model or product without permission. OpenStax offers a Content Reuse Request Form for commercial permission. Open-access primary papers (PMC, arXiv, PsyArXiv) are the deepest free source without the NC restriction.
 4. **Licensed retrieval.** For the eight core textbooks, a retrieval license from the publisher (McGraw Hill, Pearson, Routledge, Cengage, Wiley, Elsevier) lets the engine quote and cite at inference time without training on the text. This is a Phase B1 business task; until it closes, the books are read by humans and encoded as schema.
 
 ## 1. The core eight
@@ -103,9 +103,9 @@ The owner's starting list of eight textbooks, extended to a full curriculum, wit
 ### Clinical and health
 - Barlow (ed.), *Clinical Handbook of Psychological Disorders*; Taylor, *Health Psychology*; the DSM-5-TR as a vocabulary, not a target.
 
-### Open-licensed (CC BY, usable commercially with attribution)
-- OpenStax *Psychology 2e*; OpenStax *Introduction to Sociology 3e*; OpenStax *Biology 2e*; OpenStax *Anatomy and Physiology*.
-- CC BY-NC-SA, research and evaluation only: Noba Project modules; Stangor, *Principles of Social Psychology*.
+### Open-licensed (CC BY-NC-SA 4.0: research, evaluation, and non-commercial models; commercial use needs permission)
+- OpenStax *Psychology 2e*, *Introduction to Sociology 3e*, *Introduction to Behavioral Neuroscience* (2024), *Lifespan Development* (2024), *Introduction to Anthropology*, *Organizational Behavior*, *Principles of Economics 3e*, *Biology 2e*, *Anatomy and Physiology 2e*, and the nursing titles. Full manifest with repositories and chapter mappings: `data/openstax-manifest.yaml`.
+- Noba Project modules; Stangor, *Principles of Social Psychology*.
 
 ## 3. Concept inventory to schema: what this commit adds
 

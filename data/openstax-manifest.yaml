@@ -1,0 +1,251 @@
+# OpenStax corpus manifest for the behavioral prediction engine.
+# Catalog verified 2026-11-08 against openstax.org (CMS books API, book prefaces) and github.com/openstax (osbooks repositories).
+# LICENSE FINDING: every OpenStax textbook preface checked states CC BY-NC-SA 4.0, and OpenStax's licensing help page says
+# its textbooks are CC BY-NC-SA. The repository LICENSE file for osbooks-psychology is CC BY-NC-SA 4.0. A few repos carry a
+# CC-BY-4.0 SPDX tag (older or translated titles); the preface governs. NonCommercial: no use inside a commercial model or
+# product without OpenStax permission (reuse request form). ShareAlike: derivatives, including any released fine-tune that
+# contains the text, must be CC BY-NC-SA. Attribution: credit OpenStax, name the book, link to the free version.
+#
+# "use" values:
+#   eval            textbook-exam items and retrieval for research evaluation (allowed)
+#   research_ft     fine-tuning for non-commercial research models released CC BY-NC-SA (allowed)
+#   commercial      inside Dear You or any paid product or closed model: NOT allowed without permission
+#   permission_req  action: submit OpenStax Content Reuse Request before any commercial use
+
+version: 0.1.0
+source_format: CNXML modules in osbooks repositories; one collections/<slug>.collection.xml per book lists chapters and module ids; module content in modules/<id>/index.cnxml
+conversion: cnxml -> markdown via open converters (e.g. cnxml2md); keep module id, chapter, book, license, and attribution in every chunk
+ingestion_status: not started; documents only until the owner says to build
+
+books:
+
+  - title: Psychology 2e
+    slug: psychology-2e
+    repo: openstax/osbooks-psychology
+    collection: https://raw.githubusercontent.com/openstax/osbooks-psychology/main/collections/psychology-2e.collection.xml
+    web: https://openstax.org/books/psychology-2e
+    license: CC BY-NC-SA 4.0 (preface confirmed; repo LICENSE confirmed)
+    status: live
+    modules: 105
+    priority: 1
+    use: [eval, research_ft, permission_req]
+    chapters:
+      - {n: 3, title: Biopsychology, maps_to: [L0, L1, docs/02], modules: 6}
+      - {n: 4, title: States of Consciousness, maps_to: [state.sleep_hours, biological rhythms], modules: 7}
+      - {n: 6, title: Learning, maps_to: [L2 cue_history, habits, PIT], modules: 5}
+      - {n: 7, title: Thinking and Intelligence, maps_to: [L4 heuristics, aptitudes], modules: 7}
+      - {n: 8, title: Memory, maps_to: [history.formative_events, memory in agents], modules: 5}
+      - {n: 9, title: Lifespan Development, maps_to: [identity.age, positivity effect], modules: 5}
+      - {n: 10, title: Emotion and Motivation, maps_to: [L1, L5, ontology families], modules: 5}
+      - {n: 11, title: Personality, maps_to: [personality block], modules: 10}
+      - {n: 12, title: Social Psychology, maps_to: [L3, L6, playbooks C and E, relationship schema], modules: 8}
+      - {n: 14, title: Stress Lifestyle and Health, maps_to: [social_context.chronic_strains, health_lifestyle], modules: 6}
+      - {n: 15, title: Psychological Disorders, maps_to: [history.mental_health vocabulary], modules: 12}
+    other_chapters: [1 Introduction, 2 Research, 5 Sensation and Perception, 13 Industrial-Organizational, 16 Therapy]
+
+  - title: Introduction to Sociology 3e
+    slug: introduction-sociology-3e
+    repo: openstax/osbooks-introduction-sociology
+    collection: https://raw.githubusercontent.com/openstax/osbooks-introduction-sociology/main/collections/introduction-sociology-3e.collection.xml
+    web: https://openstax.org/books/introduction-sociology-3e
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    modules: 96
+    priority: 1
+    use: [eval, research_ft, permission_req]
+    chapters:
+      - {n: 3, title: Culture, maps_to: [identity.culture, L5 labeling layer, norm_compat], modules: 5}
+      - {n: 4, title: Society and Social Interaction, maps_to: [Goffman front stage, action.expressed_vs_felt], modules: 4}
+      - {n: 5, title: Socialization, maps_to: [history.upbringing, peer_norms], modules: 5}
+      - {n: 6, title: Groups and Organization, maps_to: [situation.audience, Track E group dynamics], modules: 4}
+      - {n: 7, title: Deviance Crime and Social Control, maps_to: [social_context strain labeling, opportunity_structure], modules: 4}
+      - {n: 9, title: Social Stratification in the United States, maps_to: [identity.socioeconomic, status drivers], modules: 5}
+      - {n: 11, title: Race and Ethnicity, maps_to: [sensitive fields policy, homophily], modules: 6}
+      - {n: 12, title: Gender Sex and Sexuality, maps_to: [sensitive fields policy, sex effect sizes], modules: 4}
+      - {n: 13, title: Aging and the Elderly, maps_to: [identity.age, socioemotional selectivity], modules: 5}
+      - {n: 14, title: Relationships Marriage and Family, maps_to: [relationship schema, relations.actors], modules: 4}
+      - {n: 15, title: Religion, maps_to: [identity.religion, religiosity, moral foundations], modules: 4}
+      - {n: 18, title: Work and the Economy, maps_to: [aptitudes.career_stage, work dynamics], modules: 4}
+      - {n: 19, title: Health and Medicine, maps_to: [social_context sick_role, health_lifestyle], modules: 6}
+    other_chapters: [1, 2, 8 Media and Technology, 10 Global Inequality, 16 Education, 17 Government and Politics, 20 Population, 21 Social Movements]
+
+  - title: Introduction to Behavioral Neuroscience
+    slug: introduction-behavioral-neuroscience
+    repo: openstax/osbooks-neuroscience
+    collection: https://raw.githubusercontent.com/openstax/osbooks-neuroscience/main/collections/introduction-behavioral-neuroscience.collection.xml
+    web: https://openstax.org/books/introduction-behavioral-neuroscience
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    published: 2024-11-13
+    modules: 106
+    priority: 1
+    use: [eval, research_ft, permission_req]
+    chapters:
+      - {n: 1, title: Structure and Function of the Nervous System, maps_to: [docs/02], modules: 6}
+      - {n: 2, title: Neurophysiology, maps_to: [docs/02, drives_dynamics time constants], modules: 6}
+      - {n: 3, title: Basic Neurochemistry, maps_to: [L2 dopamine, opioid liking, docs/13 neuromodulators], modules: 4}
+      - {n: 4, title: Comparative Neuroscience, maps_to: [docs/12 comparative connectomes], modules: 7}
+      - {n: 5, title: Neurodevelopment, maps_to: [docs/12 lesson 3 development], modules: 5}
+      - {n: 8, title: The Chemical Senses, maps_to: [playbook B food, taste genetics], modules: 6}
+      - {n: 9, title: Touch and Pain, maps_to: [L0 pain_distress], modules: 5}
+      - {n: 11, title: Sexual Behavior and Development, maps_to: [L1 LUST, docs/12 Esr1 and P1 lessons], modules: 5}
+      - {n: 12, title: Stress, maps_to: [L0 stress_load, CTRA, social_context strains], modules: 5}
+      - {n: 13, title: Emotion and Mood, maps_to: [L1, L5, ontology], modules: 5}
+      - {n: 14, title: Psychopharmacology, maps_to: [state.caffeine_alcohol_other, medications], modules: 5}
+      - {n: 15, title: Biological Rhythms and Sleep, maps_to: [state.sleep_hours, situation.time, chronotype], modules: 6}
+      - {n: 16, title: Homeostasis, maps_to: [L0 body budget, AgRP hunger], modules: 6}
+      - {n: 17, title: Neuroimmunology, maps_to: [docs/13 CTRA, sickness behavior], modules: 5}
+      - {n: 18, title: Learning and Memory, maps_to: [L2 learning, cue_history], modules: 5}
+      - {n: 19, title: Attention and Executive Function, maps_to: [L4, deliberation_probability, Type 2 control], modules: 7}
+    other_chapters: [6 Vision, 7 Hearing and Balance, 10 Motor Control]
+
+  - title: Lifespan Development
+    slug: lifespan-development
+    repo: openstax/osbooks-lifespan-development
+    collection: https://raw.githubusercontent.com/openstax/osbooks-lifespan-development/main/collections/lifespan-development.collection.xml
+    web: https://openstax.org/books/lifespan-development
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    published: 2024-10-16
+    modules: 100
+    priority: 2
+    use: [eval, research_ft, permission_req]
+    chapters_note: 17 chapters; paired physical-cognitive and social-emotional chapters for each life stage from infancy to late adulthood, plus death and grieving
+    maps_to: [identity.age priors by stage, history.upbringing, attachment_style origins, Track E character ages, adaptation to bereavement]
+
+  - title: Introduction to Anthropology
+    slug: introduction-anthropology
+    repo: openstax/osbooks-introduction-anthropology
+    collection: https://raw.githubusercontent.com/openstax/osbooks-introduction-anthropology/main/collections/introduction-anthropology.collection.xml
+    web: https://openstax.org/books/introduction-anthropology
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    modules: 121
+    priority: 2
+    use: [eval, research_ft, permission_req]
+    chapters:
+      - {n: 7, title: Economic Anthropology, maps_to: [Fiske relational models, gift and exchange norms in relations], modules: 8}
+      - {n: 8, title: Political Anthropology, maps_to: [status, authority ranking], modules: 6}
+      - {n: 9, title: Social Inequalities, maps_to: [identity.socioeconomic cross-culturally], modules: 5}
+      - {n: 11, title: Forming Family through Kinship, maps_to: [relations.actors roles, CARE drive], modules: 5}
+      - {n: 13, title: Religion and Culture, maps_to: [religiosity, ideal affect by tradition], modules: 6}
+      - {n: 14, title: Anthropology of Food, maps_to: [playbook B, cultural food norms, disgust domains], modules: 5}
+      - {n: 17, title: Medical Anthropology, maps_to: [sick_role across cultures], modules: 5}
+    other_chapters: [1-6 foundations and human evolution, 10 Migration, 12 Gender and Sexuality, 15 Media, 16 Art Music Sport, 18 Human-Animal, 19 Indigenous, 20 Anthropology on the Ground]
+
+  - title: Organizational Behavior
+    slug: organizational-behavior
+    repo: openstax/osbooks-principles-of-management-bundle
+    collection: https://raw.githubusercontent.com/openstax/osbooks-principles-of-management-bundle/main/collections/organizational-behavior.collection.xml
+    web: https://openstax.org/books/organizational-behavior
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    modules: 121
+    priority: 2
+    use: [eval, research_ft, permission_req]
+    chapters:
+      - {n: 2, title: Individual and Cultural Differences, maps_to: [personality block, culture], modules: 8}
+      - {n: 3, title: Perception and Job Attitudes, maps_to: [L4, satisfaction drivers], modules: 6}
+      - {n: 4, title: Learning and Reinforcement, maps_to: [L2 habit and reward], modules: 5}
+      - {n: 7, title: Work Motivation for Performance, maps_to: [goals block, SEEKING], modules: 5}
+      - {n: 9, title: Group and Intergroup Relations, maps_to: [Track E group dynamics, situation.audience], modules: 5}
+      - {n: 12, title: Leadership, maps_to: [status_gap, work dynamics], modules: 10}
+      - {n: 13, title: Organizational Power and Politics, maps_to: [status, RAGE indignation at unfairness], modules: 5}
+      - {n: 14, title: Conflict and Negotiations, maps_to: [conflict style, relationship conflict state], modules: 5}
+      - {n: 18, title: Stress and Well Being, maps_to: [social_context.chronic_strains], modules: 5}
+
+  - title: Principles of Economics 3e
+    slug: principles-economics-3e
+    repo: openstax/osbooks-principles-economics-bundle
+    collection: https://raw.githubusercontent.com/openstax/osbooks-principles-economics-bundle/main/collections/principles-economics-3e.collection.xml
+    web: https://openstax.org/books/principles-economics-3e
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    priority: 3
+    use: [eval, research_ft, permission_req]
+    maps_to: [constraints.money_slack, time_preference, risk_tolerance baseline economics; behavioral economics chapter if present]
+
+  - title: Principles of Marketing
+    slug: principles-marketing
+    repo: openstax/osbooks-principles-marketing
+    collection: https://raw.githubusercontent.com/openstax/osbooks-principles-marketing/main/collections/principles-marketing.collection.xml
+    web: https://openstax.org/books/principles-marketing
+    license: CC BY-NC-SA 4.0 (assumed from OpenStax policy; preface not checked)
+    status: live
+    modules: 132
+    priority: 3
+    use: [eval]
+    maps_to: [playbook A buying as practitioners model it; consumer behavior chapter; use as adversarial source for what marketers assume]
+
+  - title: Psychiatric-Mental Health Nursing
+    slug: psychiatric-mental-health
+    repo: unknown (check osbooks-nursing-external-bundle or a dedicated repo)
+    web: https://openstax.org/books/psychiatric-mental-health
+    license: CC BY-NC-SA 4.0 (preface confirmed)
+    status: live
+    published: 2024-06-12
+    priority: 3
+    use: [eval]
+    maps_to: [history.mental_health vocabulary; clinical_risk flag semantics; therapeutic communication as a model for the interviewer's non-accusatory questions]
+
+  - title: Population Health for Nurses
+    slug: population-health
+    repo: openstax/osbooks-nursing-external-bundle
+    collection: https://raw.githubusercontent.com/openstax/osbooks-nursing-external-bundle/main/collections/population-health.collection.xml
+    web: https://openstax.org/books/population-health
+    license: CC BY-NC-SA 4.0 (assumed from OpenStax policy; preface not checked)
+    status: live
+    modules: 185
+    priority: 3
+    use: [eval]
+    maps_to: [social determinants of health, social_context block, culturally congruent care for the culture field]
+
+  - title: Nutrition for Nurses
+    slug: nutrition
+    repo: openstax/osbooks-nursing-external-bundle
+    collection: https://raw.githubusercontent.com/openstax/osbooks-nursing-external-bundle/main/collections/nutrition.collection.xml
+    license: CC BY-NC-SA 4.0 (assumed)
+    status: live
+    priority: 3
+    use: [eval]
+    maps_to: [playbook B food, L0 energy state]
+
+  - title: Biology 2e
+    slug: biology-2e
+    repo: openstax/osbooks-biology-bundle
+    collection: https://raw.githubusercontent.com/openstax/osbooks-biology-bundle/main/collections/biology-2e.collection.xml
+    license: CC BY-NC-SA 4.0 (assumed from OpenStax policy; preface not checked)
+    status: live
+    priority: 3
+    use: [eval]
+    maps_to: [genetics and gene expression chapters for docs/13; nervous and endocrine system chapters for L0 and L1; animal behavior chapter for docs/12]
+
+  - title: Anatomy and Physiology 2e
+    slug: anatomy-and-physiology-2e
+    repo: openstax/osbooks-anatomy-physiology
+    collection: https://raw.githubusercontent.com/openstax/osbooks-anatomy-physiology/main/collections/anatomy-and-physiology-2e.collection.xml
+    license: CC BY-NC-SA 4.0 (assumed from OpenStax policy; preface not checked)
+    status: live
+    priority: 3
+    use: [eval]
+    maps_to: [autonomic nervous system, endocrine system, digestive system for L0 state fields]
+
+  - title: Introduction to Political Science
+    slug: introduction-political-science
+    repo: openstax/osbooks-introduction-political-science
+    collection: https://raw.githubusercontent.com/openstax/osbooks-introduction-political-science/main/collections/introduction-political-science.collection.xml
+    license: CC BY-NC-SA 4.0 (assumed)
+    status: live
+    priority: 4
+    use: [eval]
+    maps_to: [political_orientation field context; ideology and moral foundations]
+
+not_relevant: [math and statistics bundles, physics, chemistry, astronomy, accounting, finance, business law, computer science, writing guide, US and world history, college success, translated editions (psychologia, makroekonomia, mikroekonomia, fisica, fizyka, quimica, precalculo, calculo, introduccion-estadistica)]
+
+ingestion_plan:
+  - step: clone the osbooks repositories listed (git, pinned commit per book for provenance)
+  - step: parse collection.xml for chapter and module order; convert each module cnxml to markdown; strip exercises and review questions unless building the exam
+  - step: store chunks with fields [book, chapter, module_id, license, attribution_url, commit]
+  - step: build the textbook exam (docs/22 section 4) from chapter learning objectives and key terms, writing new items rather than copying
+  - step: build a research retrieval index for engine evaluation and for the appraisal protocol's citations
+  - gate: no commercial use (Dear You, closed models, paid products) until OpenStax grants permission via the Content Reuse Request Form; any released fine-tune containing the text is CC BY-NC-SA
