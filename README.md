@@ -20,6 +20,7 @@ The brain's first job is regulating the body; its ancient drive systems bias wha
 README.md                         this file
 PLAN.md                           phased roadmap and standing rules
 docs/
+  00-vision.md                    one sentence, what it does, critical path, gates, kill criteria, open decisions
   01-thesis.md                    the claim in one page
   02-biological-substrate.md      what is mapped vs. inferred: connectomes, neurons, circuits
   03-framework.md                 the seven-layer Intuition Stack and the seven-question protocol

@@ -1,5 +1,7 @@
 # Plan
 
+Read `docs/00-vision.md` first: one sentence, what it does, the critical path with gates, kill criteria, and open decisions. This file holds the detailed phases per track.
+
 Product name: **Dear You**. Three tracks. Track A is the explanation framework, Track B the predictive model, Track C the product that uses both.
 
 Track A goal: a framework that takes any situation (a purchase, a snack, a crush, a grudge, a "gut feeling", an unexplained action) and returns a mechanistic, confidence-ranked, evidence-tagged, falsifiable explanation grounded in what is actually known about brains.
@@ -177,6 +179,20 @@ Scheduled (owner's go-ahead required for anything beyond documents):
 - **B3 additions**: K-EmoCon three-perspective labels; LiveJournal mood corpus; Dear Abby corpus; Reddit UPDATE threads (terms check); Joel speed-dating data; the biography benchmark from public-domain diaries and letters (first half of a life predicts documented later choices).
 - **C1/C2 additions**: user calibration profile and forecast-outcome loop as the core retention mechanic; message rehearsal; Dear Me self-mode; two-sided mode as default with the invite surfaced from the first note; information-gain "what would help most to know".
 - **D1 additions**: director constraints and beat locks; situation schema for NPC scenes; training simulations (de-escalation, clinical empathy, difficult conversations) as the first market; historical characters from the biography benchmark.
+
+---
+
+# Critical path and gates (2026-11-08, from `docs/00-vision.md`)
+
+1. Engine v0 (prompted frontier model + cohort engine + calibration layer), evaluated on Twin-2K-500 against its retest ceiling. Gate: positive skill over cohort baseline, binary calibration error < 0.05.
+2. Dear You C1 on engine v0, 20 users. Gate: ≥ 50% weekly logging at week 8. Legal review for third-party data and consent flow starts here.
+3. B1 and B2 in parallel (cheap).
+4. Fine-tuned engine once C1 produces outcomes. Gate: beats engine v0 on the same holdouts.
+5. Stage E sized to fill gaps in what Dear You has collected.
+6. Track D after a distillable engine exists and a training-simulation partner is lined up.
+7. Veracity last, as "consistency check" without a probability in v1; cross-domain evaluation and false-accusation rate published first.
+
+Kill criteria: no skill over cohort after two schema revisions → redesign inputs; within-group variance collapse → no release; users do not log outcomes → become an engine-licensing business; veracity false-accusation rate above the strong channel alone → cap or drop weak channels.
 
 ## Standing rules
 
