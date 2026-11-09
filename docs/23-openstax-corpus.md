@@ -2,6 +2,10 @@
 
 The owner asked for the OpenStax library to be consumed as the open-licensed textbook base. This document records what was found, the license finding that changes how the books can be used, which titles matter and why, and the ingestion plan. The manifest with repositories, collection files, module counts, and chapter mappings is `data/openstax-manifest.yaml`. Ingestion itself is code and waits for the owner's go-ahead.
 
+## 0. Decision
+
+Owner decision, 2026-11-08: **research-only.** The OpenStax corpus is used for evaluation, the textbook exam, research retrieval, and non-commercial research models. No commercial reuse request will be submitted, and nothing from this corpus enters Dear You, closed models, or commercial exports. The commercial training path is open-access primary literature plus concept-level encoding in the schemas.
+
 ## 1. License finding (corrects docs/22)
 
 Earlier notes in this repo, and several library guides, describe OpenStax Psychology 2e and Introduction to Sociology 3e as CC BY 4.0. That is out of date. Checked on 2026-11-08:
@@ -51,6 +55,6 @@ Chapter-to-schema mappings for every priority 1 and 2 title are in the manifest.
 3. Store chunks with book, chapter, module id, license, attribution link, and commit hash.
 4. Generate exam items per chapter; human-review a sample; store as the B1 release gate.
 5. Build the research retrieval index.
-6. Submit the OpenStax reuse request describing the intended commercial uses; proceed to commercial use only on a written grant.
+6. No reuse request: by owner decision the corpus stays research-only.
 
 Nothing above runs until the owner says build.

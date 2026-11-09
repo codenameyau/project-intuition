@@ -16,6 +16,7 @@ version: 0.1.0
 source_format: CNXML modules in osbooks repositories; one collections/<slug>.collection.xml per book lists chapters and module ids; module content in modules/<id>/index.cnxml
 conversion: cnxml -> markdown via open converters (e.g. cnxml2md); keep module id, chapter, book, license, and attribution in every chunk
 ingestion_status: not started; documents only until the owner says to build
+owner_decision: research-only (2026-11-08). The OpenStax corpus is used for evaluation, the textbook exam, research retrieval, and non-commercial research models released CC BY-NC-SA. No commercial reuse request will be submitted; nothing from this corpus enters Dear You, closed models, or Track D commercial exports.
 
 books:
 
@@ -248,4 +249,4 @@ ingestion_plan:
   - step: store chunks with fields [book, chapter, module_id, license, attribution_url, commit]
   - step: build the textbook exam (docs/22 section 4) from chapter learning objectives and key terms, writing new items rather than copying
   - step: build a research retrieval index for engine evaluation and for the appraisal protocol's citations
-  - gate: no commercial use (Dear You, closed models, paid products) until OpenStax grants permission via the Content Reuse Request Form; any released fine-tune containing the text is CC BY-NC-SA
+  - rule: research-only by owner decision; no commercial use of this corpus; any released fine-tune containing the text is CC BY-NC-SA
