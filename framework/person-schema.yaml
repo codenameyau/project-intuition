@@ -96,7 +96,7 @@ blocks:
       recent_arousal_source: {type: string, evidence: moderate, note: misattribution}
       baseline_mood: {type: object, fields: {valence: float, arousal: float}, range: [0, 1], evidence: strong}
       time_of_day: {type: string, evidence: weak}
-      recent_drive_deprivation: {type: "list[enum[SEEKING, FEAR, RAGE, LUST, CARE, PANIC_GRIEF, PLAY, DISGUST]]", evidence: moderate}
+      recent_drive_deprivation: {type: "list["enum[SEEKING, FEAR, RAGE, LUST, CARE, PANIC_GRIEF, PLAY, DISGUST]"]", evidence: moderate}
 
   knowledge:
     description: What the person knows and believes about the situation. The theory-of-mind block. Without it, no model can predict a reaction to information.
@@ -119,6 +119,22 @@ blocks:
     fields:
       actors: {type: "list[object]", item: {name: string, role: string, closeness: float, trust: float, status_relative: float, similarity_perceived: float, exposure_count: int, reciprocity_signals: float, history_valence: float}, evidence: strong, note: the L3 drivers}
       audience: {type: "list[string]", evidence: strong, note: who can observe the behavior; changes status and shame computations}
+
+  social_context:
+    description: Social position, chronic strain, and rule-breaking context. From medical sociology (Pearlin stress process; Cockerham health lifestyles) and criminology (routine activity, strain, social learning, self-control, life course). Sets the baseline of L0 and the priors for norm violation.
+    fields:
+      chronic_strains:       {type: "list[string]", evidence: strong, note: role strain, financial strain, caregiving, discrimination; standing load on the body budget}
+      coping_resources:      {type: object, fields: {mastery: float, self_esteem: float}, range: [0, 1], evidence: moderate}
+      social_support:        {type: object, fields: {perceived: float, received: float, network_size: int}, evidence: strong, note: buffers strain; predicts health and mood}
+      health_lifestyle:      {type: object, fields: {exercise: float, diet_quality: float, smoking: bool, alcohol_use: float, preventive_care: float}, evidence: moderate, note: class-patterned bundle (Cockerham)}
+      sick_role_status:      {type: enum, values: [none, acute, chronic, caregiver], evidence: moderate}
+      chronic_illness_burden: {type: float, range: [0, 1], evidence: strong}
+      trait_self_control:    {type: float, range: [0, 1], evidence: strong, note: Gottfredson and Hirschi; Dunedin gradient; predicts rule-breaking and impulsive choice}
+      general_strain:        {type: object, fields: {blocked_goals: float, loss_of_valued: float, negative_stimuli: float}, range: [0, 1], evidence: moderate, note: Agnew; strain plus negative affect raises deviance}
+      peer_norms:            {type: "list[string]", evidence: strong, note: differential association; what the reference group treats as acceptable}
+      labeling_history:      {type: "list[string]", evidence: moderate, note: labels applied by institutions or others that the person may have internalized}
+      neutralization_scripts: {type: "list[string]", evidence: moderate, note: Sykes and Matza; "everyone does it", "no one was hurt"; predict rationalized violations}
+      turning_points:        {type: "list[object]", item: {event: string, age: int, direction: "enum[toward_conformity, away]"}, evidence: moderate, note: Sampson and Laub life-course}
 
   self_report_style:
     description: How this person narrates. Lets the model predict stated reasons separately from mechanisms.
@@ -165,6 +181,7 @@ missing_value_policy:
   relations: infer closeness from described interaction; flag as inferred
   biology: absent; population prior unchanged; never inferred
   aptitudes: predicted only above 30 percent coverage; bands with wide uncertainty; numeric range hidden by default
+  social_context: population priors by socioeconomic position; strains and norms inferred from notes are proposed, never assumed
 
 minimum_viable_profile:
   description: The smallest profile that still beats a demographic-only baseline, per Park et al. 2024 and Twin-2K-500.
