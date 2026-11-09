@@ -115,13 +115,13 @@ mit_ocw:
       note: archived predecessor to 9.00SC; superseded
 
   to_verify:
-    - {number: 9.68, title: Affect: Biological, Psychological, and Social Aspects of Feelings, instructor: Stephan Chorover, note: 2005 slug returned 404; find current slug via the OCW course list}
+    - {number: 9.68, title: 'Affect: Biological, Psychological, and Social Aspects of Feelings', instructor: Stephan Chorover, note: 2005 slug returned 404; find current slug via the OCW course list}
     - {number: 15.301, title: Managerial Psychology, note: 2004 slug returned 404}
     - {number: 24.09, title: Minds and Machines, note: 2011 slug returned 404}
     - {number: 9.46, title: Neuroscience of Morality, note: existence on OCW unconfirmed}
     - {number: 9.65, title: Cognitive Processes, note: unconfirmed}
     - {number: 9.59J, title: Laboratory in Psycholinguistics, note: unconfirmed}
-    - {number: 21A.00 and 21A.215, title: Introduction to Anthropology; Medical Anthropology, note: OCW anthropology listing exists; specific slugs unconfirmed}
+    - {number: 21A.00 and 21A.215, title: 'Introduction to Anthropology; Medical Anthropology', note: OCW anthropology listing exists; specific slugs unconfirmed}
     - {number: 15.665, title: Power and Negotiation, note: unconfirmed}
   enumeration_note: the OCW search and department pages are JavaScript-rendered; enumerate Brain and Cognitive Sciences, Economics, Anthropology, Sloan, and Linguistics and Philosophy courses with a browser session or the OCW course index when ingestion begins
 
@@ -130,26 +130,55 @@ harvard_pll_free:
   license: edX Terms of Service; personal non-commercial use within the course only; no redistribution or derivatives; NOT ingestible
   use: syllabus and course descriptions only; team members may take the courses; cite descriptions
   relevant_courses:
-    - {title: Fundamentals of Neuroscience Parts 1-3 (HarvardX), area: neuroscience, maps_to: [docs/02 cellular foundations], note: Part 3 The Brain listed; Parts 1 and 2 and a final exam also listed}
-    - {title: Managing Happiness, area: psychology and wellbeing, maps_to: [L5 ideal affect, impact bias, Dear Me self-mode]}
-    - {title: Building Personal Resilience: Managing Anxiety and Mental Health, area: psychology and health, maps_to: [emotion_regulation fields, state.stress_load]}
-    - {title: The Path to Happiness: What Chinese Philosophy Teaches Us about the Good Life, area: philosophy and wellbeing, maps_to: [culture and ideal affect]}
-    - {title: Justice; Justice Today: Money, Markets, and Morals, area: ethics, maps_to: [moral foundations, norm_compat, Haidt vs Greene framing]}
-    - {title: Early Childhood Development: Global Strategies for Interventions, area: development, maps_to: [history.upbringing, adverse childhood experiences]}
-    - {title: Child Protection: Children's Rights in Theory and Practice, area: social policy, maps_to: [minor policy rationale]}
-    - {title: Global Health Case Studies from a Biosocial Perspective, area: health and social science, maps_to: [social_context, medical sociology]}
-    - {title: The Opioid Crisis in America, area: health, maps_to: [L2 wanting vs liking in addiction, docs/02 Berridge]}
-    - {title: Bioethics: The Law, Medicine, and Ethics of Reproductive Technologies and Genetics, area: ethics, maps_to: [docs/13 genomics ethics]}
-    - {title: Buddhism, Hinduism, Judaism, Christianity, Islam, Sikhism Through Its Scriptures (series), area: religion, maps_to: [identity.religion and religiosity; culture-specific emotion concepts]}
-    - {title: Exercising Leadership; Leadership for Purposeful Change; Remote Work Revolution for Everyone, area: leadership, maps_to: [work dynamics, Organizational Behavior overlap]}
-    - {title: Citizen Politics in America; U.S. Public Policy; American Government, area: political science, maps_to: [political_orientation context]}
-    - {title: Introduction to Family Engagement in Education; Leaders of Learning, area: education, maps_to: [low relevance; omit from exam]}
+    - title: "Fundamentals of Neuroscience, Parts 1-3 (HarvardX)"
+      area: neuroscience
+      maps_to: [docs/02 cellular foundations]
+      note: Part 3 The Brain is listed; Parts 1 and 2 and a final exam are also listed
+    - title: "Managing Happiness"
+      area: psychology and wellbeing
+      maps_to: [L5 ideal affect, impact bias, Dear Me self-mode]
+    - title: "Building Personal Resilience: Managing Anxiety and Mental Health"
+      area: psychology and health
+      maps_to: [emotion_regulation fields, state.stress_load]
+    - title: "The Path to Happiness: What Chinese Philosophy Teaches Us about the Good Life"
+      area: philosophy and wellbeing
+      maps_to: [culture and ideal affect]
+    - title: "Justice; Justice Today: Money, Markets, and Morals"
+      area: ethics
+      maps_to: [moral foundations, norm_compat, Haidt versus Greene framing]
+    - title: "Early Childhood Development: Global Strategies for Interventions"
+      area: development
+      maps_to: [history.upbringing, adverse childhood experiences]
+    - title: "Child Protection: Children's Rights in Theory and Practice"
+      area: social policy
+      maps_to: [minor policy rationale]
+    - title: "Global Health Case Studies from a Biosocial Perspective"
+      area: health and social science
+      maps_to: [social_context, medical sociology]
+    - title: "The Opioid Crisis in America"
+      area: health
+      maps_to: [L2 wanting versus liking in addiction, docs/02 Berridge]
+    - title: "Bioethics: The Law, Medicine, and Ethics of Reproductive Technologies and Genetics"
+      area: ethics
+      maps_to: [docs/13 genomics ethics]
+    - title: "Buddhism, Hinduism, Judaism, Christianity, Islam, Sikhism Through Its Scriptures (series)"
+      area: religion
+      maps_to: [identity.religion and religiosity, culture-specific emotion concepts]
+    - title: "Exercising Leadership; Leadership for Purposeful Change; Remote Work Revolution for Everyone"
+      area: leadership
+      maps_to: [work dynamics, Organizational Behavior overlap]
+    - title: "Citizen Politics in America; U.S. Public Policy; American Government"
+      area: political science
+      maps_to: [political_orientation context]
+    - title: "Introduction to Family Engagement in Education; Leaders of Learning"
+      area: education
+      maps_to: [low relevance; omit from exam]
 
 ingestion_plan:
-  - step: enumerate OCW courses in the five departments with a browser session; confirm slugs in to_verify
-  - step: for each course, download the course bundle and the YouTube caption files for lecture videos; keep course number, term, instructor, lecture index, license, and URL on every chunk
-  - step: convert lecture notes (PDF) and transcripts to text; align transcripts to lecture topics
-  - step: add lecture-level learning objectives to the textbook exam (docs/22 section 4) alongside OpenStax chapters
-  - step: build the research retrieval index together with the OpenStax corpus; one attribution record per source as OCW requires
-  - step: Harvard courses: record syllabi and descriptions in the curriculum as reading guidance; no content ingestion
-  - rule: every model trained on OCW or OpenStax text is released CC BY-NC-SA with the attribution file; the project is non-commercial so this is the default for everything
+  - step: "enumerate OCW courses in the five departments with a browser session; confirm slugs in to_verify"
+  - step: "for each course, download the course bundle and the YouTube caption files for lecture videos; keep course number, term, instructor, lecture index, license, and URL on every chunk"
+  - step: "convert lecture notes (PDF) and transcripts to text; align transcripts to lecture topics"
+  - step: "add lecture-level learning objectives to the textbook exam (docs/22 section 4) alongside OpenStax chapters"
+  - step: "build the research retrieval index together with the OpenStax corpus; one attribution record per source as OCW requires"
+  - step: "Harvard courses: record syllabi and descriptions in the curriculum as reading guidance; no content ingestion"
+  - rule: "every model trained on OCW or OpenStax text is released CC BY-NC-SA with the attribution file; the project is non-commercial so this is the default for everything"
