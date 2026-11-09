@@ -191,8 +191,28 @@ Scheduled (owner's go-ahead required for anything beyond documents):
 5. Stage E sized to fill gaps in what Dear You has collected.
 6. Track D after a distillable engine exists and a training-simulation partner is lined up.
 7. Veracity last, as "consistency check" without a probability in v1; cross-domain evaluation and false-accusation rate published first.
+8. Track E single-player world after D1 (it needs the distilled engine and the expression mapping); multiplayer only after the claimed-identity and consent-tier flows have passed legal review.
 
 Kill criteria: no skill over cohort after two schema revisions → redesign inputs; within-group variance collapse → no release; users do not log outcomes → become an engine-licensing business; veracity false-accusation rate above the strong channel alone → cap or drop weak channels.
+
+---
+
+# Track E — the world and the consent-first network (added 2026-11-08; design in `docs/21-simulation-world.md`)
+
+Goal: a 2D world where consented people from users' profiles live and interact under the engine, growing into a social network whose content is simulation rather than posts. Documents only until told to build.
+
+## E0 — Design (done): architecture on the generative-agents pattern with the project's engine inside; relationship engine (`framework/relationship-schema.yaml`); what the science allows (friendship predictable with intervals, romance exploration-only); consent tiers; claimed-identity unification instead of shadow profiles.
+## E1 — Single-player world (after D1): your self-profile plus sketch-tier characters; routines from habits and time-use base rates; conversation via T2; friendship dynamics; inspect panels. Done when two different profiles behave distinguishably and users can tell inner speech from stated speech.
+## E2 — Relationship engine and scenarios: pair state, drivers, scenario runner with intervals; calibration against logged outcomes begins.
+## E3 — Consented multiplayer: invites, claimed identity hub, consent tiers, perspective-separated profiles, visibility counts for subjects; legal review of the network model before launch.
+## E4 — Network growth: shared worlds between consenting users; director tools; T2 on device for single-player.
+
+## Track E rules
+- No probabilistic matching of third parties across accounts. Identity unifies only when the person accepts invitations; sketches never cross accounts.
+- Sketch-tier characters: no romantic, sexual, or humiliation scenarios; visible only to the writer; not playable.
+- Romantic outcomes are explorations with the predictability ceiling shown; friendship and work dynamics are predictions with intervals.
+- No photo likenesses as sprites. Minors: presence by name only.
+- Subjects can see who simulated them and how often, at a category level.
 
 ## Standing rules
 

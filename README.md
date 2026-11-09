@@ -41,12 +41,14 @@ docs/
   18-critique-and-redesign.md     five rounds of critique; the behavioral-prediction-engine reframing; predictability spectrum; new ideas
   19-prediction-literature.md     findings with effect sizes that improve prediction, and the datasets they point to
   20-veracity-model.md            truth-versus-lie estimation as a Bayesian evidence ledger plus interviewer; what the science allows
+  21-simulation-world.md          Track E: 2D world of your people driven by the engine; consent-first social network; claimed identity
 framework/
   intuition-stack.yaml            machine-readable spec of layers, drivers, evidence
   explain-protocol.md             prompt template to run the protocol on any situation
   emotion-ontology.csv            211 emotional states × VAD × appraisals × drives × taxonomies
   person-schema.yaml              the conditioning input: 11 blocks, 88 fields, evidence-tagged (incl. aptitudes, biology)
   situation-schema.yaml           the other half of every record: DIAMONDS, situation strength, cues, audience, stakes, constraints, base rate
+  relationship-schema.yaml        pair state and evidence-tiered drivers for friendship, work, and (capped) romance
   output-schema.json              the prediction target: emotions, VAD, drives, appraisals, cognition, action, answer
 examples/
   template.md                     blank case file for the explanation protocol
@@ -92,6 +94,10 @@ Given a person's record and a statement, estimate the probability it is deceptiv
 
 The same model that predicts a real person's feelings generates a fictional one's. A character sheet is a person-schema profile; game events are situations; the output schema gives drives with time constants, appraisals, emotions, inner speech, a stated reason that may not match, and an action distribution. A fast loop integrates drives every tick on device; a slow loop runs the distilled model on salient events. Export tiers run from the closed 70B teacher through open 1–4B GGUF/ONNX students to a 1 ms affect head and plain tables. See `docs/16` and `docs/17`.
 
+## The world (Track E)
+
+A top-down 2D world where the people from your profiles live, keep routines, meet, talk, and form relationships, driven by the same engine. Walk as yourself or as anyone whose consent tier allows it; talk to characters and see their appraisals and inner speech; run scenarios and get friendship and work dynamics as predictions with intervals, and romance as explorations with the ceiling printed (profiles do not predict who desires whom). Growth is a consent-first social network: sketches stay private to the writer, identities unify only when the person accepts invitations and claims their profile, and multi-perspective profiles are held separately rather than merged. See `docs/21`.
+
 ## Using it
 
 1. Read `docs/03-framework.md` once.
@@ -102,4 +108,4 @@ The same model that predicts a real person's feelings generates a fictional one'
 
 ## Status
 
-Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. Track D (characters and export): design complete 2026-11-08. Redesign pass (v0.2) complete 2026-11-08: Question 0, situation schema, baseline and duration fields, cohort engine and biography benchmark planned. See `PLAN.md`.
+Track A (explanation framework): Phase 0 complete 2026-11-08, comparative connectomes and genomics added 2026-11-08. Track B (predictive model): design complete 2026-11-08, ontology v0.1 with 211 states, person schema with 10 blocks incl. biology, schemas validated, no training run yet. Track C (Dear You product): spec, data model sketch, and API sketch complete 2026-11-08; documents only by owner's instruction, no code until told. Track D (characters and export): design complete 2026-11-08. Redesign pass (v0.2) complete 2026-11-08. Track E (simulation world and consent-first network) designed 2026-11-08. See `PLAN.md`.
