@@ -214,6 +214,10 @@ Goal: a 2D world where consented people from users' profiles live and interact u
 - No photo likenesses as sprites. Minors: presence by name only.
 - Subjects can see who simulated them and how often, at a category level.
 
+## Posture (owner statement, 2026-11-08)
+
+**Non-commercial.** Research, education, and fun. Every model, table, and document is released under CC BY-NC-SA-compatible research terms with the attribution file OCW requires. No pricing, no closed commercial tiers, no B2B licensing. Consequences: OpenStax and MIT OCW are usable for the project's own fine-tunes (`docs/23`, `docs/24`); Harvard free courses remain syllabus-only under edX terms; copyrighted textbooks remain design sources. Earlier mentions of pricing, commercial wedges, dual licensing, and closed API tiers in this file and the docs are superseded by this section.
+
 ## Standing rules
 
 - **Evidence first.** Every driver has a tier. Tier C is never presented as settled. A failed replication demotes, immediately.

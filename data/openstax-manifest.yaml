@@ -9,14 +9,14 @@
 # "use" values:
 #   eval            textbook-exam items and retrieval for research evaluation (allowed)
 #   research_ft     fine-tuning for non-commercial research models released CC BY-NC-SA (allowed)
-#   commercial      inside Dear You or any paid product or closed model: NOT allowed without permission
-#   permission_req  action: submit OpenStax Content Reuse Request before any commercial use
+#   commercial      not applicable: the project is non-commercial; any derivative is CC BY-NC-SA
+#   permission_req  retained in entries for history; no request needed under the non-commercial posture
 
 version: 0.1.0
 source_format: CNXML modules in osbooks repositories; one collections/<slug>.collection.xml per book lists chapters and module ids; module content in modules/<id>/index.cnxml
 conversion: cnxml -> markdown via open converters (e.g. cnxml2md); keep module id, chapter, book, license, and attribution in every chunk
 ingestion_status: not started; documents only until the owner says to build
-owner_decision: research-only (2026-11-08). The OpenStax corpus is used for evaluation, the textbook exam, research retrieval, and non-commercial research models released CC BY-NC-SA. No commercial reuse request will be submitted; nothing from this corpus enters Dear You, closed models, or Track D commercial exports.
+owner_decision: non-commercial project (2026-11-08). The OpenStax corpus is usable for evaluation, the textbook exam, research retrieval, and the project's own models and tools, all released CC BY-NC-SA with attribution. No reuse request is needed.
 
 books:
 

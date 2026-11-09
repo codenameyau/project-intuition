@@ -1,0 +1,155 @@
+# Open courseware manifest: MIT OpenCourseWare and Harvard free courses.
+# Verified 2026-11-08. Project posture: NON-COMMERCIAL (research, education, fun), so CC BY-NC-SA sources are fully usable
+# for models and products of this project provided derivatives are shared under CC BY-NC-SA with attribution.
+#
+# MIT OCW license: CC BY-NC-SA 4.0 (ocw.mit.edu/pages/privacy-and-terms-of-use). OCW's terms state that for AI training,
+# attribution must appear in training documentation and in any derivative works. Attribution format: "MIT OpenCourseWare,
+# <course number> <title>, <term>, <instructor>, https://ocw.mit.edu/courses/<slug>/, CC BY-NC-SA 4.0".
+# Harvard PLL / HarvardX: edX Terms of Service; materials belong to edX, 2U, or the institutions; personal non-commercial use
+# within the enrolled course only; no copying beyond that, no redistribution, no derivatives. NOT ingestible. Use as syllabus
+# and as courses a human on the team takes; cite publicly available course descriptions only.
+
+version: 0.1.0
+ingestion_status: not started; documents only until the owner says to build
+posture: non-commercial; all project models and products are released under CC BY-NC-SA-compatible terms
+
+mit_ocw:
+  license: CC BY-NC-SA 4.0
+  machine_access: each course page is static HTML; "Download course" bundles exist per course; lecture videos are on the MIT OCW YouTube channel with captions; verify whether each course exposes a data.json before relying on it
+  courses:
+
+    - number: 9.00SC
+      title: Introduction to Psychology
+      instructor: John D. E. Gabrieli
+      term: Fall 2011
+      url: https://ocw.mit.edu/courses/9-00sc-introduction-to-psychology-fall-2011/
+      materials: [lecture videos, lecture notes, open textbook, instructor insights, exams with solutions, writing assignments]
+      priority: 1
+      lectures: [Introduction, Science and Research, Brain I Structure and Functions, Brain II Methods, Vision I, Vision II, Consciousness, Attention, Memory I, Learning, Memory II Amnesia and Memory Systems, Language, Thinking, Intelligence, Emotion and Motivation, Personality, Child Development, Adult Development, Stress, Psychopathology I, Psychopathology II, Social Psychology I, Social Psychology II, Evolutionary Psychology and Happiness]
+      maps_to: [L0-L6 overview, personality block, playbooks, textbook exam syllabus]
+
+    - number: 9.13
+      title: The Human Brain
+      instructor: Nancy Kanwisher
+      term: Spring 2019
+      url: https://ocw.mit.edu/courses/9-13-the-human-brain-spring-2019/
+      materials: [lecture videos, lecture notes, podcasts, written assignments, instructor insights]
+      priority: 1
+      maps_to: [docs/02 and 07 methods caveats, L3 face perception and theory of mind, L4 functional specificity, fMRI limits]
+
+    - number: 14.13
+      title: Psychology and Economics
+      instructor: Frank Schilbach
+      term: Spring 2020
+      url: https://ocw.mit.edu/courses/14-13-psychology-and-economics-spring-2020/
+      materials: [lecture videos, lecture notes, podcasts, problem sets with solutions, exams with solutions]
+      priority: 1
+      maps_to: [playbook A buying, time_preference, risk_tolerance, reference dependence, social preferences, the nudge demotion, Global Preferences Survey fields]
+
+    - number: 9.20
+      title: Animal Behavior
+      instructor: Gerald E. Schneider
+      term: Fall 2013
+      url: https://ocw.mit.edu/courses/9-20-animal-behavior-fall-2013/
+      materials: [lecture audio, lecture notes, presentation and written assignments]
+      priority: 1
+      maps_to: [docs/12 ethology framing, Tinbergen four questions, L1 drives, sociobiology for the ASYMMETRY question]
+
+    - number: 9.14
+      title: Brain Structure and Its Origins
+      instructor: Gerald E. Schneider
+      term: Spring 2014
+      url: https://ocw.mit.edu/courses/9-14-brain-structure-and-its-origins-spring-2014/
+      materials: [lecture audio, lecture notes, problem sets, exams with solutions, instructor insights]
+      priority: 2
+      maps_to: [docs/02 and 12 comparative neuroanatomy, hypothalamus and limbic origins of L0 and L1]
+
+    - number: 9.01
+      title: Introduction to Neuroscience
+      instructor: Mark Bear and Sebastian Seung
+      term: Fall 2007
+      url: https://ocw.mit.edu/courses/9-01-introduction-to-neuroscience-fall-2007/
+      materials: [lecture notes, readings, recitations, problem sets, exams]
+      priority: 2
+      maps_to: [docs/02 cellular and systems foundations, learning and memory]
+
+    - number: 9.40
+      title: Introduction to Neural Computation
+      instructor: Michale Fee and Daniel Zysman
+      term: Spring 2018
+      url: https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/
+      materials: [lecture videos, lecture notes, problem sets]
+      priority: 2
+      maps_to: [Track D fast loop integrators, drives_dynamics, decision making as statistical inference, docs/02 Shiu model intuition]
+
+    - number: 9.85
+      title: Infant and Early Childhood Cognition
+      instructor: Laura Schulz
+      term: Fall 2012
+      url: https://ocw.mit.edu/courses/9-85-infant-and-early-childhood-cognition-fall-2012/
+      materials: [lecture notes, design and presentation and written assignments]
+      priority: 2
+      maps_to: [knowledge block origins (agents, causality, false belief), history.upbringing, Lifespan priors]
+
+    - number: 9.70
+      title: Social Psychology
+      instructor: Stephan L. Chorover
+      term: Spring 2013
+      url: https://ocw.mit.edu/courses/9-70-social-psychology-spring-2013/
+      materials: [lecture notes, activity and written assignments, instructor insights]
+      priority: 2
+      maps_to: [L3, group dynamics for Track E]
+
+    - number: 11.011
+      title: The Art and Science of Negotiation
+      term: Spring 2006
+      url: https://ocw.mit.edu/courses/11-011-the-art-and-science-of-negotiation-spring-2006/
+      materials: [lecture notes, readings, assignments]
+      priority: 3
+      maps_to: [relationship schema conflict and work dynamics, Track D training simulations]
+
+    - number: 9.00P
+      title: Introduction to Psychology (archived)
+      term: Fall 2001
+      priority: 3
+      note: archived predecessor to 9.00SC; superseded
+
+  to_verify:
+    - {number: 9.68, title: Affect: Biological, Psychological, and Social Aspects of Feelings, instructor: Stephan Chorover, note: 2005 slug returned 404; find current slug via the OCW course list}
+    - {number: 15.301, title: Managerial Psychology, note: 2004 slug returned 404}
+    - {number: 24.09, title: Minds and Machines, note: 2011 slug returned 404}
+    - {number: 9.46, title: Neuroscience of Morality, note: existence on OCW unconfirmed}
+    - {number: 9.65, title: Cognitive Processes, note: unconfirmed}
+    - {number: 9.59J, title: Laboratory in Psycholinguistics, note: unconfirmed}
+    - {number: 21A.00 and 21A.215, title: Introduction to Anthropology; Medical Anthropology, note: OCW anthropology listing exists; specific slugs unconfirmed}
+    - {number: 15.665, title: Power and Negotiation, note: unconfirmed}
+  enumeration_note: the OCW search and department pages are JavaScript-rendered; enumerate Brain and Cognitive Sciences, Economics, Anthropology, Sloan, and Linguistics and Philosophy courses with a browser session or the OCW course index when ingestion begins
+
+harvard_pll_free:
+  catalog: https://pll.harvard.edu/catalog/free (118 free courses on 2026-11-08)
+  license: edX Terms of Service; personal non-commercial use within the course only; no redistribution or derivatives; NOT ingestible
+  use: syllabus and course descriptions only; team members may take the courses; cite descriptions
+  relevant_courses:
+    - {title: Fundamentals of Neuroscience Parts 1-3 (HarvardX), area: neuroscience, maps_to: [docs/02 cellular foundations], note: Part 3 The Brain listed; Parts 1 and 2 and a final exam also listed}
+    - {title: Managing Happiness, area: psychology and wellbeing, maps_to: [L5 ideal affect, impact bias, Dear Me self-mode]}
+    - {title: Building Personal Resilience: Managing Anxiety and Mental Health, area: psychology and health, maps_to: [emotion_regulation fields, state.stress_load]}
+    - {title: The Path to Happiness: What Chinese Philosophy Teaches Us about the Good Life, area: philosophy and wellbeing, maps_to: [culture and ideal affect]}
+    - {title: Justice; Justice Today: Money, Markets, and Morals, area: ethics, maps_to: [moral foundations, norm_compat, Haidt vs Greene framing]}
+    - {title: Early Childhood Development: Global Strategies for Interventions, area: development, maps_to: [history.upbringing, adverse childhood experiences]}
+    - {title: Child Protection: Children's Rights in Theory and Practice, area: social policy, maps_to: [minor policy rationale]}
+    - {title: Global Health Case Studies from a Biosocial Perspective, area: health and social science, maps_to: [social_context, medical sociology]}
+    - {title: The Opioid Crisis in America, area: health, maps_to: [L2 wanting vs liking in addiction, docs/02 Berridge]}
+    - {title: Bioethics: The Law, Medicine, and Ethics of Reproductive Technologies and Genetics, area: ethics, maps_to: [docs/13 genomics ethics]}
+    - {title: Buddhism, Hinduism, Judaism, Christianity, Islam, Sikhism Through Its Scriptures (series), area: religion, maps_to: [identity.religion and religiosity; culture-specific emotion concepts]}
+    - {title: Exercising Leadership; Leadership for Purposeful Change; Remote Work Revolution for Everyone, area: leadership, maps_to: [work dynamics, Organizational Behavior overlap]}
+    - {title: Citizen Politics in America; U.S. Public Policy; American Government, area: political science, maps_to: [political_orientation context]}
+    - {title: Introduction to Family Engagement in Education; Leaders of Learning, area: education, maps_to: [low relevance; omit from exam]}
+
+ingestion_plan:
+  - step: enumerate OCW courses in the five departments with a browser session; confirm slugs in to_verify
+  - step: for each course, download the course bundle and the YouTube caption files for lecture videos; keep course number, term, instructor, lecture index, license, and URL on every chunk
+  - step: convert lecture notes (PDF) and transcripts to text; align transcripts to lecture topics
+  - step: add lecture-level learning objectives to the textbook exam (docs/22 section 4) alongside OpenStax chapters
+  - step: build the research retrieval index together with the OpenStax corpus; one attribution record per source as OCW requires
+  - step: Harvard courses: record syllabi and descriptions in the curriculum as reading guidance; no content ingestion
+  - rule: every model trained on OCW or OpenStax text is released CC BY-NC-SA with the attribution file; the project is non-commercial so this is the default for everything

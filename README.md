@@ -58,6 +58,7 @@ product/
   api.md                          REST surface for Dear You
 data/
   openstax-manifest.yaml          OpenStax books: repositories, collection files, module counts, licenses, chapter-to-schema mappings
+  open-courseware-manifest.yaml   MIT OCW courses with materials and mappings; Harvard free courses as syllabus; ingestion plan
 ```
 
 ## The product (Track C): Dear You
@@ -99,6 +100,10 @@ The same model that predicts a real person's feelings generates a fictional one'
 ## The world (Track E)
 
 A top-down 2D world where the people from your profiles live, keep routines, meet, talk, and form relationships, driven by the same engine. Walk as yourself or as anyone whose consent tier allows it; talk to characters and see their appraisals and inner speech; run scenarios and get friendship and work dynamics as predictions with intervals, and romance as explorations with the ceiling printed (profiles do not predict who desires whom). Growth is a consent-first social network: sketches stay private to the writer, identities unify only when the person accepts invitations and claims their profile, and multi-perspective profiles are held separately rather than merged. See `docs/21`.
+
+## Posture
+
+Non-commercial: research, education, and fun. Everything here is released under CC BY-NC-SA-compatible research terms with attribution. That is why OpenStax and MIT OpenCourseWare can serve as training corpora.
 
 ## Using it
 

@@ -109,7 +109,7 @@ The SQL sketch is in `product/schema.sql`. The API surface is in `product/api.md
 
 ## 11. Open decisions
 
-- Pricing: subscription vs one-time; no ad model under any circumstance.
+- Pricing: none. The project is non-commercial (research, education, fun); Dear You is a free research and education instrument. No ads under any circumstance.
 - Whether freeform notes are end-to-end encrypted (limits server-side inference) or encrypted at rest (allows it). Default: at rest, with an E2E "private notes" tier that is excluded from inference.
 - Default auto-accept threshold.
 - Whether the clipper ships in C3 or waits for legal review of its own.

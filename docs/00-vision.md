@@ -39,7 +39,7 @@ Legal review for third-party data and the two-sided consent flow starts at step 
 
 - The engine does not beat the cohort baseline on Twin-2K-500 after two schema revisions: the person schema is wrong, not the model; stop and redesign the inputs.
 - Within-demographic prediction variance collapses below real within-demographic variance in any release candidate: do not release; the model is stereotyping.
-- Dear You users do not log outcomes: the feedback loop is the product; without it there is a chat wrapper, and the project should become an engine-licensing business instead.
+- Dear You users do not log outcomes: the feedback loop is the product; without it there is a chat wrapper, and the project should narrow to the research engine and the simulation world.
 - A veracity release candidate's false-accusation rate at the default threshold exceeds what the ledger's strong channel alone would produce: the weak channels are leaking; cap them harder or drop them.
 
 ## What is deliberately not here
@@ -49,6 +49,6 @@ Scraping anyone's accounts. Inferring sexual orientation, race, ethnicity, relig
 ## Open decisions for the owner
 
 - Team and budget: the 34-week plan implies five to eight people; a solo sequence takes the critical path above and roughly doubles the calendar.
-- Open-source posture: which documents, tables, and model tiers are public, and when.
+- Posture (decided 2026-11-08): **non-commercial**. The project is research, education, and fun. All documents, tables, and model tiers are released under CC BY-NC-SA-compatible research terms with attribution; nothing is sold; no closed commercial tiers. This makes OpenStax and MIT OCW fully usable as training corpora (`docs/23`, `docs/24`).
 - Partnerships: the appraisal corpus group (Stuttgart), the Centaur group, the Twin-2K-500 group at Columbia, and a training-simulation buyer for Track D.
-- Whether Dear You stays consumer-first or becomes the proof and data engine for a licensed B2B engine.
+- Whether Dear You is run as a small invited research community or opened to the public as a free educational tool.

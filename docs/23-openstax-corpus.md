@@ -4,7 +4,7 @@ The owner asked for the OpenStax library to be consumed as the open-licensed tex
 
 ## 0. Decision
 
-Owner decision, 2026-11-08: **research-only.** The OpenStax corpus is used for evaluation, the textbook exam, research retrieval, and non-commercial research models. No commercial reuse request will be submitted, and nothing from this corpus enters Dear You, closed models, or commercial exports. The commercial training path is open-access primary literature plus concept-level encoding in the schemas.
+Owner decision, 2026-11-08: **research-only**, and later the same day the owner stated the whole project is **non-commercial** (research, education, fun). Under that posture the OpenStax corpus is usable for evaluation, the textbook exam, research retrieval, and for fine-tuning the project's own models and tools, including Dear You and the simulation world, provided every derivative is released CC BY-NC-SA with attribution. No reuse request is needed.
 
 ## 1. License finding (corrects docs/22)
 

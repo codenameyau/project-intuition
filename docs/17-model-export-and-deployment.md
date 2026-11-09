@@ -29,6 +29,8 @@ T2 models produce the output schema with constrained decoding (grammar-based sam
 
 ## 4. Open and closed weights
 
+**Superseded 2026-11-08 by the non-commercial posture.** All tiers are released under CC BY-NC-SA-compatible research terms with the attribution file; T0 may be hosted rather than downloaded for cost reasons, not sold. The table below is kept for the record of the original reasoning.
+
 | Tier | Release | Why |
 |---|---|---|
 | T0 | closed, API only | largest capability; most sensitive if misused for real-person profiling at scale; also the costliest to serve |

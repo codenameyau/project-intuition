@@ -90,7 +90,7 @@ Supporting changes: "what would help most to know" suggestions ordered by inform
 **Fixes.**
 1. **Director constraints**: per-scene bounds on drive ranges and on the action distribution; the engine proposes within bounds; a "beat lock" pins an emotion trajectory while the fast loop still animates variation around it.
 2. **Social situations for NPCs** use the same situation schema; DIAMONDS and strength apply to a tavern or a battlefield as much as to an office.
-3. **Training simulations as the commercial wedge**: de-escalation training, clinical and nursing empathy, difficult-conversation practice for managers, sales and negotiation. Evaluation is clear (learner outcomes), buyers pay, and the emotional realism is the product. Games follow.
+3. **Training simulations as the first educational use**: de-escalation training, clinical and nursing empathy, difficult-conversation practice. Evaluation is clear (learner outcomes) and the emotional realism is the point. Games follow.
 4. **Historical characters** authored from the biography benchmark give studios and educators deeply grounded personas.
 5. **Export realism**: open T2 and T3 ship without any person-profile ingestion tooling; the released synthetic corpus is character-only; the model card states plainly that misuse for real-person profiling is possible and prohibited. That is the honest limit of what weights can enforce.
 
@@ -124,7 +124,7 @@ The engine promises accuracy in proportion to this table and says which row a qu
 5. Biography benchmark (novel; consent-free idiographic ground truth; feeds characters).
 6. Two-sided mode as default (resolves the ethics and improves data).
 7. Emotion duration and adaptation curves in the ontology and person model (small, high leverage for "how long will they feel this").
-8. Training simulations as Track D's first market.
+8. Training simulations as Track D's first educational use.
 9. Traits as state distributions (Fleeson) once ESM-style data exists.
 10. Neuroforecasting as a research collaboration: small-sample neural signals forecasting aggregate reactions to content, for calibrating population priors.
 
