@@ -96,7 +96,7 @@ blocks:
       recent_arousal_source: {type: string, evidence: moderate, note: misattribution}
       baseline_mood: {type: object, fields: {valence: float, arousal: float}, range: [0, 1], evidence: strong}
       time_of_day: {type: string, evidence: weak}
-      recent_drive_deprivation: {type: "list["enum[SEEKING, FEAR, RAGE, LUST, CARE, PANIC_GRIEF, PLAY, DISGUST]"]", evidence: moderate}
+      recent_drive_deprivation: {type: "list[enum[SEEKING, FEAR, RAGE, LUST, CARE, PANIC_GRIEF, PLAY, DISGUST]]", evidence: moderate}
 
   knowledge:
     description: What the person knows and believes about the situation. The theory-of-mind block. Without it, no model can predict a reaction to information.
